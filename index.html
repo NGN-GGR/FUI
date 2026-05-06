@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alex Rivera — Freelance Web Developer</title>
+
+  <!-- Pre-paint theme bootstrap: sets data-theme + data-bs-theme before first paint -->
+  <script>
+    (function () {
+      var stored = null;
+      try { stored = localStorage.getItem('theme'); } catch (_) {}
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.setAttribute('data-bs-theme', theme);
+    })();
+  </script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Frollo theme fonts:
+       - heading: 'Forma DJR Text' (commercial, must be self-hosted) → falls back to 'DM Sans'
+       - body: 'Calibri' (Windows system font) → falls back to 'Inter' -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&family=Inter:wght@400;500&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-bs-spy="scroll" data-bs-target="#sidebarNav" data-bs-offset="80" data-bs-smooth-scroll="true" tabindex="0">
+
+  <!-- Top nav: mobile-only fallback -->
+  <nav class="navbar navbar-expand-md bg-body sticky-top d-md-none" id="siteNav">
+    <div class="container">
+      <a class="navbar-brand fw-semibold" href="#top">Alex Rivera</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+        <ul class="navbar-nav gap-md-3">
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#work">Work</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+        <button id="themeToggle" type="button" class="btn btn-link nav-link ms-md-3" aria-label="Toggle dark mode" aria-pressed="false">
+          <i class="bi bi-sun-fill" data-theme-icon="light"></i>
+          <i class="bi bi-moon-stars-fill" data-theme-icon="dark" hidden></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Right sidebar: desktop-only -->
+  <aside class="sidebar d-none d-md-flex">
+    <div class="sidebar-brand">
+      <a class="sidebar-brand-name" href="#top">Alex Rivera</a>
+      <p class="sidebar-tagline">Freelance Web Developer</p>
+    </div>
+
+    <nav class="sidebar-nav" id="sidebarNav" aria-label="Site navigation">
+      <a class="sidebar-link" href="#services">Services</a>
+      <a class="sidebar-link" href="#work">Work</a>
+      <a class="sidebar-link" href="#about">About</a>
+      <a class="sidebar-link" href="#testimonials">Testimonials</a>
+      <a class="sidebar-link" href="#contact">Contact</a>
+    </nav>
+
+    <a class="btn btn-accent sidebar-cta" href="#contact">Contact me</a>
+
+    <div class="sidebar-foot">
+      <button id="sidebarThemeToggle" type="button" class="btn btn-link p-0 align-self-start" aria-label="Toggle dark mode" aria-pressed="false">
+        <i class="bi bi-sun-fill" data-theme-icon="light"></i>
+        <i class="bi bi-moon-stars-fill" data-theme-icon="dark" hidden></i>
+      </button>
+      <div class="sidebar-social">
+        <a href="#" aria-label="GitHub"><i class="bi bi-github"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      </div>
+      <small class="sidebar-copyright">© <span id="sidebarYear"></span> Alex Rivera</small>
+    </div>
+  </aside>
+
+  <main class="main-pane">
+
+  <!-- Hero -->
+  <header class="hero" id="top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          <h1 class="hero-title">Reliable web development.</h1>
+          <p class="hero-sub">I build web apps that ship on time, run reliably, and scale with your business.</p>
+          <a href="#contact" class="btn btn-accent btn-lg mt-3">Contact me</a>
+        </div>
+      </div>
+    </div>
+      <div class="row g-4 mt-2">
+        <div class="col-lg-12">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam quis tellus ac nunc ultrices volutpat ut id mauris. Pellentesque congue aliquam arcu non posuere. Nullam mollis tincidunt purus vel egestas. Curabitur a neque sit amet lorem posuere placerat. Donec quis sagittis neque, eget varius mi. Nulla facilisi. Suspendisse enim sem, faucibus sed odio eu, rhoncus posuere justo. Vestibulum at neque ac lorem hendrerit vestibulum sed vel sem.</p>
+        </div>
+      </div>
+  </header>
+
+  <!-- Services -->
+  <section class="section" id="services">
+    <div class="container">
+      <h2 class="section-title">Services</h2>
+      <p class="section-sub">Three things I do well — usually for the same project.</p>
+      <div class="row g-4 mt-2">
+        <div class="col-md-4">
+          <div class="service">
+            <div class="service-icon"><i class="bi bi-window"></i></div>
+            <h3>Frontend</h3>
+            <p>Modern, accessible web interfaces. Component-driven, fast, and easy to maintain.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service">
+            <div class="service-icon"><i class="bi bi-hdd-network"></i></div>
+            <h3>Backend</h3>
+            <p>APIs, databases, and infrastructure that hold up under real production load.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service">
+            <div class="service-icon"><i class="bi bi-stack"></i></div>
+            <h3>Full-stack / APIs</h3>
+            <p>End-to-end delivery — from data model to deploy — owned by one engineer who's accountable.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4 mt-2">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam quis tellus ac nunc ultrices volutpat ut id mauris. Pellentesque congue aliquam arcu non posuere. Nullam mollis tincidunt purus vel egestas. Curabitur a neque sit amet lorem posuere placerat. Donec quis sagittis neque, eget varius mi. Nulla facilisi. Suspendisse enim sem, faucibus sed odio eu, rhoncus posuere justo. Vestibulum at neque ac lorem hendrerit vestibulum sed vel sem.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work -->
+  <section class="section section-alt" id="work">
+    <div class="container">
+      <h2 class="section-title">Selected work</h2>
+      <p class="section-sub">A few recent projects.</p>
+      <div class="row g-4 mt-2">
+        <div class="col-md-4">
+          <article class="card work-card">
+            <div class="work-thumb work-thumb-1" aria-hidden="true"></div>
+            <div class="card-body">
+              <h3 class="h5">Logistics dashboard</h3>
+              <p class="text-body-secondary mb-3">Real-time fleet tracking for a regional carrier.</p>
+              <a href="#" class="link-accent">View →</a>
+            </div>
+          </article>
+        </div>
+        <div class="col-md-4">
+          <article class="card work-card">
+            <div class="work-thumb work-thumb-2" aria-hidden="true"></div>
+            <div class="card-body">
+              <h3 class="h5">Subscription commerce</h3>
+              <p class="text-body-secondary mb-3">Custom checkout and billing for a DTC brand.</p>
+              <a href="#" class="link-accent">View →</a>
+            </div>
+          </article>
+        </div>
+        <div class="col-md-4">
+          <article class="card work-card">
+            <div class="work-thumb work-thumb-3" aria-hidden="true"></div>
+            <div class="card-body">
+              <h3 class="h5">Internal analytics tool</h3>
+              <p class="text-body-secondary mb-3">Self-serve reporting for a 40-person ops team.</p>
+              <a href="#" class="link-accent">View →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-md-5">
+          <div class="about-photo" aria-hidden="true">
+            <i class="bi bi-person-fill"></i>
+          </div>
+        </div>
+        <div class="col-md-7">
+          <h2 class="section-title">About</h2>
+          <p>I'm Alex — a full-stack web developer with a decade of experience helping startups and small teams ship software that works. I care about clear interfaces, sensible architecture, and honest timelines.</p>
+          <ul class="creds list-unstyled mt-4">
+            <li><strong>10+ years</strong> building production web applications</li>
+            <li><strong>Stack:</strong> TypeScript, React, Node, Python, Postgres, AWS</li>
+            <li><strong>Based in</strong> Brooklyn, NY · available worldwide</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section section-alt" id="testimonials">
+    <div class="container">
+      <h2 class="section-title">What clients say</h2>
+      <div class="row g-4 mt-2">
+        <div class="col-md-4">
+          <figure class="quote">
+            <blockquote class="mb-3">"Alex shipped in six weeks what our team had been planning for six months. Clean code, no drama."</blockquote>
+            <figcaption class="quote-attr">Priya N. · CTO, Northwind Logistics</figcaption>
+          </figure>
+        </div>
+        <div class="col-md-4">
+          <figure class="quote">
+            <blockquote class="mb-3">"Genuine senior engineer. Asked the right questions and delivered exactly what we needed."</blockquote>
+            <figcaption class="quote-attr">Marcus L. · Founder, Saplinghouse</figcaption>
+          </figure>
+        </div>
+        <div class="col-md-4">
+          <figure class="quote">
+            <blockquote class="mb-3">"Best contractor we've worked with. Communicates well and writes maintainable code."</blockquote>
+            <figcaption class="quote-attr">Renee O. · Head of Product, Forecast Labs</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-7">
+          <h2 class="section-title text-center">Tell me about your project</h2>
+          <p class="section-sub text-center mx-auto">A few sentences is plenty. I'll reply within two business days.</p>
+
+          <form id="contactForm" class="mt-4" novalidate>
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="name" name="name" required>
+              <div class="invalid-feedback" data-error-for="name">Please enter your name.</div>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" name="email" required>
+              <div class="invalid-feedback" data-error-for="email">Please enter a valid email address.</div>
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Project description</label>
+              <textarea class="form-control" id="message" name="message" rows="5" minlength="20" required></textarea>
+              <div class="invalid-feedback" data-error-for="message">Please share at least 20 characters about the project.</div>
+            </div>
+            <button type="submit" class="btn btn-accent btn-lg w-100">Send</button>
+          </form>
+
+          <div id="contactSuccess" class="contact-success text-center" hidden>
+            <i class="bi bi-check-circle"></i>
+            <h3 class="mt-3">Thanks — I'll be in touch.</h3>
+            <p class="text-body-secondary">Expect a reply within two business days.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page-bottom footer: mobile-only fallback -->
+  <footer class="footer d-md-none">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+      <small class="text-body-secondary">© <span id="year"></span> Alex Rivera</small>
+      <div class="d-flex gap-3">
+        <a href="#" class="footer-link" aria-label="GitHub"><i class="bi bi-github"></i></a>
+        <a href="#" class="footer-link" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

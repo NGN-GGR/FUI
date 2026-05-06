@@ -1,0 +1,371 @@
+/* ============================================================
+   1. Theme-neutral surface tokens (light)
+   ============================================================ */
+:root {
+  /* Surface */
+  --ink: #111418;
+  --muted: #5b636e;
+  --bg: #ffffff;
+  --bg-alt: #f7f8fa;
+  --border: #e6e8ec;
+  --card-bg: #ffffff;
+
+  /* Spacing scale (8px base) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* Typography size scale */
+  --fs-hero: clamp(36px, 5vw, 56px);
+  --fs-section: clamp(28px, 3vw, 36px);
+  --fs-lead: 1.15rem;
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+
+  /* Motion */
+  --motion-fast: 150ms;
+  --motion-base: 200ms;
+  --motion-slow: 300ms;
+  --motion-exit: 250ms;
+  --easing-standard: ease;
+
+  /* Focus ring (color is brand-supplied below; width is constant) */
+  --focus-ring-width: 0.2rem;
+
+  /* === 2. Frollo theme tokens (light) === */
+
+  /* Brand colors */
+  --accent: #512ABD;
+  --accent-dark: #3A1E8A;
+  --accent-tint: rgba(81, 42, 189, 0.10);
+  --accent-ink: #ffffff;
+  --secondary: #6c757d;
+
+  /* Semantic state colors */
+  --success: #198754;
+  --success-tint: rgba(25, 135, 84, 0.12);
+  --warning: #ffc107;
+  --warning-tint: rgba(255, 193, 7, 0.15);
+  --danger: #dc3545;
+  --danger-tint: rgba(220, 53, 69, 0.12);
+  --info: #0dcaf0;
+  --info-tint: rgba(13, 202, 240, 0.15);
+  --valid: var(--success);
+  --invalid: var(--danger);
+
+  /* Typography */
+  --font-heading: 'Forma DJR Text', 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Calibri', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --weight-hero: 900;
+  --weight-section: 700;
+  --weight-body: 400;
+  --weight-label: 500;
+  --heading-tracking: -0.02em;
+  --heading-transform: none;
+  --body-line-height: 1.6;
+  --label-tracking: normal;
+  --label-transform: none;
+
+  /* Shape */
+  --radius: 4px;
+  --btn-weight: 500;
+  --service-icon-bg: var(--accent-tint);
+
+  /* Focus ring color (brand-tinted halo) */
+  --focus-ring-color: var(--accent-tint);
+
+  /* === Bootstrap CSS-variable bridge ===
+     Aliases Bootstrap's own tokens to brand tokens so .btn-primary,
+     .alert-primary, .text-bg-primary, .link-primary, .border-primary,
+     .badge.text-bg-primary, .progress-bar etc. all become theme-aware
+     without per-component overrides. */
+  --bs-primary: var(--accent);
+  --bs-primary-rgb: 81, 42, 189;
+  --bs-link-color: var(--accent);
+  --bs-link-color-rgb: 81, 42, 189;
+  --bs-link-hover-color: var(--accent-dark);
+  --bs-link-hover-color-rgb: 58, 30, 138;
+  --bs-secondary: var(--secondary);
+  --bs-secondary-rgb: 108, 117, 125;
+  --bs-success: var(--success);
+  --bs-success-rgb: 25, 135, 84;
+  --bs-danger: var(--danger);
+  --bs-danger-rgb: 220, 53, 69;
+  --bs-warning: var(--warning);
+  --bs-warning-rgb: 255, 193, 7;
+  --bs-info: var(--info);
+  --bs-info-rgb: 13, 202, 240;
+  --bs-border-radius: var(--radius);
+  --bs-border-radius-sm: var(--radius);
+  --bs-border-radius-lg: var(--radius);
+  --bs-body-font-family: var(--font-body);
+  --bs-body-font-weight: var(--weight-body);
+  --bs-body-line-height: var(--body-line-height);
+  --bs-form-valid-color: var(--valid);
+  --bs-form-valid-border-color: var(--valid);
+  --bs-form-invalid-color: var(--invalid);
+  --bs-form-invalid-border-color: var(--invalid);
+  --bs-focus-ring-color: var(--accent-tint);
+  --bs-focus-ring-width: var(--focus-ring-width);
+}
+
+[data-theme="dark"] {
+  /* Surface (dark) */
+  --ink: #e6e8ec;
+  --muted: #9aa3b1;
+  --bg: #0f1216;
+  --bg-alt: #161b22;
+  --border: #262c36;
+  --card-bg: #161b22;
+
+  /* Frollo theme (dark) — lighter accent for AA contrast on dark surface */
+  --accent: #B18BFF;
+  --accent-dark: #9B6DFF;
+  --accent-tint: rgba(177, 139, 255, 0.18);
+  --secondary: #adb5bd;
+
+  --bs-primary: var(--accent);
+  --bs-primary-rgb: 177, 139, 255;
+  --bs-link-color: var(--accent);
+  --bs-link-color-rgb: 177, 139, 255;
+  --bs-link-hover-color: var(--accent-dark);
+  --bs-link-hover-color-rgb: 155, 109, 255;
+  --bs-focus-ring-color: var(--accent-tint);
+}
+
+/* ============================================================
+   3. Base
+   ============================================================ */
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  font-weight: var(--weight-body);
+  line-height: var(--body-line-height);
+  font-size: var(--fs-body);
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color var(--motion-base) var(--easing-standard),
+              color var(--motion-base) var(--easing-standard);
+}
+
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); }
+
+/* ============================================================
+   4. Components
+   ============================================================ */
+
+/* Top nav */
+.navbar { border-bottom: 1px solid transparent; transition: border-color var(--motion-base) var(--easing-standard), box-shadow var(--motion-base) var(--easing-standard); }
+.navbar.is-scrolled { border-bottom-color: var(--border); box-shadow: 0 1px 0 rgba(0,0,0,0.02); }
+.navbar-brand { color: var(--ink); }
+.nav-link { color: var(--ink); }
+.nav-link:hover, .nav-link:focus { color: var(--accent-dark); }
+
+/* Buttons */
+.btn-accent {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+  border-radius: var(--radius);
+  font-weight: var(--btn-weight);
+}
+.btn-accent:hover, .btn-accent:focus {
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+  color: var(--accent-ink);
+}
+
+/* Links */
+.link-accent {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+.link-accent:hover { color: var(--accent-dark); text-decoration: underline; }
+
+/* Sections */
+.section { padding: var(--space-8) 0; }
+.section-alt { background: var(--bg-alt); }
+.section-title {
+  font-size: var(--fs-section);
+  font-weight: var(--weight-section);
+  letter-spacing: var(--heading-tracking);
+  text-transform: var(--heading-transform);
+  margin-bottom: var(--space-2);
+}
+.section-sub { color: var(--muted); font-size: 1.05rem; max-width: 640px; }
+
+/* Hero */
+.hero { padding: var(--space-7) 0; }
+.hero-title {
+  font-size: var(--fs-hero);
+  font-weight: var(--weight-hero);
+  line-height: 1.1;
+  letter-spacing: var(--heading-tracking);
+  text-transform: var(--heading-transform);
+  margin-bottom: var(--space-4);
+}
+.hero-sub { font-size: var(--fs-lead); color: var(--muted); max-width: 640px; }
+
+/* Services */
+.service { padding: var(--space-2) 0; }
+.service-icon {
+  width: 44px; height: 44px; border-radius: var(--radius);
+  background: var(--service-icon-bg);
+  color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; margin-bottom: var(--space-4);
+}
+.service h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: var(--space-2); }
+.service p { color: var(--muted); margin: 0; }
+
+/* Work */
+.work-card { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: transform var(--motion-fast) var(--easing-standard), box-shadow var(--motion-fast) var(--easing-standard); }
+.work-card:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(17,20,24,0.06); }
+.work-thumb { aspect-ratio: 16 / 9; background-size: cover; background-position: center; }
+.work-thumb-1 { background: linear-gradient(135deg, var(--accent-tint), var(--accent)); }
+.work-thumb-2 { background: linear-gradient(135deg, var(--bg-alt), var(--secondary)); }
+.work-thumb-3 { background: linear-gradient(135deg, var(--accent-tint), var(--secondary)); }
+
+/* About */
+.about-photo {
+  aspect-ratio: 4 / 5;
+  background: linear-gradient(135deg, var(--bg-alt), var(--border));
+  border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted); font-size: 96px;
+}
+.creds li { padding: 6px 0; color: var(--muted); }
+.creds strong { color: var(--ink); }
+
+/* Testimonials */
+.quote {
+  background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--space-5);
+  height: 100%;
+}
+.quote blockquote { font-size: var(--fs-body); color: var(--ink); margin: 0; }
+.quote-attr { color: var(--muted); font-size: var(--fs-small); }
+
+/* Form */
+.form-label {
+  font-weight: var(--weight-label);
+  letter-spacing: var(--label-tracking);
+  text-transform: var(--label-transform);
+}
+.form-control { border-radius: var(--radius); }
+.form-control:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 var(--focus-ring-width) var(--focus-ring-color);
+}
+
+.contact-success { padding: var(--space-7) 0; }
+.contact-success i { font-size: 56px; color: var(--accent-dark); }
+
+/* Footer */
+.footer { padding: var(--space-6) 0; border-top: 1px solid var(--border); }
+.footer-link { color: var(--muted); font-size: 1.2rem; }
+.footer-link:hover { color: var(--accent-dark); }
+
+/* Dark-mode shadow tweaks */
+[data-theme="dark"] .work-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.4); }
+[data-theme="dark"] .navbar.is-scrolled { box-shadow: 0 1px 0 rgba(0,0,0,0.4); }
+
+/* ============================================================
+   5. Right sidebar (≥ md) + reading-pane wrapper
+   ============================================================ */
+.sidebar {
+  position: fixed; top: 0; right: 0;
+  width: 280px; height: 100vh;
+  border-left: 1px solid var(--border);
+  background: var(--bg);
+  padding: var(--space-6) var(--space-5);
+  display: flex; flex-direction: column;
+  z-index: 1030;
+}
+
+.sidebar-brand-name {
+  color: var(--ink);
+  font-family: var(--font-heading);
+  font-weight: var(--weight-section);
+  font-size: 1.1rem;
+  text-decoration: none;
+  letter-spacing: var(--heading-tracking);
+}
+.sidebar-tagline {
+  color: var(--muted);
+  font-size: var(--fs-small);
+  margin: 4px 0 0;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: var(--space-6);
+}
+.sidebar-link {
+  color: var(--muted);
+  text-decoration: none;
+  padding: var(--space-2) var(--space-3);
+  border-left: 2px solid transparent;
+  letter-spacing: var(--label-tracking);
+  text-transform: var(--label-transform);
+  font-weight: var(--weight-label);
+  transition: color var(--motion-fast) var(--easing-standard), border-color var(--motion-fast) var(--easing-standard);
+}
+.sidebar-link:hover { color: var(--ink); }
+.sidebar-link.active {
+  color: var(--ink);
+  font-weight: 600;
+  border-left-color: var(--accent);
+}
+
+.sidebar-cta { margin-top: var(--space-5); }
+
+.sidebar-foot {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: auto;
+}
+.sidebar-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.sidebar-social { display: flex; gap: var(--space-4); }
+.sidebar-social a {
+  color: var(--muted);
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+.sidebar-social a:hover { color: var(--accent-dark); }
+.sidebar-copyright { color: var(--muted); }
+
+/* Reading pane: cap content width, breathing room from sidebar */
+.main-pane > * > .container { max-width: 760px; margin-left: 0; }
+
+/* Reserve right gutter for the fixed sidebar at md+ — only when a sidebar is present */
+@media (min-width: 768px) {
+  body:has(.sidebar) { padding-right: 280px; }
+  .main-pane > section,
+  .main-pane > header,
+  .main-pane > footer {
+    padding-left: clamp(24px, 6vw, 96px);
+  }
+}
+
+/* ============================================================
+   6. Responsive
+   ============================================================ */
+@media (max-width: 576px) {
+  .section { padding: var(--space-7) 0; }
+  .hero { padding: var(--space-6) 0; }
+}
