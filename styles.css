@@ -1,105 +1,222 @@
 /* ============================================================
-   1. Theme-neutral surface tokens (light)
+   1. Primitives — raw values, never overridden by theme/brand
+   ============================================================
+   Components MUST NOT consume these directly. They exist only
+   to be aliased by the semantic layer below.
    ============================================================ */
 :root {
-  /* Surface */
-  --ink: #111418;
-  --muted: #5b636e;
-  --bg: #ffffff;
-  --bg-alt: #f7f8fa;
-  --border: #e6e8ec;
-  --card-bg: #ffffff;
+  /* === Colour palette === */
+  /* Purple */
+  --color-purple-500: #512ABD;
+  --color-purple-500-rgb: 81, 42, 189;
+  --color-purple-700: #3A1E8A;
+  --color-purple-700-rgb: 58, 30, 138;
+  --color-purple-300: #B18BFF;
+  --color-purple-300-rgb: 177, 139, 255;
+  --color-purple-200: #9B6DFF;
+  --color-purple-200-rgb: 155, 109, 255;
+  --color-purple-500-a10: rgba(81, 42, 189, 0.10);
+  --color-purple-300-a18: rgba(177, 139, 255, 0.18);
 
-  /* Spacing scale (8px base) */
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 24px;
-  --space-6: 32px;
-  --space-7: 48px;
-  --space-8: 64px;
+  /* Gray scale */
+  --color-gray-900: #111418;
+  --color-gray-700: #5b636e;
+  --color-gray-600: #6c757d;
+  --color-gray-600-rgb: 108, 117, 125;
+  --color-gray-400: #9aa3b1;
+  --color-gray-300: #adb5bd;
+  --color-gray-300-rgb: 173, 181, 189;
+  --color-gray-200: #e6e8ec;
+  --color-gray-100: #262c36;
+  --color-gray-50: #f7f8fa;
 
-  /* Typography size scale */
-  --fs-hero: clamp(36px, 5vw, 56px);
-  --fs-section: clamp(28px, 3vw, 36px);
-  --fs-lead: 1.15rem;
-  --fs-body: 1rem;
-  --fs-small: 0.875rem;
+  /* Near-black surfaces (dark mode page background) */
+  --color-black-900: #0f1216;
+  --color-black-800: #161b22;
 
-  /* Motion */
-  --motion-fast: 150ms;
-  --motion-base: 200ms;
-  --motion-slow: 300ms;
-  --motion-exit: 250ms;
-  --easing-standard: ease;
+  /* White */
+  --color-white: #ffffff;
 
-  /* Focus ring (color is brand-supplied below; width is constant) */
-  --focus-ring-width: 0.2rem;
+  /* Bootstrap-aligned state hues (light mode reference) */
+  --color-green-600: #198754;
+  --color-green-600-rgb: 25, 135, 84;
+  --color-green-600-a12: rgba(25, 135, 84, 0.12);
+  --color-yellow-400: #ffc107;
+  --color-yellow-400-rgb: 255, 193, 7;
+  --color-yellow-400-a15: rgba(255, 193, 7, 0.15);
+  --color-red-500: #dc3545;
+  --color-red-500-rgb: 220, 53, 69;
+  --color-red-500-a12: rgba(220, 53, 69, 0.12);
+  --color-cyan-400: #0dcaf0;
+  --color-cyan-400-rgb: 13, 202, 240;
+  --color-cyan-400-a15: rgba(13, 202, 240, 0.15);
 
-  /* === 2. Frollo theme tokens (light) === */
+  /* Shadow tints (composed with rgba in component rules) */
+  --color-shadow-card: rgba(17, 20, 24, 0.06);
+  --color-shadow-nav: rgba(0, 0, 0, 0.02);
+  --color-shadow-dark-card: rgba(0, 0, 0, 0.4);
 
-  /* Brand colors */
-  --accent: #512ABD;
-  --accent-dark: #3A1E8A;
-  --accent-tint: rgba(81, 42, 189, 0.10);
-  --accent-ink: #ffffff;
-  --secondary: #6c757d;
+  /* === Spacing scale === */
+  --scale-4: 4px;
+  --scale-8: 8px;
+  --scale-12: 12px;
+  --scale-16: 16px;
+  --scale-24: 24px;
+  --scale-32: 32px;
+  --scale-48: 48px;
+  --scale-64: 64px;
 
-  /* Semantic state colors */
-  --success: #198754;
-  --success-tint: rgba(25, 135, 84, 0.12);
-  --warning: #ffc107;
-  --warning-tint: rgba(255, 193, 7, 0.15);
-  --danger: #dc3545;
-  --danger-tint: rgba(220, 53, 69, 0.12);
-  --info: #0dcaf0;
-  --info-tint: rgba(13, 202, 240, 0.15);
+  /* === Typography === */
+  --family-forma-djr: 'Forma DJR Text', 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --family-calibri: 'Calibri', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --weight-400: 400;
+  --weight-500: 500;
+  --weight-600: 600;
+  --weight-700: 700;
+  --weight-900: 900;
+
+  --size-14: 0.875rem;
+  --size-16: 1rem;
+  --size-17: 1.05rem;
+  --size-18: 1.15rem;
+  --size-clamp-section: clamp(28px, 3vw, 36px);
+  --size-clamp-hero: clamp(36px, 5vw, 56px);
+
+  --tracking-tight: -0.02em;
+  --tracking-normal: normal;
+
+  --lh-tight: 1.1;
+  --lh-base: 1.5;
+  --lh-relaxed: 1.6;
+
+  /* === Motion === */
+  --duration-150: 150ms;
+  --duration-200: 200ms;
+  --duration-250: 250ms;
+  --duration-300: 300ms;
+  --ease-standard: ease;
+
+  /* === Shape === */
+  --radius-0: 0px;
+  --radius-4: 4px;
+
+  /* === Misc === */
+  --width-ring: 0.2rem;
+}
+
+/* ============================================================
+   2. Semantic tokens — components consume ONLY these
+   ============================================================ */
+
+/* 2a. Theme-neutral surface (light) */
+:root {
+  --ink: var(--color-gray-900);
+  --muted: var(--color-gray-700);
+  --bg: var(--color-white);
+  --bg-alt: var(--color-gray-50);
+  --border: var(--color-gray-200);
+  --card-bg: var(--color-white);
+
+  /* Spacing role */
+  --space-1: var(--scale-4);
+  --space-2: var(--scale-8);
+  --space-3: var(--scale-12);
+  --space-4: var(--scale-16);
+  --space-5: var(--scale-24);
+  --space-6: var(--scale-32);
+  --space-7: var(--scale-48);
+  --space-8: var(--scale-64);
+
+  /* Typography size role */
+  --fs-hero: var(--size-clamp-hero);
+  --fs-section: var(--size-clamp-section);
+  --fs-lead: var(--size-18);
+  --fs-meta: var(--size-17);
+  --fs-card-heading: var(--size-18);
+  --fs-body: var(--size-16);
+  --fs-small: var(--size-14);
+
+  /* Line-height role */
+  --lh-hero: var(--lh-tight);
+
+  /* Weight role (theme-neutral, brand may override) */
+  --weight-emphasis: var(--weight-600);
+
+  /* Motion role */
+  --motion-fast: var(--duration-150);
+  --motion-base: var(--duration-200);
+  --motion-slow: var(--duration-300);
+  --motion-exit: var(--duration-250);
+  --easing-standard: var(--ease-standard);
+
+  /* Focus ring */
+  --focus-ring-width: var(--width-ring);
+}
+
+/* 2b. Frollo theme tokens (light) */
+:root {
+  --accent: var(--color-purple-500);
+  --accent-rgb: var(--color-purple-500-rgb);
+  --accent-dark: var(--color-purple-700);
+  --accent-dark-rgb: var(--color-purple-700-rgb);
+  --accent-tint: var(--color-purple-500-a10);
+  --accent-ink: var(--color-white);
+  --secondary: var(--color-gray-600);
+  --secondary-rgb: var(--color-gray-600-rgb);
+
+  --success: var(--color-green-600);
+  --success-rgb: var(--color-green-600-rgb);
+  --success-tint: var(--color-green-600-a12);
+  --warning: var(--color-yellow-400);
+  --warning-rgb: var(--color-yellow-400-rgb);
+  --warning-tint: var(--color-yellow-400-a15);
+  --danger: var(--color-red-500);
+  --danger-rgb: var(--color-red-500-rgb);
+  --danger-tint: var(--color-red-500-a12);
+  --info: var(--color-cyan-400);
+  --info-rgb: var(--color-cyan-400-rgb);
+  --info-tint: var(--color-cyan-400-a15);
   --valid: var(--success);
   --invalid: var(--danger);
 
-  /* Typography */
-  --font-heading: 'Forma DJR Text', 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Calibri', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --weight-hero: 900;
-  --weight-section: 700;
-  --weight-body: 400;
-  --weight-label: 500;
-  --heading-tracking: -0.02em;
+  --font-heading: var(--family-forma-djr);
+  --font-body: var(--family-calibri);
+  --weight-hero: var(--weight-900);
+  --weight-section: var(--weight-700);
+  --weight-body: var(--weight-400);
+  --weight-label: var(--weight-500);
+  --heading-tracking: var(--tracking-tight);
   --heading-transform: none;
-  --body-line-height: 1.6;
-  --label-tracking: normal;
+  --body-line-height: var(--lh-relaxed);
+  --label-tracking: var(--tracking-normal);
   --label-transform: none;
 
-  /* Shape */
-  --radius: 4px;
-  --btn-weight: 500;
+  --radius: var(--radius-4);
+  --btn-weight: var(--weight-500);
   --service-icon-bg: var(--accent-tint);
 
-  /* Focus ring color (brand-tinted halo) */
   --focus-ring-color: var(--accent-tint);
+}
 
-  /* === Bootstrap CSS-variable bridge ===
-     Aliases Bootstrap's own tokens to brand tokens so .btn-primary,
-     .alert-primary, .text-bg-primary, .link-primary, .border-primary,
-     .badge.text-bg-primary, .progress-bar etc. all become theme-aware
-     without per-component overrides. */
+/* 2c. Bootstrap CSS-variable bridge (light) — reads from semantic layer */
+:root {
   --bs-primary: var(--accent);
-  --bs-primary-rgb: 81, 42, 189;
+  --bs-primary-rgb: var(--accent-rgb);
   --bs-link-color: var(--accent);
-  --bs-link-color-rgb: 81, 42, 189;
+  --bs-link-color-rgb: var(--accent-rgb);
   --bs-link-hover-color: var(--accent-dark);
-  --bs-link-hover-color-rgb: 58, 30, 138;
+  --bs-link-hover-color-rgb: var(--accent-dark-rgb);
   --bs-secondary: var(--secondary);
-  --bs-secondary-rgb: 108, 117, 125;
+  --bs-secondary-rgb: var(--secondary-rgb);
   --bs-success: var(--success);
-  --bs-success-rgb: 25, 135, 84;
+  --bs-success-rgb: var(--success-rgb);
   --bs-danger: var(--danger);
-  --bs-danger-rgb: 220, 53, 69;
+  --bs-danger-rgb: var(--danger-rgb);
   --bs-warning: var(--warning);
-  --bs-warning-rgb: 255, 193, 7;
+  --bs-warning-rgb: var(--warning-rgb);
   --bs-info: var(--info);
-  --bs-info-rgb: 13, 202, 240;
+  --bs-info-rgb: var(--info-rgb);
   --bs-border-radius: var(--radius);
   --bs-border-radius-sm: var(--radius);
   --bs-border-radius-lg: var(--radius);
@@ -110,32 +227,39 @@
   --bs-form-valid-border-color: var(--valid);
   --bs-form-invalid-color: var(--invalid);
   --bs-form-invalid-border-color: var(--invalid);
-  --bs-focus-ring-color: var(--accent-tint);
+  --bs-focus-ring-color: var(--focus-ring-color);
   --bs-focus-ring-width: var(--focus-ring-width);
 }
 
+/* 2d. Dark mode — re-aliases semantic tokens to different primitives */
 [data-theme="dark"] {
-  /* Surface (dark) */
-  --ink: #e6e8ec;
-  --muted: #9aa3b1;
-  --bg: #0f1216;
-  --bg-alt: #161b22;
-  --border: #262c36;
-  --card-bg: #161b22;
+  /* Surface */
+  --ink: var(--color-gray-200);
+  --muted: var(--color-gray-400);
+  --bg: var(--color-black-900);
+  --bg-alt: var(--color-black-800);
+  --border: var(--color-gray-100);
+  --card-bg: var(--color-black-800);
 
-  /* Frollo theme (dark) — lighter accent for AA contrast on dark surface */
-  --accent: #B18BFF;
-  --accent-dark: #9B6DFF;
-  --accent-tint: rgba(177, 139, 255, 0.18);
-  --secondary: #adb5bd;
+  /* Frollo dark — lighter accent for AA contrast on dark surface */
+  --accent: var(--color-purple-300);
+  --accent-rgb: var(--color-purple-300-rgb);
+  --accent-dark: var(--color-purple-200);
+  --accent-dark-rgb: var(--color-purple-200-rgb);
+  --accent-tint: var(--color-purple-300-a18);
+  --secondary: var(--color-gray-300);
+  --secondary-rgb: var(--color-gray-300-rgb);
 
+  /* Bridge re-aliases (only the values that change) */
   --bs-primary: var(--accent);
-  --bs-primary-rgb: 177, 139, 255;
+  --bs-primary-rgb: var(--accent-rgb);
   --bs-link-color: var(--accent);
-  --bs-link-color-rgb: 177, 139, 255;
+  --bs-link-color-rgb: var(--accent-rgb);
   --bs-link-hover-color: var(--accent-dark);
-  --bs-link-hover-color-rgb: 155, 109, 255;
-  --bs-focus-ring-color: var(--accent-tint);
+  --bs-link-hover-color-rgb: var(--accent-dark-rgb);
+  --bs-secondary: var(--secondary);
+  --bs-secondary-rgb: var(--secondary-rgb);
+  --bs-focus-ring-color: var(--focus-ring-color);
 }
 
 /* ============================================================
@@ -158,12 +282,12 @@ body {
 h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); }
 
 /* ============================================================
-   4. Components
+   4. Components — semantic tokens only
    ============================================================ */
 
 /* Top nav */
 .navbar { border-bottom: 1px solid transparent; transition: border-color var(--motion-base) var(--easing-standard), box-shadow var(--motion-base) var(--easing-standard); }
-.navbar.is-scrolled { border-bottom-color: var(--border); box-shadow: 0 1px 0 rgba(0,0,0,0.02); }
+.navbar.is-scrolled { border-bottom-color: var(--border); box-shadow: 0 1px 0 var(--color-shadow-nav); }
 .navbar-brand { color: var(--ink); }
 .nav-link { color: var(--ink); }
 .nav-link:hover, .nav-link:focus { color: var(--accent-dark); }
@@ -186,7 +310,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); }
 .link-accent {
   color: var(--accent);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: var(--weight-label);
 }
 .link-accent:hover { color: var(--accent-dark); text-decoration: underline; }
 
@@ -200,14 +324,14 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); }
   text-transform: var(--heading-transform);
   margin-bottom: var(--space-2);
 }
-.section-sub { color: var(--muted); font-size: 1.05rem; max-width: 640px; }
+.section-sub { color: var(--muted); font-size: var(--fs-meta); max-width: 640px; }
 
 /* Hero */
 .hero { padding: var(--space-7) 0; }
 .hero-title {
   font-size: var(--fs-hero);
   font-weight: var(--weight-hero);
-  line-height: 1.1;
+  line-height: var(--lh-hero);
   letter-spacing: var(--heading-tracking);
   text-transform: var(--heading-transform);
   margin-bottom: var(--space-4);
@@ -223,12 +347,12 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); }
   display: flex; align-items: center; justify-content: center;
   font-size: 22px; margin-bottom: var(--space-4);
 }
-.service h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: var(--space-2); }
+.service h3 { font-size: var(--fs-card-heading); font-weight: var(--weight-emphasis); margin-bottom: var(--space-2); }
 .service p { color: var(--muted); margin: 0; }
 
 /* Work */
 .work-card { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: transform var(--motion-fast) var(--easing-standard), box-shadow var(--motion-fast) var(--easing-standard); }
-.work-card:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(17,20,24,0.06); }
+.work-card:hover { transform: translateY(-2px); box-shadow: 0 6px 24px var(--color-shadow-card); }
 .work-thumb { aspect-ratio: 16 / 9; background-size: cover; background-position: center; }
 .work-thumb-1 { background: linear-gradient(135deg, var(--accent-tint), var(--accent)); }
 .work-thumb-2 { background: linear-gradient(135deg, var(--bg-alt), var(--secondary)); }
@@ -274,8 +398,8 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); }
 .footer-link:hover { color: var(--accent-dark); }
 
 /* Dark-mode shadow tweaks */
-[data-theme="dark"] .work-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.4); }
-[data-theme="dark"] .navbar.is-scrolled { box-shadow: 0 1px 0 rgba(0,0,0,0.4); }
+[data-theme="dark"] .work-card:hover { box-shadow: 0 6px 24px var(--color-shadow-dark-card); }
+[data-theme="dark"] .navbar.is-scrolled { box-shadow: 0 1px 0 var(--color-shadow-dark-card); }
 
 /* ============================================================
    5. Right sidebar (≥ md) + reading-pane wrapper
@@ -294,20 +418,20 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); }
   color: var(--ink);
   font-family: var(--font-heading);
   font-weight: var(--weight-section);
-  font-size: 1.1rem;
+  font-size: var(--fs-card-heading);
   text-decoration: none;
   letter-spacing: var(--heading-tracking);
 }
 .sidebar-tagline {
   color: var(--muted);
   font-size: var(--fs-small);
-  margin: 4px 0 0;
+  margin: var(--space-1) 0 0;
 }
 
 .sidebar-nav {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: var(--space-1);
   margin-top: var(--space-6);
 }
 .sidebar-link {
@@ -323,7 +447,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); }
 .sidebar-link:hover { color: var(--ink); }
 .sidebar-link.active {
   color: var(--ink);
-  font-weight: 600;
+  font-weight: var(--weight-emphasis);
   border-left-color: var(--accent);
 }
 
