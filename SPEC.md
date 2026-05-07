@@ -1,107 +1,75 @@
-# SPEC: Freelance Web Dev Landing Page
+# SPEC: Brand × Bootstrap Component Showcase
 
 ## Goal
-A single static HTML page that introduces a freelance web developer, showcases their work, and converts visitors via a contact form.
+A single static HTML page (`index.html`) that demonstrates every Bootstrap 5.3 component rendered through the project's brand-token bridge. It's a living test page: anyone can scan it to verify that brand tokens (colors, typography, shape) flow into Bootstrap's components correctly, and that light/dark themes are coherent across all of them.
 
 ## Stack
 Per `CLAUDE.md`:
 - Static HTML, served by `python3 -m http.server`
-- Bootstrap 5 via CDN for layout, components, and utilities
-- Plain vanilla JavaScript (no frameworks, no build step)
-- Optional: a single Google Font (e.g., Lato) loaded via CDN
+- Bootstrap 5.3.x via CDN (CSS + bundle JS) for components and utilities
+- Plain vanilla JavaScript (no frameworks, no build step) — minimal inline only
+- DM Sans + Inter loaded from Google Fonts (per `DESIGN.md`)
 
 ## Files
-- `index.html` — the landing page
-- `styles.css` — minimal custom CSS (overrides and tweaks beyond Bootstrap)
-- `main.js` — vanilla JS (smooth scroll, form validation, success state)
+- `index.html` — the showcase page
+- `styles.css` — primitive → semantic → bridge token layers + the small set of project component classes the showcase demos
+- `Colors.md` — source palette
+- `DESIGN.md` — token contract and design rules
+- `BootstrapDEsign.md` — Bootstrap 5.3 framework reference
+- `Token-Structure.md` — three-layer token architecture rationale
 
-## Page Structure (single-page scroll, top to bottom)
+## Page structure
 
-### 1. Nav bar
-- Sticky top, white background, subtle bottom border on scroll.
-- Brand name (left) + anchor links (right): Services, Work, About, Testimonials, Contact.
-- Bootstrap `navbar navbar-expand-md`; collapses to hamburger on small screens.
+### Toolbar
+- Sticky top bar with project label, Bootstrap version, and a light/dark theme toggle.
 
-### 2. Hero
-- Large headline (~48–56px desktop) communicating the value prop.
-- One-line subheading underneath.
-- Primary CTA button (`Contact me`) that smooth-scrolls to the contact form.
-- Generous vertical padding; centered or left-aligned content with whitespace.
+### Sections (each scroll-targeted via TOC)
+1. **Colors** — palette swatches (Brand / State / Text / Backgrounds / Borders / Buttons / Greys), plus a row showing the bridged Bootstrap state colors (`--bs-primary`, `--bs-success`, etc.) so the bridge can be verified visually.
+2. **Typography** — display headings, h1–h6, lede, inline marks, blockquote.
+3. **Buttons** — solid + outline variants for every state colour, sizes, states (active/disabled/loading), button group, plus the project's `.btn-accent`.
+4. **Alerts** — all six states + dismissible.
+5. **Badges** — solid, pill, in-context.
+6. **Cards** — basic, header/footer, themed via `.text-bg-primary`, project work-card.
+7. **Forms** — text inputs, select, textarea, file, range, checks, radios, switches, validation states, floating labels.
+8. **Input groups** — prefix, suffix, button-trail, sm/md/lg.
+9. **Navs** — tabs, pills, underline (5.3+), fill, justified.
+10. **Breadcrumb**.
+11. **Pagination** — sm / default / lg.
+12. **Progress** — solid, coloured, striped, animated, plus stacked (5.3+).
+13. **Spinners** — border + grow, multiple colours, sm.
+14. **List group** — basic, numbered, action items + flush.
+15. **Accordion**.
+16. **Dropdown**.
+17. **Modal** — trigger + working markup.
+18. **Offcanvas** — start + end triggers + working markup.
+19. **Toast** — trigger + working toast.
+20. **Tooltip / Popover** — trigger buttons + explicit JS init.
+21. **Placeholders** — glow + wave variants.
+22. **Project components** — `.btn-accent`, `.link-accent`, `.service-icon`, `.section-title` + `.section-sub`, `.work-card` × 3, `.quote`.
 
-### 3. Services
-- Section title + short intro line.
-- 3-column grid (`row` + `col-md-4`), stacks on mobile.
-- Each card: icon (Bootstrap Icons via CDN), title, 2–3 line description.
-- Three services: **Frontend**, **Backend**, **Full-stack / APIs**.
-
-### 4. Work / Portfolio
-- Section title.
-- 3-card grid using Bootstrap `card`.
-- Each card: image placeholder (16:9), project title, 1-line summary, "View →" link (placeholder href).
-
-### 5. About
-- Two-column layout (`row` with `col-md-5` / `col-md-7`): photo placeholder on one side, bio text on the other.
-- Bio: short paragraph + a small list of credentials (years of experience, core technologies, location / availability).
-
-### 6. Testimonials
-- Section title.
-- 2–3 quote cards in a row (stacks on mobile).
-- Each card: quote text, attribution (name, company / role).
-
-### 7. Contact form
-- Section title + one-line prompt ("Tell me about your project").
-- Form fields:
-  - **Name** (text, required)
-  - **Email** (email, required)
-  - **Project description** (textarea, required, min ~20 chars)
-- Submit button (primary).
-- On valid submit: show a "Thanks — I'll be in touch." success state in place of the form. No backend; submission is mocked client-side.
-- A `mailto:` fallback link is acceptable as an alternative submit target — note the chosen approach in the implementation.
-
-### 8. Footer
-- Copyright line with current year.
-- Optional inline links: GitHub, LinkedIn (placeholder hrefs).
-
-## Visual Style
-- **Direction:** Clean / minimal.
-- **Palette:** White / off-white background, near-black body text (~#111), muted secondary text (~#555), one subtle accent color for buttons and links (builder's choice — e.g., a muted blue or green).
-- **Typography:** System sans-serif stack, or a single Google Font (e.g., Inter) loaded via CDN.
-- **Spacing:** Generous whitespace. Section vertical padding ≥ 80px desktop, ≥ 48px mobile.
-- **Bootstrap utilities first.** Reach for custom CSS only when utilities can't express it.
-
-## Behavior (vanilla JS)
-- **Smooth scroll** for in-page anchor links (nav + hero CTA).
-- **Form validation** (client-side):
-  - Required-field checks
-  - Email format check
-  - Inline error messages below each invalid field
-  - Submit no-ops (does not advance to success state) while the form is invalid
-- **Submit flow:** On valid submit, replace the form with a success message ("Thanks — I'll be in touch.").
-- **Mobile nav:** Bootstrap's collapsible navbar; closes after an anchor link is clicked.
+## Behavior
+- Theme toggle persists via `localStorage.theme`; falls back to `prefers-color-scheme` on first load. Sets both `data-theme` (project tokens) and `data-bs-theme` (Bootstrap variants) on `<html>`.
+- Tooltips and popovers are explicitly initialised via the small inline `<script>` at the end of the page (Bootstrap requires this).
+- Toast trigger button shows the toast in a fixed-position container.
+- Modal, offcanvas, accordion, dropdown, tabs, dismissible alerts use Bootstrap's data-attribute API (no extra JS).
 
 ## Responsiveness
-- Bootstrap grid handles layout reflow.
-- Verify breakpoints: ≥1200px (desktop), ~768px (tablet), ≤576px (mobile).
-- All sections must remain readable and tap-friendly on mobile.
+- Bootstrap grid / utilities handle reflow.
+- Verify breakpoints: ≥1200px, ~768px, ≤576px.
+- Toolbar wraps at narrow widths.
 
-## CDN References
-- Bootstrap 5 CSS: `https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css`
-- Bootstrap 5 JS Bundle: `https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js`
-- Bootstrap Icons (optional): `https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css`
-- Lato (optional): `https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap`
+## Visual style
+Driven entirely by `DESIGN.md` and `Colors.md`. Brand purple `--accent` resolves through `--bs-primary` to every Bootstrap `*-primary` consumer; same for state colours.
 
-## Placeholder Content
-The page is delivered with placeholder copy, images, and links. Real content (bio, project case studies, testimonials, social URLs, accent color) is filled in by the builder/owner.
-
-## Out of Scope
-- No backend, no real form submission to a server.
-- No analytics, no tracking pixels, no CMS.
+## Out of scope
+- No backend, no real form submission.
+- No analytics, no tracking pixels.
 - No build tooling, no bundler, no JavaScript frameworks.
-- No multi-page navigation — single page only.
+- No multi-page navigation.
 
-## Acceptance Criteria
-- Page loads from `python3 -m http.server` and renders correctly in a current Chrome / Safari / Firefox.
-- All eight sections are present and reachable via the nav anchors.
-- Contact form rejects invalid input with inline messages and shows the success state on a valid submit.
-- Layout reflows cleanly at desktop, tablet, and mobile widths.
-- No console errors on load or on form submission.
+## Acceptance criteria
+- Page loads from `python3 -m http.server` and renders correctly in current Chrome / Safari / Firefox.
+- All listed sections present and reachable via the TOC.
+- Toggling light ↔ dark visibly shifts every coloured component (background, text, accent, borders) without breaking contrast.
+- Every `.btn-{state}`, `.alert-{state}`, `.text-bg-{state}`, `.link-primary` etc. uses brand purple for primary or the project's chosen state colours for the rest — *not* Bootstrap's default blue/red/yellow.
+- No console errors on load or on opening any modal / offcanvas / toast / tooltip / popover.

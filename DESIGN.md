@@ -64,7 +64,6 @@ The theme tokens live on `:root` (light mode) and `[data-theme="dark"]` (dark mo
 | `--font-heading` | `'Forma DJR Text', 'DM Sans', system-ui, sans-serif` ¹ |
 | `--font-body` | `'Calibri', 'Inter', system-ui, sans-serif` ² |
 | Weights loaded | 400, 500, 700, 900 |
-| `--weight-hero` | `900` |
 | `--weight-section` | `700` |
 | `--weight-body` | `400` |
 | `--weight-label` | `500` |
@@ -94,17 +93,48 @@ The theme tokens live on `:root` (light mode) and `[data-theme="dark"]` (dark mo
 
 ## Bootstrap CSS-variable bridge
 
-The theme block aliases Bootstrap's own CSS variables (e.g. `--bs-primary`) to theme tokens. This is the highest-leverage rule in the system: it makes Bootstrap's own components theme-aware without per-component overrides. Without this bridge, every `.btn-primary`, `.alert-primary`, `.text-bg-primary`, `.link-primary`, badge, progress bar, etc. would render in Bootstrap's hardcoded blue regardless of theme.
+Bootstrap's own components use CSS variables, but they're spread across **two layers**, and only one of them is reachable from `:root`:
 
-**What's bridged:**
-- Color: `--bs-primary`, `--bs-secondary`, `--bs-success`, `--bs-danger`, `--bs-warning`, `--bs-info`, plus their `*-rgb` integer-form pairs (Bootstrap composes alphas via `rgba(var(--bs-primary-rgb), 0.5)` patterns)
-- Link: `--bs-link-color`, `--bs-link-color-rgb`, `--bs-link-hover-color`, `--bs-link-hover-color-rgb`
-- Shape: `--bs-border-radius`, `--bs-border-radius-sm`, `--bs-border-radius-lg`
-- Type: `--bs-body-font-family`, `--bs-body-font-weight`, `--bs-body-line-height`
-- Forms: `--bs-form-valid-color`, `--bs-form-valid-border-color`, `--bs-form-invalid-color`, `--bs-form-invalid-border-color`
-- Focus: `--bs-focus-ring-color`, `--bs-focus-ring-width`
+### Layer A — `:root` theme tokens (bridge from `:root`)
 
-**Discipline:** when you add a new `--accent`-style token, decide whether Bootstrap has a corresponding `--bs-*` and bridge it. `*-rgb` tokens must always be the integer-RGB form of their hex counterpart and updated alongside it.
+Used by Bootstrap's *utility classes* and a few component families that read straight from theme tokens.
+
+| Bootstrap variable | Aliased to | Affected classes |
+|---|---|---|
+| `--bs-primary` / `-rgb` | `--accent` / `--accent-rgb` | `.text-primary`, `.bg-primary`, `.text-bg-primary`, `.border-primary`, `.link-primary` |
+| `--bs-secondary/success/danger/warning/info` / `-rgb` | semantic state tokens | matching `.text-*`, `.bg-*`, `.border-*` utilities |
+| `--bs-link-color` / `-hover-color` / `-rgb` companions | `--accent` / `--accent-dark` / rgb | `<a>` defaults |
+| `--bs-border-radius` / `-sm` / `-lg` | `--radius` | every component that reads it |
+| `--bs-body-font-family` / `-weight` / `-line-height` | type tokens | `<body>` defaults |
+| `--bs-form-valid-color` / `-border-color` / `-invalid-*` | `--valid` / `--invalid` | `.is-valid` / `.is-invalid` |
+| `--bs-focus-ring-color` / `-width` | `--focus-ring-color` / `-width` | `.focus-ring`, form focus |
+| `--bs-{c}-text-emphasis` / `-bg-subtle` / `-border-subtle` | `--accent-emphasis` / `--accent-tint` / etc. | `.alert-{c}`, `.list-group-item-{c}`, `.accordion-button:not(.collapsed)` |
+
+### Layer B — component-scoped tokens (need `.component {}` overrides)
+
+Bootstrap declares many component variables on the *component class itself* with **hard-coded hex values**, ignoring `--bs-primary`. Overriding `--bs-primary` on `:root` does nothing for these. Each one needs a class-scoped override:
+
+| Component | Pattern |
+|---|---|
+| Solid buttons | `.btn-primary { --bs-btn-bg: var(--accent); --bs-btn-hover-bg: var(--accent-dark); … }` (and the same for `secondary/success/danger/warning/info`) |
+| Outline buttons | `.btn-outline-primary { --bs-btn-color: var(--accent); --bs-btn-hover-bg: var(--accent); … }` |
+| Pagination | `.pagination { --bs-pagination-active-bg: var(--accent); --bs-pagination-color: var(--accent); … }` |
+| Nav-pills active | `.nav-pills { --bs-nav-pills-link-active-bg: var(--accent); }` |
+| Nav-underline active | `.nav-underline { --bs-nav-underline-link-active-color: var(--accent); }` + an explicit `border-bottom-color` (the underline itself reads from a different selector) |
+| Dropdown active item | `.dropdown-menu { --bs-dropdown-link-active-bg: var(--accent); }` |
+| List group active | `.list-group { --bs-list-group-active-bg: var(--accent); … }` |
+| Accordion expanded | `.accordion { --bs-accordion-active-bg: var(--accent-tint); --bs-accordion-active-color: var(--accent-emphasis); … }` |
+| Form-check `:checked` | `.form-check-input:checked { background-color: var(--accent); border-color: var(--accent); }` (Bootstrap 5.3 hard-codes the hex on the rule itself, not via a CSS var) |
+| Form-range thumb | `.form-range::-webkit-slider-thumb { background-color: var(--accent); }` plus `::-moz-range-thumb` and the `:active` / `:focus` variants. Vendor pseudo-elements have no CSS-var hook — the colour is hard-coded on each one in Bootstrap's source. |
+| Progress bar | `.progress { --bs-progress-bar-bg: var(--accent); }` |
+
+All of the above live in `styles.css` section **3. Bootstrap component-scoped overrides**.
+
+### How to extend
+
+1. When you reach for a Bootstrap component that doesn't visibly pick up the brand, the cause is almost always Layer B. Find the relevant `--bs-{component}-*` variables in Bootstrap's docs (or DevTools) and add a class-scoped override block in section 3 of `styles.css`.
+2. `*-rgb` tokens must always be the integer-RGB form of their hex counterpart and updated alongside it.
+3. Don't override on `:root` what should be overridden on a component class — it'll silently do nothing.
 
 ---
 
@@ -137,7 +167,6 @@ These describe the *page surface* and don't ride on any theme — they always ex
 ### Typography size scale
 | Token | Value |
 |---|---|
-| `--fs-hero` | `clamp(36px, 5vw, 56px)` |
 | `--fs-section` | `clamp(28px, 3vw, 36px)` |
 | `--fs-lead` | `1.15rem` |
 | `--fs-body` | `1rem` |
@@ -146,7 +175,7 @@ These describe the *page surface* and don't ride on any theme — they always ex
 ### Motion
 | Token | Value | Use |
 |---|---|---|
-| `--motion-fast` | `150ms` | Hover affordances, sidebar-link transitions |
+| `--motion-fast` | `150ms` | Hover affordances, fast state transitions |
 | `--motion-base` | `200ms` | Default state changes (theme fade, nav border) |
 | `--motion-slow` | `300ms` | Reserved upper bound — don't exceed |
 | `--motion-exit` | `250ms` | Exit animations (typically `--motion-base + 50ms`) |
@@ -185,13 +214,11 @@ A small inline `<script>` in `<head>` sets both before paint, using `localStorag
 ### Spacing
 - Use the `--space-*` scale tokens (no raw px values in component rules).
 - **Section vertical padding:** `var(--space-8)` (64px) desktop, `var(--space-7)` (48px) mobile.
-- **Hero vertical padding:** `var(--space-7)` (48px) desktop, `var(--space-6)` (32px) mobile.
 - **Card padding:** `var(--space-5)` (24px).
 - **Grid gutter:** Bootstrap `g-4` (1.5rem) for card/service rows; `g-5` for the two-column About layout.
 - **Between section title and content:** `var(--space-2)` to `var(--space-5)` (8–24px).
 
 ### Typography scale
-- **Hero title:** `var(--fs-hero)`, weight `var(--weight-hero)`, line-height 1.1, tracking `var(--heading-tracking)`.
 - **Section title:** `var(--fs-section)`, weight `var(--weight-section)`, transform `var(--heading-transform)`.
 - **Body:** `var(--fs-body)`, color `var(--ink)`, line-height `var(--body-line-height)`.
 - **Subtitles / supporting text:** `var(--fs-lead)`, color `var(--muted)`, max-width ~640px.
@@ -238,7 +265,7 @@ Every component must be verified in both themes before merge:
 ## Layout
 - **Container:** Bootstrap `.container` (no full-bleed sections by default).
 - **Grids:** Bootstrap row/col. The number of contained columns CAN NOT exceed 12 (but does not need to use all 12 columns). e.g.: three-column rows use `col-md-4`. Always verify reflow at different viewport sizes.
-- **Container queries:** Components may use them for responsive outcomes based on container size rather than viewport — e.g. when the side nav moves in/out and alters the width of the main content area but not the entire viewport.
+- **Container queries:** Components may use them for responsive outcomes based on container size rather than viewport — e.g. a card grid that re-flows based on its container width regardless of overall viewport size.
 
 | Component | Size / variant classes |
 |---|---|
@@ -256,7 +283,7 @@ Every component must be verified in both themes before merge:
 | Level | Usage | Shadow |
 |---|---|---|
 | 0 | Background | none |
-| 1 | Cards, sidebars | `0 1px 3px rgba(0,0,0,0.2)` |
+| 1 | Cards, panels | `0 1px 3px rgba(0,0,0,0.2)` |
 | 2 | Modals, popovers | `0 8px 24px rgba(0,0,0,0.3)` |
 
 ---
@@ -335,7 +362,7 @@ Use native HTML when possible — with Bootstrap contextual classes applied. Try
   - Add a base class `.btn` to a HTML button that sets up basic styles such as padding and content alignment. By default, `.btn` controls have a transparent border and background color, and lack any explicit focus and hover styles.
   - Primary: `.btn .btn-accent` — `var(--accent)` background, `var(--accent-ink)` text, `var(--btn-weight)` weight, `var(--radius)` corners.
   - Hover/focus: shifts to `var(--accent-dark)`.
-  - Reserve `.btn-accent` for the page's primary actions (hero CTA, form submit). Don't sprinkle.
+  - Reserve `.btn-accent` for the page's primary actions (primary CTA, form submit). Don't sprinkle.
   - Primary buttons should only be used once in a given context / container.
   - Button labels MUST be verbs (e.g. *Continue*, *Save*, *Update*, *Withdraw*).
 - **Button groups** present a number of buttons in a single context. Each button uses standard rules; the size class is added to the parent element.

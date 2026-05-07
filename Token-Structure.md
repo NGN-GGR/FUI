@@ -223,14 +223,17 @@ The component reads exclusively from layer 2. The dark-mode override happens exc
 
 ---
 
-## Current state vs target
+## Current state
 
-The project's `styles.css` today is **mostly single-layer**: semantic tokens are defined directly with raw literals (`--accent: #512ABD;`) rather than aliasing a primitive (`--accent: var(--color-purple-500);`). It works, but:
+The project's `styles.css` implements all three layers as described above:
 
-- The same hex appears in light, dark, and the `--bs-*-rgb` pair separately — three places to keep in sync
-- "Add a new theme" requires duplicating the full token block instead of re-aliasing primitives
+1. **Primitives** live in the first `:root` block (palette: `--color-purple-500`, `--color-gray-900`, etc.; scales: `--scale-8`, `--duration-200`, `--radius-4`; type stacks: `--family-forma-djr`, `--family-calibri`; etc.). They're never overridden by theme.
+2. **Semantic tokens** live in subsequent `:root` and `[data-theme="dark"]` blocks (`--accent`, `--ink`, `--space-5`, `--motion-base`, `--shadow-card-hover`, etc.). Each one is `var(--some-primitive)`. Dark mode re-aliases the same semantic names to different primitives.
+3. **Bootstrap bridge** (`--bs-*`) reads exclusively from semantic tokens.
 
-A future refactor introduces the primitive layer and re-points the semantic layer at it. This document is the contract that refactor follows. Until then, treat `styles.css` as if the primitive layer existed implicitly — don't introduce new raw literals in components, even though the file already has them at the semantic boundary.
+Components consume only the semantic layer — `grep -E 'var\(--(color-|scale-|duration-|family-|weight-[0-9]|size-[0-9]|size-clamp|tracking-(tight\|normal)|lh-(tight\|base\|relaxed)|ease-standard|radius-[0-9]|width-ring)'` against everything below the *Components* section is empty.
+
+When this drifts again — and it will, the moment somebody pastes a hex into a component rule — that grep is the cheap drift-detector.
 
 ---
 
