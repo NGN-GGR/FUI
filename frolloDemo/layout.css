@@ -235,3 +235,76 @@ body {
 @media (max-width: 767.98px) {
   .demo-page-title { font-size: clamp(28px, 7vw, 40px); }
 }
+
+/* ============================================================
+   Single-column page variants — no left rail, no info column.
+   Add `class="is-form-page"` (narrow, for forms) or
+   `class="is-table-page"` (wider, for tabular data) to <body>.
+   Rules sit at the end of the file so they override the responsive
+   blocks above via cascade order + specificity, not !important.
+   ============================================================ */
+body.is-form-page,
+body.is-table-page {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto 1fr auto;
+}
+body.is-form-page .demo-topbar,
+body.is-table-page .demo-topbar    { grid-column: 1; grid-row: 1; }
+body.is-form-page .demo-main,
+body.is-table-page .demo-main {
+  grid-column: 1;
+  grid-row: 2;
+  width: 100%;
+  margin-inline: auto;
+}
+body.is-form-page  .demo-main { max-width: 880px; }
+body.is-table-page .demo-main { max-width: 1200px; }
+body.is-form-page .demo-actionbar,
+body.is-table-page .demo-actionbar { grid-column: 1; grid-row: 3; }
+
+/* Form-card spacing inside a single-column page */
+.demo-form-card legend.form-label { margin-bottom: var(--space-2); }
+.demo-form-textarea { min-height: 160px; }
+
+/* ============================================================
+   Sortable table (used on users.html)
+   ------------------------------------------------------------
+   Bootstrap 5 has no native sort UI. The header cell hosts a
+   transparent button (.demo-sort-btn) that toggles aria-sort
+   and swaps the icon class on click.
+   ============================================================ */
+.demo-users-table thead th { white-space: nowrap; }
+.demo-sort-btn {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  font-weight: var(--weight-emphasis);
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.demo-sort-btn:hover { color: var(--accent); }
+.demo-sort-btn:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: 2px;
+  border-radius: var(--radius);
+}
+.demo-sort-icon {
+  font-size: 0.85em;
+  opacity: 0.5;
+  transition: opacity var(--motion-fast) var(--easing-standard);
+}
+[aria-sort="ascending"] .demo-sort-icon,
+[aria-sort="descending"] .demo-sort-icon {
+  opacity: 1;
+  color: var(--accent);
+}
+
+/* Table-card search input — capped at a sensible width on the right */
+.demo-table-search { max-width: 320px; width: 100%; }
