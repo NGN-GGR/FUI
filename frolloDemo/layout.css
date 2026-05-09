@@ -28,7 +28,8 @@ body {
   align-self: start;
   height: 100vh;
 }
-.demo-rail .demo-brand-mark { color: var(--accent); margin-bottom: var(--space-8); }
+.demo-brand-mark { color: var(--accent); }
+.demo-rail .demo-brand-mark { margin-bottom: var(--space-8); }
 
 /* Top bar — single grid item spanning columns 2-3 with flex inside */
 .demo-topbar {
@@ -71,6 +72,7 @@ body {
   color: var(--ink);
 }
 .demo-bank-chip svg { flex-shrink: 0; }
+.demo-bank-logo { color: var(--color-bank-yellow); }
 
 /* Main column (column 2, row 2) */
 .demo-main {
@@ -111,7 +113,7 @@ body {
 
 /* Stepper (inside .demo-rail) */
 .demo-stepper { list-style: none; margin: auto 0 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-4); }
-.demo-stepper-heading { font-size: var(--fs-card-heading); font-weight: var(--weight-emphasis); color: var(--color-tertiary); margin-bottom: var(--space-4); }
+.demo-stepper-heading { font-family: var(--font-heading); font-size: var(--fs-card-heading); font-weight: var(--weight-emphasis); color: var(--color-tertiary); margin-bottom: var(--space-4); }
 .demo-stepper li { display: flex; align-items: center; gap: var(--space-3); color: var(--color-grey-light); }
 .demo-stepper-num {
   width: 28px; height: 28px; border-radius: 50%;
@@ -123,14 +125,34 @@ body {
 .demo-stepper li.is-current { color: var(--color-tertiary); }
 .demo-stepper li.is-current .demo-stepper-num { border-color: var(--color-tertiary); color: var(--color-tertiary); }
 
+/* Mobile stepper (light surface — accent for current/done, border/muted otherwise) */
+.demo-stepper-mobile .demo-stepper-num {
+  border-color: var(--border);
+  color: var(--muted);
+}
+.demo-stepper-mobile .demo-stepper-num.is-done {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+.demo-stepper-mobile .demo-stepper-num.is-current {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.demo-stepper-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
 /* Brand-coloured horizontal divider (used between sections in main) */
 .demo-rule { height: 1px; background: var(--accent); opacity: 0.5; margin: var(--space-6) 0; border: 0; }
 
 /* Page-specific: Your consent heading */
-.demo-page-title { font-size: clamp(40px, 5vw, 64px); font-weight: var(--weight-hero); letter-spacing: var(--heading-tracking); margin: 0 0 var(--space-6); color: var(--ink); }
+.demo-page-title { font-size: clamp(40px, 5vw, 64px); font-weight: var(--weight-hero); line-height: var(--lh-tight); letter-spacing: var(--heading-tracking); margin: 0 0 var(--space-6); color: var(--ink); }
 
 /* Section labels in main */
-.demo-section-label { font-size: var(--fs-card-heading); font-weight: var(--weight-emphasis); margin-bottom: var(--space-4); color: var(--ink); }
+.demo-section-label { font-family: var(--font-heading); font-size: var(--fs-card-heading); font-weight: var(--weight-emphasis); margin-bottom: var(--space-4); color: var(--ink); }
 
 /* Duration btn-group: enlarge for prominence (matches source) */
 .demo-duration-group .btn { padding: var(--space-3) var(--space-7); border-radius: 999px; min-width: 180px; }

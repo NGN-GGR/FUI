@@ -72,6 +72,9 @@
   --color-grey-80: #C9C9C9;
   --color-grey-100: #C8CBD0;
 
+  /* === Third-party / logo === */
+  --color-bank-yellow: #FFCC00;       /* CommBank glyph only — not a Frollo brand colour */
+
   /* === Derived alphas (palette doesn't define these directly) === */
   --color-primary-a10: rgba(81, 42, 189, 0.10);
   --color-text-accent-a18: rgba(205, 195, 255, 0.18);
