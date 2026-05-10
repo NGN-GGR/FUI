@@ -64,6 +64,7 @@
   --color-grey-light: #bcbcbc;
   --color-grey-light-rgb: 188, 188, 188;
   --color-grey-lightest: #f5f5f5;
+  --color-grey-lightest-rgb: 245, 245, 245;
   --color-grey-10: #f8f8f8;
   --color-grey-20: #f2f2f2;
   --color-grey-30: #EEEFF1;
@@ -80,7 +81,7 @@
   --color-text-accent-a18: rgba(205, 195, 255, 0.18);
   --color-warning-a15: rgba(251, 99, 64, 0.15);
 
-  /* === Info (not in palette — kept for Bootstrap completeness) === */
+  /* === Info === */
   --color-info: #0dcaf0;
   --color-info-rgb: 13, 202, 240;
   --color-info-a15: rgba(13, 202, 240, 0.15);
@@ -240,8 +241,11 @@
   --focus-ring-color: var(--accent-tint);
 }
 
-/* 2c. Bootstrap CSS-variable bridge (light) — reads from semantic layer */
-:root {
+/* 2c. Bootstrap CSS-variable bridge (light) — reads from semantic layer.
+       Selector matches Bootstrap's `:root, [data-bs-theme=light]` so our
+       body/secondary/tertiary color overrides win at equal specificity
+       (source-order tiebreak). */
+:root, [data-bs-theme="light"] {
   --bs-primary: var(--accent);
   --bs-primary-rgb: var(--accent-rgb);
   --bs-link-color: var(--accent);
@@ -261,6 +265,11 @@
   --bs-border-radius: var(--radius);
   --bs-border-radius-sm: var(--radius);
   --bs-border-radius-lg: var(--radius);
+  --bs-body-color: var(--ink);
+  --bs-body-color-rgb: var(--color-text-default-rgb);
+  --bs-secondary-color: var(--muted);
+  --bs-secondary-color-rgb: var(--color-text-secondary-rgb);
+  --bs-tertiary-color: var(--color-text-tertiary);
   --bs-body-font-family: var(--font-body);
   --bs-body-font-weight: var(--weight-body);
   --bs-body-line-height: var(--body-line-height);
@@ -275,7 +284,7 @@
 /* 2d. Dark mode — re-aliases semantic tokens to different primitives.
        Palette dark-mode coverage is thin; non-palette greys are reused
        for surfaces and borders where the palette doesn't supply one. */
-[data-theme="dark"] {
+[data-theme="dark"], [data-bs-theme="dark"] {
   /* Surface */
   --ink: var(--color-grey-lightest);
   --muted: var(--color-grey-light);
@@ -303,6 +312,11 @@
   --bs-link-hover-color-rgb: var(--accent-dark-rgb);
   --bs-secondary: var(--secondary);
   --bs-secondary-rgb: var(--secondary-rgb);
+  --bs-body-color: var(--ink);
+  --bs-body-color-rgb: var(--color-grey-lightest-rgb);
+  --bs-secondary-color: var(--muted);
+  --bs-secondary-color-rgb: var(--color-grey-light-rgb);
+  --bs-tertiary-color: var(--color-text-tertiary);
   --bs-focus-ring-color: var(--focus-ring-color);
 
   /* Shadow re-aliases for dark surface */

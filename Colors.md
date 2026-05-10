@@ -24,6 +24,7 @@ colors:
   error: "#E74C4C"
   error-bg: "#FEE0D9"
   warning: "#FB6340"
+  info: "#0dcaf0"
 
   # Text
   text-default: "#393C56"
@@ -69,6 +70,7 @@ colors:
 | `error` | `#E74C4C` | Errors, destructive actions, invalid form |
 | `error-bg` | `#FEE0D9` | Tinted error surface |
 | `warning` | `#FB6340` | Cautionary state — coral-orange |
+| `info` | `#0dcaf0` | Informational state — `.alert-info`, `.text-bg-info`, `.btn-info` |
 
 #### Text
 | Token | Hex | Use |
@@ -224,6 +226,7 @@ Drop this into `styles.css` as the primitive layer. Naming convention: `--color-
   --color-error: #E74C4C;
   --color-error-bg: #FEE0D9;
   --color-warning: #FB6340;
+  --color-info: #0dcaf0;
 
   /* Text */
   --color-text-default: #393C56;
@@ -280,6 +283,7 @@ Bootstrap composes alphas via `rgba(var(--bs-primary-rgb), 0.5)`. Any palette co
   --color-success-rgb: 0, 198, 150;
   --color-error-rgb: 231, 76, 76;
   --color-warning-rgb: 251, 99, 64;
+  --color-info-rgb: 13, 202, 240;
   --color-text-default-rgb: 57, 60, 86;
   --color-text-secondary-rgb: 95, 100, 137;
   --color-text-accent-rgb: 205, 195, 255;
@@ -290,7 +294,7 @@ Bootstrap composes alphas via `rgba(var(--bs-primary-rgb), 0.5)`. Any palette co
 
 ### Notes & gaps
 
-- **No `info` colour in palette.** Bootstrap's bridge needs one for `.alert-info`, `.text-bg-info`, etc. Keep `#0dcaf0` as a fallback or pick `bg-sky` (`#D4EDF7`) and a darker companion for the foreground.
+- **`info` is canonical at `#0dcaf0`** (Bootstrap's default cyan). Drives `.alert-info`, `.text-bg-info`, `.btn-info`, etc. Tint is a 15% alpha (`--color-info-a15`) rather than a separate solid surface — same pattern as `warning`.
 - **Dark-mode surface coverage is thin.** Palette has `bg-dark` and `secondary` (`#292B3D` and `#141414`) but no full dark-mode set for borders, alt-bg, etc. Components that need a dark-mode equivalent for `--border`, `--bg-alt`, etc. either reuse `grey-base` / `grey-light` / `secondary` or compose a derived value.
 - **`button-primary-hover` is lighter than `primary`**, not darker. The semantic role `--accent-dark` (used for hover states elsewhere in the system) aliases to it, accepting that "dark" is a misnomer for this brand.
 - **`primary-dark` (NEW) is genuinely darker than `primary`** (`#3A1E8A` vs `#512ABD`). It powers `--accent-emphasis` only — currently a single consumer (the expanded-accordion header).

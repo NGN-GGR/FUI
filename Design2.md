@@ -44,7 +44,7 @@ Dark mode shifts `--accent` → `#CDC3FF` (light purple) and `--accent-emphasis`
 | Success | `--success` / `--success-tint` | `#00C696` / `#D8FFF6` |
 | Danger (palette: error) | `--danger` / `--danger-tint` | `#E74C4C` / `#FEE0D9` |
 | Warning | `--warning` / `--warning-tint` | `#FB6340` / 15% alpha |
-| Info | `--info` / `--info-tint` | `#0dcaf0` (palette doesn't define one) |
+| Info | `--info` / `--info-tint` | `#0dcaf0` / 15% alpha |
 | Valid / Invalid | `--valid` / `--invalid` | aliases of success / danger |
 
 ### Surfaces
@@ -197,7 +197,7 @@ Open the showcase. The buttons row at the top of *Buttons* should show:
 - `.btn-success` — brand-palette green (`#00C696`), white text
 - `.btn-danger` — brand-palette coral-red (`#E74C4C`), white text
 - `.btn-warning` — brand-palette orange (`#FB6340`), dark text
-- `.btn-info` — fallback cyan, dark text
+- `.btn-info` — cyan (`#0dcaf0`), dark text
 
 If any of those shows Bootstrap's default blue / red / yellow, the bridge is broken — find the relevant `--bs-{component}-*` variable in DevTools and add a class-scoped override to `styles.css` section 3.
 
