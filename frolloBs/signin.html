@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign in · Frollo</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="bootstrap-bridge.css">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<div class="minimal-shell">
+
+  <aside class="brand-side">
+    <a href="index.html" class="brand">
+      <span class="brand-dot"></span>
+      <span>Frollo</span>
+    </a>
+
+    <div>
+      <h1>Save smarter. See clearly. Hit every goal.</h1>
+      <p class="lede">Connect your banks, set your goals, let Frollo do the quiet work. Round-ups, insights, and real-time tracking — all in one place.</p>
+    </div>
+
+    <div class="small opacity-75">
+      © 2026 Frollo · <a href="#" class="link-light">Privacy</a> · <a href="#" class="link-light">Terms</a>
+    </div>
+  </aside>
+
+  <section class="content-side">
+    <div class="w-100" style="max-width: 420px;">
+
+      <div class="mb-4">
+        <h2 class="m-0 mb-2" style="font-size: 32px; line-height: 38px; font-weight: 500; letter-spacing: -0.02em;">Welcome back</h2>
+        <p class="text-frollo-secondary mb-0">Sign in to your Frollo account.</p>
+      </div>
+
+      <form>
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control" placeholder="you@frollo.com">
+        </div>
+        <div class="mb-3">
+          <div class="d-flex align-items-center justify-content-between">
+            <label class="form-label mb-0">Password</label>
+            <a href="#" class="small link-primary text-decoration-none">Forgot?</a>
+          </div>
+          <div class="input-group mt-1">
+            <input type="password" class="form-control" placeholder="••••••••">
+            <button type="button" class="btn btn-light" aria-label="Show password"><i class="bi bi-eye"></i></button>
+          </div>
+        </div>
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="checkbox" id="keepIn">
+          <label class="form-check-label small" for="keepIn">Keep me signed in on this device</label>
+        </div>
+        <button type="submit" class="btn btn-primary w-100 py-2 fs-6 mb-3">Sign in</button>
+
+        <div class="d-flex align-items-center gap-3 small text-frollo-secondary my-3">
+          <span class="flex-fill border-top"></span>
+          <span>or continue with</span>
+          <span class="flex-fill border-top"></span>
+        </div>
+
+        <div class="row g-2 mb-3">
+          <div class="col-6">
+            <button type="button" class="btn btn-light w-100 d-inline-flex align-items-center justify-content-center gap-2">
+              <i class="bi bi-facebook" style="color: #1877F2;"></i> Facebook
+            </button>
+          </div>
+          <div class="col-6">
+            <button type="button" class="btn btn-light w-100 d-inline-flex align-items-center justify-content-center gap-2">
+              <i class="bi bi-google" style="color: #EA4335;"></i> Google
+            </button>
+          </div>
+        </div>
+
+        <p class="text-center small text-frollo-secondary mb-3">New to Frollo? <a href="onboarding.html" class="link-primary fw-medium text-decoration-none">Create an account</a></p>
+
+        <div class="alert alert-info d-flex gap-3 mb-0 small">
+          <i class="bi bi-shield-check fs-6 flex-shrink-0"></i>
+          <span>Frollo never stores your bank credentials. We use the Consumer Data Right for read-only access.</span>
+        </div>
+      </form>
+    </div>
+  </section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

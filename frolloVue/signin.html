@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign in · Frollo</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="app.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="tailwind-frollo.js"></script>
+</head>
+<body class="font-frollo bg-app-bg text-text-default">
+
+<div class="minimal-shell">
+
+  <aside class="brand-side">
+    <a href="index.html" class="brand">
+      <span class="brand-dot"></span>
+      <span>Frollo</span>
+    </a>
+
+    <div>
+      <h1>Save smarter. See clearly. Hit every goal.</h1>
+      <p class="lede">Connect your banks, set your goals, let Frollo do the quiet work. Round-ups, insights, and real-time tracking — all in one place.</p>
+    </div>
+
+    <div class="text-sm opacity-80">
+      © 2026 Frollo · <a href="#" class="text-white hover:underline">Privacy</a> · <a href="#" class="text-white hover:underline">Terms</a>
+    </div>
+  </aside>
+
+  <section class="content-side">
+    <div class="w-full max-w-[420px]">
+      <div class="mb-6">
+        <h2 class="text-3xl font-medium m-0 mb-2" style="font-size: 32px; line-height: 38px;">Welcome back</h2>
+        <p class="text-text-secondary m-0">Sign in to your Frollo account.</p>
+      </div>
+
+      <form class="space-y-4">
+        <div>
+          <label class="block text-sm text-text-secondary mb-1">Email</label>
+          <input type="email" class="w-full rounded border border-border-default bg-white px-3 py-2 text-base text-text-default focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" placeholder="you@frollo.com" value="">
+        </div>
+        <div>
+          <div class="flex items-center justify-between mb-1">
+            <label class="text-sm text-text-secondary">Password</label>
+            <a class="text-sm text-primary hover:underline" href="#">Forgot?</a>
+          </div>
+          <div class="relative">
+            <input type="password" class="w-full rounded border border-border-default bg-white px-3 py-2 pr-10 text-base text-text-default focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" placeholder="••••••••">
+            <button type="button" class="absolute right-2 top-1/2 -translate-y-1/2 size-7 inline-flex items-center justify-center text-text-secondary hover:text-text-default" aria-label="Show password">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <label class="inline-flex items-center gap-2 cursor-pointer">
+          <input type="checkbox" class="size-4 rounded border-border-default text-primary focus:ring-2 focus:ring-primary/20">
+          <span class="text-sm">Keep me signed in on this device</span>
+        </label>
+
+        <button type="submit" class="w-full rounded-full bg-primary text-white text-p px-7 py-3 hover:bg-primary-hover transition-colors">Sign in</button>
+
+        <div class="flex items-center gap-3 text-xs text-text-secondary">
+          <span class="flex-1 border-t border-grey-30"></span>
+          <span>or continue with</span>
+          <span class="flex-1 border-t border-grey-30"></span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <button type="button" class="rounded-full bg-white border border-border-default text-text-default text-p-small px-4 py-2 inline-flex items-center justify-center gap-2 hover:bg-grey-10">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.51 17.52 2 12 2S2 6.51 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.77-3.89 1.09 0 2.24.19 2.24.19v2.47h-1.26c-1.24 0-1.63.78-1.63 1.57v1.88h2.78l-.44 2.9h-2.33V22c4.78-.76 8.43-4.92 8.43-9.94z"/></svg>
+            Facebook
+          </button>
+          <button type="button" class="rounded-full bg-white border border-border-default text-text-default text-p-small px-4 py-2 inline-flex items-center justify-center gap-2 hover:bg-grey-10">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12.07c0-.86-.08-1.69-.22-2.49H12v4.71h6.16c-.27 1.42-1.07 2.62-2.27 3.43v2.85h3.67c2.15-1.98 3.39-4.9 3.39-8.5z" fill="#4285F4"/><path d="M12 23c3.06 0 5.62-1.02 7.49-2.76l-3.67-2.85c-1.02.68-2.32 1.08-3.82 1.08-2.94 0-5.43-1.99-6.32-4.66H1.91v2.93C3.78 20.45 7.6 23 12 23z" fill="#34A853"/><path d="M5.68 13.81c-.22-.68-.36-1.4-.36-2.14 0-.74.13-1.46.36-2.14V6.6H1.91A11 11 0 001 12c0 1.77.42 3.45 1.18 4.93l3.77-2.94z" fill="#FBBC05"/><path d="M12 5.38c1.66 0 3.15.57 4.32 1.69l3.24-3.24C17.46 2.09 14.97 1 12 1 7.6 1 3.78 3.55 1.91 7.07l3.77 2.93C6.57 7.37 9.06 5.38 12 5.38z" fill="#EA4335"/></svg>
+            Google
+          </button>
+        </div>
+      </form>
+
+      <p class="text-sm text-text-secondary mt-6 text-center">New to Frollo? <a href="onboarding.html" class="text-primary font-medium hover:underline">Create an account</a></p>
+
+      <div class="rounded-md bg-bg-sky text-text-default p-3 mt-6 flex items-start gap-3 text-sm">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0DCAF0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <span>Frollo never stores your bank credentials. We use the Consumer Data Right for read-only access.</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,310 @@
+/* ============================================================
+   frolloDemo — page-only chrome on top of the brand stylesheet.
+   Macro layout: CSS Grid outer shell with three columns and
+   three rows. Brand tokens come from the imported styles.css.
+   ============================================================ */
+
+/* Outer grid shell */
+body {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr) 320px;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  background: var(--bg-alt);
+}
+
+/* Dark rail (column 1, full height) */
+.demo-rail {
+  grid-column: 1;
+  grid-row: 1 / 4;
+  background: var(--color-secondary);
+  color: var(--color-tertiary);
+  padding: var(--space-5) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100vh;
+}
+.demo-brand-mark { color: var(--accent); }
+.demo-rail .demo-brand-mark { margin-bottom: var(--space-8); }
+
+/* Top bar — single grid item spanning columns 2-3 with flex inside */
+.demo-topbar {
+  grid-column: 2 / 4;
+  grid-row: 1;
+  display: flex;
+  align-items: center;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+.demo-topbar-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  padding: var(--space-3) var(--space-5);
+  flex: 1;
+}
+.demo-topbar-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-5);
+}
+.demo-topbar-right .demo-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--accent-tint);
+  color: var(--accent);
+  display: inline-flex; align-items: center; justify-content: center;
+  border: none;
+}
+
+/* Bank chip (logo + name) */
+.demo-bank-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: var(--weight-emphasis);
+  color: var(--ink);
+}
+.demo-bank-chip svg { flex-shrink: 0; }
+.demo-bank-logo { color: var(--color-bank-yellow); }
+
+/* Main column (column 2, row 2) */
+.demo-main {
+  grid-column: 2;
+  grid-row: 2;
+  padding: var(--space-7) var(--space-7);
+  background: var(--bg);
+  min-width: 0;
+}
+
+/* Sticky action bar (column 2, row 3) */
+.demo-actionbar {
+  grid-column: 2;
+  grid-row: 3;
+  position: sticky;
+  bottom: 0;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  padding: var(--space-4) var(--space-7);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  z-index: 10;
+}
+.demo-actionbar-prompt { font-weight: var(--weight-emphasis); color: var(--ink); margin: 0; }
+
+/* Info column (column 3, rows 2-3) */
+.demo-info {
+  grid-column: 3;
+  grid-row: 2 / 4;
+  padding: var(--space-5);
+  background: var(--bg-alt);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* Stepper (inside .demo-rail) */
+.demo-stepper { list-style: none; margin: auto 0 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-4); }
+.demo-stepper-heading { font-family: var(--font-heading); font-size: var(--fs-card-heading); font-weight: var(--weight-emphasis); color: var(--color-tertiary); margin-bottom: var(--space-4); }
+.demo-stepper li { display: flex; align-items: center; gap: var(--space-3); color: var(--color-grey-light); }
+.demo-stepper-num {
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 1px solid var(--color-grey-light);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: var(--fs-small); flex-shrink: 0;
+}
+.demo-stepper li.is-done .demo-stepper-num { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.demo-stepper li.is-current { color: var(--color-tertiary); }
+.demo-stepper li.is-current .demo-stepper-num { border-color: var(--color-tertiary); color: var(--color-tertiary); }
+
+/* Mobile stepper (light surface — accent for current/done, border/muted otherwise) */
+.demo-stepper-mobile .demo-stepper-num {
+  border-color: var(--border);
+  color: var(--muted);
+}
+.demo-stepper-mobile .demo-stepper-num.is-done {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+.demo-stepper-mobile .demo-stepper-num.is-current {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.demo-stepper-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* Brand-coloured horizontal divider (used between sections in main) */
+.demo-rule { height: 1px; background: var(--accent); opacity: 0.5; margin: var(--space-6) 0; border: 0; }
+
+/* Page-specific: Your consent heading */
+.demo-page-title { font-size: clamp(40px, 5vw, 64px); font-weight: var(--weight-hero); line-height: var(--lh-tight); letter-spacing: var(--heading-tracking); margin: 0 0 var(--space-6); color: var(--ink); }
+
+/* Section labels in main */
+.demo-section-label { font-family: var(--font-heading); font-size: var(--fs-card-heading); font-weight: var(--weight-emphasis); margin-bottom: var(--space-4); color: var(--ink); }
+
+/* Duration btn-group: enlarge for prominence (matches source) */
+.demo-duration-group .btn { padding: var(--space-3) var(--space-7); border-radius: 999px; min-width: 180px; }
+
+/* "What we collect" accordion: flush + brand-purple toggles */
+.demo-collect .accordion-button {
+  color: var(--accent);
+  font-weight: var(--weight-emphasis);
+  background: transparent;
+  padding-left: 0;
+  padding-right: 0;
+}
+.demo-collect .accordion-button:not(.collapsed) {
+  color: var(--accent-emphasis);
+  background: transparent;
+}
+.demo-collect .accordion-button:focus { box-shadow: none; }
+
+/* Info-card emphasis */
+.demo-info .card-body { font-size: var(--fs-small); color: var(--ink); line-height: var(--lh-base); }
+.demo-info .card-body p { margin: 0; }
+.demo-info-cdr-logo { color: var(--accent); }
+
+/* Continue-to-bank button: ensure brand purple + external-link icon spacing */
+.demo-actionbar .btn-primary { padding-left: var(--space-5); padding-right: var(--space-5); border-radius: 999px; }
+.demo-actionbar .btn-outline-secondary { border-radius: 999px; padding-left: var(--space-5); padding-right: var(--space-5); }
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+
+/* Tablet (768–1199px): rail shrinks to icon strip; info moves under main */
+@media (max-width: 1199.98px) {
+  body {
+    grid-template-columns: 64px minmax(0, 1fr);
+    grid-template-rows: auto 1fr auto auto;
+  }
+  .demo-rail { padding: var(--space-3); grid-row: 1 / 5; }
+  .demo-rail .demo-brand-mark svg text { display: none; } /* hide letterforms */
+  .demo-stepper li span:not(.demo-stepper-num) { display: none; } /* hide labels */
+  .demo-stepper-heading { display: none; }
+  .demo-topbar { grid-column: 2; }
+  .demo-main { grid-column: 2; grid-row: 2; }
+  .demo-info { grid-column: 2; grid-row: 3; flex-direction: row; flex-wrap: wrap; padding: var(--space-5) var(--space-7); }
+  .demo-info > .card { flex: 1 1 240px; }
+  .demo-actionbar { grid-column: 2; grid-row: 4; }
+}
+
+/* Mobile (<768px): dark rail collapses; stepper goes horizontal at top of main */
+@media (max-width: 767.98px) {
+  body {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto 1fr auto auto;
+  }
+  .demo-rail { display: none; }
+  .demo-topbar { grid-column: 1; }
+  .demo-topbar-left { padding-left: var(--space-4); }
+  .demo-topbar-right { padding-right: var(--space-4); }
+  .demo-main { grid-column: 1; grid-row: 3; padding: var(--space-5) var(--space-4); }
+  .demo-info { grid-column: 1; grid-row: 4; flex-direction: column; padding: var(--space-5) var(--space-4); }
+  .demo-actionbar { grid-column: 1; grid-row: 5; padding: var(--space-3) var(--space-4); flex-direction: column; align-items: stretch; }
+  .demo-actionbar .btn { width: 100%; }
+  /* Horizontal stepper between topbar and main */
+  .demo-stepper-mobile {
+    grid-column: 1; grid-row: 2;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: var(--space-4) var(--space-4) 0;
+    gap: var(--space-2);
+  }
+}
+
+/* Always hide the mobile stepper on desktop/tablet */
+.demo-stepper-mobile { display: none; }
+
+@media (max-width: 767.98px) {
+  .demo-stepper-mobile { display: flex; }
+}
+
+/* Page-title shrinks on small screens */
+@media (max-width: 767.98px) {
+  .demo-page-title { font-size: clamp(28px, 7vw, 40px); }
+}
+
+/* ============================================================
+   Single-column page variants — no left rail, no info column.
+   Add `class="is-form-page"` (narrow, for forms) or
+   `class="is-table-page"` (wider, for tabular data) to <body>.
+   Rules sit at the end of the file so they override the responsive
+   blocks above via cascade order + specificity, not !important.
+   ============================================================ */
+body.is-form-page,
+body.is-table-page {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto 1fr auto;
+}
+body.is-form-page .demo-topbar,
+body.is-table-page .demo-topbar    { grid-column: 1; grid-row: 1; }
+body.is-form-page .demo-main,
+body.is-table-page .demo-main {
+  grid-column: 1;
+  grid-row: 2;
+  width: 100%;
+  margin-inline: auto;
+}
+body.is-form-page  .demo-main { max-width: 880px; }
+body.is-table-page .demo-main { max-width: 1200px; }
+body.is-form-page .demo-actionbar,
+body.is-table-page .demo-actionbar { grid-column: 1; grid-row: 3; }
+
+/* Form-card spacing inside a single-column page */
+.demo-form-card legend.form-label { margin-bottom: var(--space-2); }
+.demo-form-textarea { min-height: 160px; }
+
+/* ============================================================
+   Sortable table (used on users.html)
+   ------------------------------------------------------------
+   Bootstrap 5 has no native sort UI. The header cell hosts a
+   transparent button (.demo-sort-btn) that toggles aria-sort
+   and swaps the icon class on click.
+   ============================================================ */
+.demo-users-table thead th { white-space: nowrap; }
+.demo-sort-btn {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  font-weight: var(--weight-emphasis);
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.demo-sort-btn:hover { color: var(--accent); }
+.demo-sort-btn:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: 2px;
+  border-radius: var(--radius);
+}
+.demo-sort-icon {
+  font-size: 0.85em;
+  opacity: 0.5;
+  transition: opacity var(--motion-fast) var(--easing-standard);
+}
+[aria-sort="ascending"] .demo-sort-icon,
+[aria-sort="descending"] .demo-sort-icon {
+  opacity: 1;
+  color: var(--accent);
+}
+
+/* Table-card search input — capped at a sensible width on the right */
+.demo-table-search { max-width: 320px; width: 100%; }

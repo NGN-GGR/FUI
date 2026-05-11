@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Accounts · Frollo</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="bootstrap-bridge.css">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<div class="app-shell">
+
+  <aside class="app-sidebar">
+    <a href="index.html" class="brand"><span class="brand-dot"></span><span>Frollo</span></a>
+    <nav class="app-nav">
+      <a href="index.html"><i class="bi bi-house-door"></i>Dashboard</a>
+      <a href="transactions.html"><i class="bi bi-list-ul"></i>Transactions</a>
+      <a href="goals.html"><i class="bi bi-bullseye"></i>Goals</a>
+      <a href="accounts.html" class="is-active"><i class="bi bi-credit-card-2-front"></i>Accounts</a>
+      <a href="insights.html"><i class="bi bi-bar-chart-line"></i>Insights</a>
+      <a href="components.html"><i class="bi bi-grid-3x3-gap"></i>Components</a>
+      <div class="app-nav-spacer"></div>
+      <span class="app-nav-label">Account</span>
+      <a href="settings.html"><i class="bi bi-gear"></i>Settings</a>
+      <a href="signin.html"><i class="bi bi-box-arrow-right"></i>Sign out</a>
+    </nav>
+    <div class="user"><div class="avatar">GG</div><div class="flex-fill text-truncate"><div class="name text-truncate">Gavin Griffith</div><div class="role">Member · Frollo Plus</div></div></div>
+  </aside>
+
+  <div class="app-main">
+    <header class="app-topbar">
+      <div>
+        <div class="crumbs"><span>Home</span> · Accounts</div>
+        <h1>Connected accounts</h1>
+      </div>
+      <div></div>
+      <div>
+        <button class="btn btn-primary btn-sm"><i class="bi bi-plus-lg me-1"></i>Connect a bank</button>
+      </div>
+    </header>
+
+    <main class="app-content">
+
+      <!-- Summary -->
+      <div class="row g-3 mb-4">
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <div class="small text-frollo-secondary">Total balance · all accounts</div>
+              <div class="kpi-value mt-1">$24,820.36</div>
+              <div class="small text-frollo-secondary mt-2">across 3 banks · 7 accounts</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <div class="small text-frollo-secondary">Last sync</div>
+              <div class="fs-4 fw-medium mt-1">2 minutes ago</div>
+              <button class="btn btn-link btn-sm p-0 mt-2">Sync now</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="alert alert-success d-flex gap-3 mb-0 h-100">
+            <i class="bi bi-check-circle fs-5"></i>
+            <div>
+              <div class="fw-medium">All accounts active</div>
+              <p class="small mb-0 mt-1 text-frollo-secondary">No expiring consents in the next 30 days.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="section-title">Banks</h2>
+      <p class="section-lede">CDR-connected · all syncs are read-only.</p>
+
+      <!-- Provider list -->
+      <div class="vstack gap-3 mb-4">
+
+        <div class="card">
+          <div class="card-body d-flex align-items-center gap-3 pb-3">
+            <div class="fw-avatar tint-secondary"><strong>CB</strong></div>
+            <div class="flex-fill">
+              <div class="fs-5 fw-medium">Commonwealth Bank</div>
+              <div class="small text-frollo-secondary">2 accounts · last sync 2m ago</div>
+            </div>
+            <span class="badge text-bg-success">Connected</span>
+            <button class="icon-btn"><i class="bi bi-three-dots"></i></button>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex align-items-center justify-content-between">
+              <div>
+                <div class="small fw-medium">Smart Access · Everyday</div>
+                <div class="text-frollo-secondary" style="font-size: 12px;">BSB 062-000 · acct ****3429</div>
+              </div>
+              <div class="fw-medium">$4,820.36</div>
+            </li>
+            <li class="list-group-item d-flex align-items-center justify-content-between">
+              <div>
+                <div class="small fw-medium">Credit Card · Awards</div>
+                <div class="text-frollo-secondary" style="font-size: 12px;">card ****0712 · balance owed</div>
+              </div>
+              <div class="fw-medium text-frollo-error">−$642.10</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-body d-flex align-items-center gap-3 pb-3">
+            <div class="fw-avatar tint-coral" style="color: var(--color-error);"><strong>WP</strong></div>
+            <div class="flex-fill">
+              <div class="fs-5 fw-medium">Westpac</div>
+              <div class="small text-frollo-secondary">2 accounts · last sync 5m ago</div>
+            </div>
+            <span class="badge text-bg-success">Connected</span>
+            <button class="icon-btn"><i class="bi bi-three-dots"></i></button>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex align-items-center justify-content-between">
+              <div>
+                <div class="small fw-medium">eSaver Reward</div>
+                <div class="text-frollo-secondary" style="font-size: 12px;">BSB 032-000 · acct ****8810</div>
+              </div>
+              <div class="fw-medium text-frollo-success">$18,420.00</div>
+            </li>
+            <li class="list-group-item d-flex align-items-center justify-content-between">
+              <div>
+                <div class="small fw-medium">Goal: Holiday in Japan</div>
+                <div class="text-frollo-secondary" style="font-size: 12px;">virtual sub-account · BSB 032-000</div>
+              </div>
+              <div class="fw-medium text-frollo-success">$3,200.00</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-body d-flex align-items-center gap-3 pb-3">
+            <div class="fw-avatar tint-sky"><strong>NA</strong></div>
+            <div class="flex-fill">
+              <div class="fs-5 fw-medium">NAB</div>
+              <div class="small text-frollo-secondary">3 accounts · last sync 14m ago</div>
+            </div>
+            <span class="badge text-bg-warning">Sync stalled</span>
+            <button class="icon-btn"><i class="bi bi-three-dots"></i></button>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex align-items-center justify-content-between">
+              <div>
+                <div class="small fw-medium">Classic Banking</div>
+                <div class="text-frollo-secondary" style="font-size: 12px;">BSB 084-009 · acct ****5921</div>
+              </div>
+              <div class="fw-medium">$220.55</div>
+            </li>
+            <li class="list-group-item d-flex align-items-center justify-content-between">
+              <div>
+                <div class="small fw-medium">Reward Saver</div>
+                <div class="text-frollo-secondary" style="font-size: 12px;">BSB 084-009 · acct ****6618</div>
+              </div>
+              <div class="fw-medium text-frollo-success">$1,420.00</div>
+            </li>
+            <li class="list-group-item d-flex align-items-center justify-content-between">
+              <div>
+                <div class="small fw-medium">Personal Loan</div>
+                <div class="text-frollo-secondary" style="font-size: 12px;">loan ****7714 · 18 months remaining</div>
+              </div>
+              <div class="fw-medium text-frollo-error">−$2,420.10</div>
+            </li>
+          </ul>
+          <div class="alert alert-warning mb-0 rounded-0 d-flex align-items-center gap-3">
+            <i class="bi bi-exclamation-triangle"></i>
+            <div class="flex-fill small">NAB sync hasn't run in 14 minutes.</div>
+            <a href="#" class="link-primary small text-decoration-none">Reconnect →</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Add bank CTA -->
+      <div class="card text-center py-4" style="border: 2px dashed var(--color-border-default); background: var(--color-tertiary); box-shadow: none;">
+        <div class="card-body">
+          <div class="fw-avatar tint-secondary mx-auto mb-2" style="width: 48px; height: 48px; border-radius: 50%;">
+            <i class="bi bi-plus-lg fs-4"></i>
+          </div>
+          <h3 class="card-title mb-1">Add another bank</h3>
+          <p class="small text-frollo-secondary mx-auto mb-3" style="max-width: 420px;">Frollo supports 100+ Australian banks via the Consumer Data Right. Your credentials never leave your bank.</p>
+          <button class="btn btn-primary">Connect a bank</button>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

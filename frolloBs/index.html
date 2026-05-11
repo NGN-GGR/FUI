@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard · Frollo</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="bootstrap-bridge.css">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<div class="app-shell">
+
+  <!-- ============== Sidebar ============== -->
+  <aside class="app-sidebar">
+    <a href="index.html" class="brand"><span class="brand-dot"></span><span>Frollo</span></a>
+    <nav class="app-nav">
+      <a href="index.html" class="is-active"><i class="bi bi-house-door"></i>Dashboard</a>
+      <a href="transactions.html"><i class="bi bi-list-ul"></i>Transactions</a>
+      <a href="goals.html"><i class="bi bi-bullseye"></i>Goals</a>
+      <a href="accounts.html"><i class="bi bi-credit-card-2-front"></i>Accounts</a>
+      <a href="insights.html"><i class="bi bi-bar-chart-line"></i>Insights</a>
+      <a href="components.html"><i class="bi bi-grid-3x3-gap"></i>Components</a>
+      <div class="app-nav-spacer"></div>
+      <span class="app-nav-label">Account</span>
+      <a href="settings.html"><i class="bi bi-gear"></i>Settings</a>
+      <a href="signin.html"><i class="bi bi-box-arrow-right"></i>Sign out</a>
+    </nav>
+    <div class="user">
+      <div class="avatar">GG</div>
+      <div class="flex-fill text-truncate">
+        <div class="name text-truncate">Gavin Griffith</div>
+        <div class="role">Member · Frollo Plus</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============== Main ============== -->
+  <div class="app-main">
+
+    <header class="app-topbar">
+      <div>
+        <div class="crumbs"><span>Home</span> · Dashboard</div>
+        <h1>Good morning, Gavin</h1>
+      </div>
+      <label class="search">
+        <i class="bi bi-search"></i>
+        <input type="search" placeholder="Search transactions, goals, accounts">
+        <span class="kbd">⌘ K</span>
+      </label>
+      <div class="d-flex align-items-center gap-2">
+        <button class="icon-btn" aria-label="Notifications">
+          <i class="bi bi-bell"></i>
+          <span class="badge-dot"></span>
+        </button>
+        <button class="btn btn-primary btn-sm"><i class="bi bi-plus-lg me-1"></i>New transfer</button>
+      </div>
+    </header>
+
+    <main class="app-content">
+
+      <!-- KPI row -->
+      <div class="row g-3 mb-4">
+        <div class="col-md-4">
+          <div class="card kpi-card">
+            <div class="card-body">
+              <div class="kpi-label">Total balance</div>
+              <div class="kpi-value">$24,820.36</div>
+              <div class="mt-2 small text-frollo-success d-inline-flex align-items-center gap-1">
+                <i class="bi bi-arrow-up"></i> +$420.12 this week
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card kpi-card">
+            <div class="card-body">
+              <div class="kpi-label">Saved this month</div>
+              <div class="kpi-value">$1,148.00</div>
+              <div class="small text-frollo-secondary mt-1">of $1,500 target · 76%</div>
+              <div class="progress mt-2" style="height: 4px;" role="progressbar" aria-valuenow="76">
+                <div class="progress-bar" style="width: 76%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card kpi-card">
+            <div class="card-body">
+              <div class="kpi-label">Spending this month</div>
+              <div class="kpi-value">$3,212.48</div>
+              <div class="mt-2 small text-frollo-error d-inline-flex align-items-center gap-1">
+                <i class="bi bi-arrow-up"></i> +12% vs. last month
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Goal + week chart -->
+      <div class="row g-3 mb-4">
+        <div class="col-lg-8">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex align-items-start justify-content-between mb-3">
+                <div>
+                  <span class="badge text-bg-primary mb-2">Active goal</span>
+                  <h3 class="card-title mb-1">Holiday in Japan</h3>
+                  <p class="text-frollo-secondary small mb-0">$3,200 saved of $5,000 · target Sep 2026</p>
+                </div>
+                <button class="btn btn-link btn-sm">Top up</button>
+              </div>
+              <div class="progress progress-thick mb-4" role="progressbar" aria-valuenow="64">
+                <div class="progress-bar bg-frollo-gradient" style="width: 64%"></div>
+              </div>
+              <div class="row g-2 text-center">
+                <div class="col-4">
+                  <div class="rounded-3 p-3" style="background: var(--color-grey-10);">
+                    <div class="small text-frollo-secondary">Monthly</div>
+                    <div class="fw-medium">$450</div>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="rounded-3 p-3" style="background: var(--color-grey-10);">
+                    <div class="small text-frollo-secondary">Round-ups</div>
+                    <div class="fw-medium">$18.40</div>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="rounded-3 p-3" style="background: var(--color-grey-10);">
+                    <div class="small text-frollo-secondary">On track</div>
+                    <div class="fw-medium text-frollo-success">Yes</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h3 class="card-title mb-1">This week</h3>
+              <p class="text-frollo-secondary small mb-3">Spending across 7 days</p>
+              <div class="fw-bar-chart" style="--bars: 7; height: 140px;">
+                <div class="bar" style="height: 30%"></div>
+                <div class="bar" style="height: 55%"></div>
+                <div class="bar is-active" style="height: 80%"></div>
+                <div class="bar" style="height: 45%"></div>
+                <div class="bar" style="height: 70%"></div>
+                <div class="bar" style="height: 35%"></div>
+                <div class="bar" style="height: 50%"></div>
+              </div>
+              <div class="row text-center mt-2 small text-frollo-secondary g-0">
+                <div class="col">M</div><div class="col">T</div><div class="col">W</div><div class="col">T</div><div class="col">F</div><div class="col">S</div><div class="col">S</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent transactions + side alerts -->
+      <div class="row g-3 mb-4">
+        <div class="col-lg-8">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                <h3 class="card-title mb-0">Recent transactions</h3>
+                <a class="link-primary small text-decoration-none" href="transactions.html">See all</a>
+              </div>
+              <ul class="list-unstyled mb-0">
+                <li class="d-flex align-items-center justify-content-between py-3 border-bottom" style="border-color: var(--color-grey-30) !important;">
+                  <div class="d-flex align-items-center gap-3">
+                    <div class="fw-avatar-circle tint-sky">🛒</div>
+                    <div>
+                      <div class="small fw-medium">Coles Norwood</div>
+                      <div class="text-frollo-secondary" style="font-size: 12px;">Today · Groceries</div>
+                    </div>
+                  </div>
+                  <div class="small fw-medium text-frollo-error">−$84.20</div>
+                </li>
+                <li class="d-flex align-items-center justify-content-between py-3 border-bottom" style="border-color: var(--color-grey-30) !important;">
+                  <div class="d-flex align-items-center gap-3">
+                    <div class="fw-avatar-circle tint-success">💵</div>
+                    <div>
+                      <div class="small fw-medium">Salary — Acme Co.</div>
+                      <div class="text-frollo-secondary" style="font-size: 12px;">10 May · Income</div>
+                    </div>
+                  </div>
+                  <div class="small fw-medium text-frollo-success">+$3,420.00</div>
+                </li>
+                <li class="d-flex align-items-center justify-content-between py-3 border-bottom" style="border-color: var(--color-grey-30) !important;">
+                  <div class="d-flex align-items-center gap-3">
+                    <div class="fw-avatar-circle tint-coral">🎵</div>
+                    <div>
+                      <div class="small fw-medium">Spotify Premium</div>
+                      <div class="text-frollo-secondary" style="font-size: 12px;">09 May · Entertainment</div>
+                    </div>
+                  </div>
+                  <div class="small fw-medium text-frollo-error">−$14.99</div>
+                </li>
+                <li class="d-flex align-items-center justify-content-between py-3 border-bottom" style="border-color: var(--color-grey-30) !important;">
+                  <div class="d-flex align-items-center gap-3">
+                    <div class="fw-avatar-circle tint-secondary">📈</div>
+                    <div>
+                      <div class="small fw-medium">Round-up to savings</div>
+                      <div class="text-frollo-secondary" style="font-size: 12px;">08 May · Savings</div>
+                    </div>
+                  </div>
+                  <div class="small fw-medium">$2.36</div>
+                </li>
+                <li class="d-flex align-items-center justify-content-between py-3">
+                  <div class="d-flex align-items-center gap-3">
+                    <div class="fw-avatar-circle tint-pink">⛽</div>
+                    <div>
+                      <div class="small fw-medium">BP Glenelg</div>
+                      <div class="text-frollo-secondary" style="font-size: 12px;">07 May · Transport</div>
+                    </div>
+                  </div>
+                  <div class="small fw-medium text-frollo-error">−$62.10</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="vstack gap-3">
+            <div class="alert alert-info mb-0 d-flex gap-3">
+              <i class="bi bi-info-circle fs-5"></i>
+              <div>
+                <div class="fw-medium">CDR consent expires soon</div>
+                <p class="small mb-2 mt-1 text-frollo-secondary">Your bank-data sharing expires 14 Aug 2026. Renew anytime.</p>
+                <button class="btn btn-primary btn-sm">Review</button>
+              </div>
+            </div>
+            <div class="alert alert-success mb-0 d-flex gap-3">
+              <i class="bi bi-check-circle fs-5"></i>
+              <div>
+                <div class="fw-medium">You're on track this month</div>
+                <p class="small mb-0 mt-1 text-frollo-secondary">Holiday goal will hit target 12 days early at current pace.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick actions -->
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Quick actions</h3>
+          <div class="d-flex flex-wrap gap-2">
+            <button class="btn btn-primary">Transfer money</button>
+            <button class="btn btn-secondary">Add an account</button>
+            <button class="btn btn-outline-primary">Create a goal</button>
+            <button class="btn btn-light">Export statement</button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

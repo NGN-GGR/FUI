@@ -1,0 +1,720 @@
+/* ============================================================
+   1. Primitives — raw values, never overridden by theme/brand
+   ============================================================
+   Components MUST NOT consume these directly. They exist only
+   to be aliased by the semantic layer below.
+   Source: Colors.md (palette).
+   ============================================================ */
+:root {
+  /* === Brand === */
+  --color-primary: #512ABD;
+  --color-primary-rgb: 81, 42, 189;
+  --color-primary-dark: #3A1E8A;
+  --color-primary-dark-rgb: 58, 30, 138;
+  --color-secondary: #141414;
+  --color-secondary-rgb: 20, 20, 20;
+  --color-tertiary: #ffffff;
+  --color-link: #512ABD;
+
+  /* === State === */
+  --color-success: #00C696;
+  --color-success-rgb: 0, 198, 150;
+  --color-success-bg: #D8FFF6;
+  --color-success-new: #4bf0c8;
+  --color-error: #E74C4C;
+  --color-error-rgb: 231, 76, 76;
+  --color-error-bg: #FEE0D9;
+  --color-warning: #FB6340;
+  --color-warning-rgb: 251, 99, 64;
+
+  /* === Text === */
+  --color-text-default: #393C56;
+  --color-text-default-rgb: 57, 60, 86;
+  --color-text-secondary: #5F6489;
+  --color-text-secondary-rgb: 95, 100, 137;
+  --color-text-tertiary: #8B8FAC;
+  --color-text-accent: #CDC3FF;
+  --color-text-accent-rgb: 205, 195, 255;
+
+  /* === Backgrounds === */
+  --color-app-bg: #F7F7F7;
+  --color-bg-dark: #292B3D;
+  --color-bg-pink: #FDDBFD;
+  --color-bg-coral: #FEE0D9;
+  --color-bg-sky: #D4EDF7;
+
+  /* === Borders === */
+  --color-border-default: #AFB2C7;
+  --color-border-accent: #CDC3FF;
+  --color-border-strong: #8E7DFF;
+  --color-border-strong-rgb: 142, 125, 255;
+
+  /* === Buttons === */
+  --color-button-primary-hover: #854cff;
+  --color-button-primary-hover-rgb: 133, 76, 255;
+  --color-button-secondary-bg: #E6E1FF;
+  --color-button-secondary-hover: #CDC3FF;
+  --color-button-quaternary-bg: #CDC3FF;
+  --color-button-quaternary-text: #292B3D;
+
+  /* === Greys === */
+  --color-off-white: #F7F7F7;
+  --color-grey-base: #4b4b4b;
+  --color-grey-base-rgb: 75, 75, 75;
+  --color-grey-light: #bcbcbc;
+  --color-grey-light-rgb: 188, 188, 188;
+  --color-grey-lightest: #f5f5f5;
+  --color-grey-lightest-rgb: 245, 245, 245;
+  --color-grey-10: #f8f8f8;
+  --color-grey-20: #f2f2f2;
+  --color-grey-30: #EEEFF1;
+  --color-grey-40: #E4E4E4;
+  --color-grey-60: #DEE0E3;
+  --color-grey-80: #C9C9C9;
+  --color-grey-100: #C8CBD0;
+
+  /* === Third-party / logo === */
+  --color-bank-yellow: #FFCC00;       /* CommBank glyph only — not a Frollo brand colour */
+
+  /* === Derived alphas (palette doesn't define these directly) === */
+  --color-primary-a10: rgba(81, 42, 189, 0.10);
+  --color-text-accent-a18: rgba(205, 195, 255, 0.18);
+  --color-warning-a15: rgba(251, 99, 64, 0.15);
+
+  /* === Info === */
+  --color-info: #0dcaf0;
+  --color-info-rgb: 13, 202, 240;
+  --color-info-a15: rgba(13, 202, 240, 0.15);
+
+  /* === Shadow tints (kept from prior system; palette doesn't define) === */
+  --color-shadow-card: rgba(17, 20, 24, 0.06);
+  --color-shadow-nav: rgba(0, 0, 0, 0.02);
+  --color-shadow-dark-card: rgba(0, 0, 0, 0.4);
+
+  /* === Spacing scale === */
+  --scale-4: 4px;
+  --scale-8: 8px;
+  --scale-12: 12px;
+  --scale-16: 16px;
+  --scale-24: 24px;
+  --scale-32: 32px;
+  --scale-48: 48px;
+  --scale-64: 64px;
+
+  /* === Typography === */
+  --family-forma-djr: 'Forma DJR Text', 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --family-calibri: 'Calibri', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --weight-400: 400;
+  --weight-500: 500;
+  --weight-600: 600;
+  --weight-700: 700;
+  --weight-900: 900;
+
+  --size-14: 0.875rem;
+  --size-16: 1rem;
+  --size-17: 1.05rem;
+  --size-18: 1.15rem;
+  --size-clamp-section: clamp(28px, 3vw, 36px);
+  --size-clamp-hero: clamp(36px, 5vw, 56px);
+
+  --tracking-tight: -0.02em;
+  --tracking-normal: normal;
+
+  --lh-tight: 1.1;
+  --lh-base: 1.5;
+  --lh-relaxed: 1.6;
+
+  /* === Motion === */
+  --duration-150: 150ms;
+  --duration-200: 200ms;
+  --duration-250: 250ms;
+  --duration-300: 300ms;
+  --ease-standard: ease;
+
+  /* === Shape === */
+  --radius-0: 0px;
+  --radius-4: 4px;
+
+  /* === Misc === */
+  --width-ring: 0.2rem;
+}
+
+/* ============================================================
+   2. Semantic tokens — components consume ONLY these
+   ============================================================ */
+
+/* 2a. Theme-neutral surface (light) */
+:root {
+  --ink: var(--color-text-default);
+  --muted: var(--color-text-secondary);
+  --bg: var(--color-tertiary);
+  --bg-alt: var(--color-app-bg);
+  --border: var(--color-border-default);
+  --card-bg: var(--color-tertiary);
+
+  /* Spacing role */
+  --space-1: var(--scale-4);
+  --space-2: var(--scale-8);
+  --space-3: var(--scale-12);
+  --space-4: var(--scale-16);
+  --space-5: var(--scale-24);
+  --space-6: var(--scale-32);
+  --space-7: var(--scale-48);
+  --space-8: var(--scale-64);
+
+  /* Typography size role */
+  --fs-section: var(--size-clamp-section);
+  --fs-lead: var(--size-18);
+  --fs-meta: var(--size-17);
+  --fs-card-heading: var(--size-18);
+  --fs-body: var(--size-16);
+  --fs-small: var(--size-14);
+
+  /* Line-height role */
+  --lh-hero: var(--lh-tight);
+
+  /* Weight role */
+  --weight-emphasis: var(--weight-600);
+
+  /* Motion role */
+  --motion-fast: var(--duration-150);
+  --motion-base: var(--duration-200);
+  --motion-slow: var(--duration-300);
+  --motion-exit: var(--duration-250);
+  --easing-standard: var(--ease-standard);
+
+  /* Focus ring */
+  --focus-ring-width: var(--width-ring);
+
+  /* Shadows (theme re-aliases below) */
+  --shadow-card-hover: 0 6px 24px var(--color-shadow-card);
+  --shadow-nav-scrolled: 0 1px 0 var(--color-shadow-nav);
+}
+
+/* 2b. Theme tokens (light) */
+:root {
+  --accent: var(--color-primary);
+  --accent-rgb: var(--color-primary-rgb);
+  /* NB: --accent-dark is the *hover* state. The palette's button-primary-hover
+     is lighter than primary, not darker — name kept for stability across the
+     existing component rules; semantically read as "accent hover variant". */
+  --accent-dark: var(--color-button-primary-hover);
+  --accent-dark-rgb: var(--color-button-primary-hover-rgb);
+  --accent-tint: var(--color-primary-a10);
+  --accent-ink: var(--color-tertiary);
+  --accent-emphasis: var(--color-primary-dark);
+  --secondary: var(--color-text-secondary);
+  --secondary-rgb: var(--color-text-secondary-rgb);
+
+  --success: var(--color-success);
+  --success-rgb: var(--color-success-rgb);
+  --success-tint: var(--color-success-bg);
+  --warning: var(--color-warning);
+  --warning-rgb: var(--color-warning-rgb);
+  --warning-tint: var(--color-warning-a15);
+  --danger: var(--color-error);          /* palette uses 'error', semantic uses 'danger' */
+  --danger-rgb: var(--color-error-rgb);
+  --danger-tint: var(--color-error-bg);
+  --info: var(--color-info);
+  --info-rgb: var(--color-info-rgb);
+  --info-tint: var(--color-info-a15);
+  --valid: var(--success);
+  --invalid: var(--danger);
+
+  --font-heading: var(--family-forma-djr);
+  --font-body: var(--family-calibri);
+  --weight-hero: var(--weight-900);
+  --weight-section: var(--weight-700);
+  --weight-body: var(--weight-400);
+  --weight-label: var(--weight-500);
+  --heading-tracking: var(--tracking-tight);
+  --heading-transform: none;
+  --body-line-height: var(--lh-relaxed);
+  --label-tracking: var(--tracking-normal);
+  --label-transform: none;
+
+  --radius: var(--radius-4);
+  --btn-weight: var(--weight-500);
+  --service-icon-bg: var(--accent-tint);
+
+  --focus-ring-color: var(--accent-tint);
+}
+
+/* 2c. Bootstrap CSS-variable bridge (light) — reads from semantic layer.
+       Selector matches Bootstrap's `:root, [data-bs-theme=light]` so our
+       body/secondary/tertiary color overrides win at equal specificity
+       (source-order tiebreak). */
+:root, [data-bs-theme="light"] {
+  --bs-primary: var(--accent);
+  --bs-primary-rgb: var(--accent-rgb);
+  --bs-link-color: var(--accent);
+  --bs-link-color-rgb: var(--accent-rgb);
+  --bs-link-hover-color: var(--accent-dark);
+  --bs-link-hover-color-rgb: var(--accent-dark-rgb);
+  --bs-secondary: var(--secondary);
+  --bs-secondary-rgb: var(--secondary-rgb);
+  --bs-success: var(--success);
+  --bs-success-rgb: var(--success-rgb);
+  --bs-danger: var(--danger);
+  --bs-danger-rgb: var(--danger-rgb);
+  --bs-warning: var(--warning);
+  --bs-warning-rgb: var(--warning-rgb);
+  --bs-info: var(--info);
+  --bs-info-rgb: var(--info-rgb);
+  --bs-border-radius: var(--radius);
+  --bs-border-radius-sm: var(--radius);
+  --bs-border-radius-lg: var(--radius);
+  --bs-body-color: var(--ink);
+  --bs-body-color-rgb: var(--color-text-default-rgb);
+  --bs-secondary-color: var(--muted);
+  --bs-secondary-color-rgb: var(--color-text-secondary-rgb);
+  --bs-tertiary-color: var(--color-text-tertiary);
+  --bs-body-font-family: var(--font-body);
+  --bs-body-font-weight: var(--weight-body);
+  --bs-body-line-height: var(--body-line-height);
+  --bs-form-valid-color: var(--valid);
+  --bs-form-valid-border-color: var(--valid);
+  --bs-form-invalid-color: var(--invalid);
+  --bs-form-invalid-border-color: var(--invalid);
+  --bs-focus-ring-color: var(--focus-ring-color);
+  --bs-focus-ring-width: var(--focus-ring-width);
+}
+
+/* 2d. Dark mode — re-aliases semantic tokens to different primitives.
+       Palette dark-mode coverage is thin; non-palette greys are reused
+       for surfaces and borders where the palette doesn't supply one. */
+[data-theme="dark"], [data-bs-theme="dark"] {
+  /* Surface */
+  --ink: var(--color-grey-lightest);
+  --muted: var(--color-grey-light);
+  --bg: var(--color-bg-dark);
+  --bg-alt: var(--color-secondary);
+  --border: var(--color-grey-base);
+  --card-bg: var(--color-secondary);
+
+  /* Theme dark — light-purple accent for AA contrast on dark surface */
+  --accent: var(--color-text-accent);
+  --accent-rgb: var(--color-text-accent-rgb);
+  --accent-dark: var(--color-border-strong);
+  --accent-dark-rgb: var(--color-border-strong-rgb);
+  --accent-tint: var(--color-text-accent-a18);
+  --accent-emphasis: var(--accent);
+  --secondary: var(--color-grey-light);
+  --secondary-rgb: var(--color-grey-light-rgb);
+
+  /* Bridge re-aliases (only the values that change) */
+  --bs-primary: var(--accent);
+  --bs-primary-rgb: var(--accent-rgb);
+  --bs-link-color: var(--accent);
+  --bs-link-color-rgb: var(--accent-rgb);
+  --bs-link-hover-color: var(--accent-dark);
+  --bs-link-hover-color-rgb: var(--accent-dark-rgb);
+  --bs-secondary: var(--secondary);
+  --bs-secondary-rgb: var(--secondary-rgb);
+  --bs-body-color: var(--ink);
+  --bs-body-color-rgb: var(--color-grey-lightest-rgb);
+  --bs-secondary-color: var(--muted);
+  --bs-secondary-color-rgb: var(--color-grey-light-rgb);
+  --bs-tertiary-color: var(--color-text-tertiary);
+  --bs-focus-ring-color: var(--focus-ring-color);
+
+  /* Shadow re-aliases for dark surface */
+  --shadow-card-hover: 0 6px 24px var(--color-shadow-dark-card);
+  --shadow-nav-scrolled: 0 1px 0 var(--color-shadow-dark-card);
+}
+
+/* ============================================================
+   3. Bootstrap component-scoped overrides
+   ------------------------------------------------------------
+   The :root bridge above only reaches Bootstrap *utilities* and
+   the theme-color *subtle/emphasis* tokens. Per-component vars
+   (--bs-btn-bg, --bs-pagination-active-bg, etc.) are declared on
+   each component class with HARD-CODED hex values in Bootstrap's
+   source. Theme-aware behaviour requires re-overriding them at
+   the component scope here.
+   ============================================================ */
+
+/* Theme-color subtle/emphasis tokens.
+   Used by .alert-{c}, .list-group-item-{c}, .accordion-button:not(.collapsed),
+   .text-bg-{c}-subtle, .border-{c}-subtle, etc. */
+:root {
+  --bs-primary-text-emphasis: var(--accent-emphasis);
+  --bs-primary-bg-subtle: var(--accent-tint);
+  --bs-primary-border-subtle: var(--color-border-accent);
+
+  --bs-secondary-text-emphasis: var(--secondary);
+  --bs-secondary-bg-subtle: var(--bg-alt);
+  --bs-secondary-border-subtle: var(--border);
+
+  --bs-success-text-emphasis: var(--success);
+  --bs-success-bg-subtle: var(--success-tint);
+  --bs-success-border-subtle: var(--success);
+
+  --bs-danger-text-emphasis: var(--danger);
+  --bs-danger-bg-subtle: var(--danger-tint);
+  --bs-danger-border-subtle: var(--danger);
+
+  --bs-warning-text-emphasis: var(--warning);
+  --bs-warning-bg-subtle: var(--warning-tint);
+  --bs-warning-border-subtle: var(--warning);
+
+  --bs-info-text-emphasis: var(--info);
+  --bs-info-bg-subtle: var(--info-tint);
+  --bs-info-border-subtle: var(--info);
+}
+
+/* Solid buttons */
+.btn-primary {
+  --bs-btn-color: var(--accent-ink);
+  --bs-btn-bg: var(--accent);
+  --bs-btn-border-color: var(--accent);
+  --bs-btn-hover-color: var(--accent-ink);
+  --bs-btn-hover-bg: var(--accent-dark);
+  --bs-btn-hover-border-color: var(--accent-dark);
+  --bs-btn-focus-shadow-rgb: var(--accent-rgb);
+  --bs-btn-active-color: var(--accent-ink);
+  --bs-btn-active-bg: var(--accent-dark);
+  --bs-btn-active-border-color: var(--accent-dark);
+  --bs-btn-disabled-color: var(--accent-ink);
+  --bs-btn-disabled-bg: var(--accent);
+  --bs-btn-disabled-border-color: var(--accent);
+}
+.btn-secondary {
+  --bs-btn-color: var(--accent-ink);
+  --bs-btn-bg: var(--secondary);
+  --bs-btn-border-color: var(--secondary);
+  --bs-btn-hover-color: var(--accent-ink);
+  --bs-btn-hover-bg: var(--ink);
+  --bs-btn-hover-border-color: var(--ink);
+  --bs-btn-focus-shadow-rgb: var(--secondary-rgb);
+  --bs-btn-active-color: var(--accent-ink);
+  --bs-btn-active-bg: var(--ink);
+  --bs-btn-active-border-color: var(--ink);
+  --bs-btn-disabled-color: var(--accent-ink);
+  --bs-btn-disabled-bg: var(--secondary);
+  --bs-btn-disabled-border-color: var(--secondary);
+}
+.btn-success {
+  --bs-btn-color: var(--accent-ink);
+  --bs-btn-bg: var(--success);
+  --bs-btn-border-color: var(--success);
+  --bs-btn-hover-color: var(--accent-ink);
+  --bs-btn-hover-bg: var(--success);
+  --bs-btn-hover-border-color: var(--success);
+  --bs-btn-focus-shadow-rgb: var(--success-rgb);
+  --bs-btn-active-color: var(--accent-ink);
+  --bs-btn-active-bg: var(--success);
+  --bs-btn-active-border-color: var(--success);
+  --bs-btn-disabled-color: var(--accent-ink);
+  --bs-btn-disabled-bg: var(--success);
+  --bs-btn-disabled-border-color: var(--success);
+}
+.btn-danger {
+  --bs-btn-color: var(--accent-ink);
+  --bs-btn-bg: var(--danger);
+  --bs-btn-border-color: var(--danger);
+  --bs-btn-hover-color: var(--accent-ink);
+  --bs-btn-hover-bg: var(--danger);
+  --bs-btn-hover-border-color: var(--danger);
+  --bs-btn-focus-shadow-rgb: var(--danger-rgb);
+  --bs-btn-active-color: var(--accent-ink);
+  --bs-btn-active-bg: var(--danger);
+  --bs-btn-active-border-color: var(--danger);
+  --bs-btn-disabled-color: var(--accent-ink);
+  --bs-btn-disabled-bg: var(--danger);
+  --bs-btn-disabled-border-color: var(--danger);
+}
+.btn-warning {
+  --bs-btn-color: var(--ink);
+  --bs-btn-bg: var(--warning);
+  --bs-btn-border-color: var(--warning);
+  --bs-btn-hover-color: var(--ink);
+  --bs-btn-hover-bg: var(--warning);
+  --bs-btn-hover-border-color: var(--warning);
+  --bs-btn-focus-shadow-rgb: var(--warning-rgb);
+  --bs-btn-active-color: var(--ink);
+  --bs-btn-active-bg: var(--warning);
+  --bs-btn-active-border-color: var(--warning);
+  --bs-btn-disabled-color: var(--ink);
+  --bs-btn-disabled-bg: var(--warning);
+  --bs-btn-disabled-border-color: var(--warning);
+}
+.btn-info {
+  --bs-btn-color: var(--ink);
+  --bs-btn-bg: var(--info);
+  --bs-btn-border-color: var(--info);
+  --bs-btn-hover-color: var(--ink);
+  --bs-btn-hover-bg: var(--info);
+  --bs-btn-hover-border-color: var(--info);
+  --bs-btn-focus-shadow-rgb: var(--info-rgb);
+  --bs-btn-active-color: var(--ink);
+  --bs-btn-active-bg: var(--info);
+  --bs-btn-active-border-color: var(--info);
+  --bs-btn-disabled-color: var(--ink);
+  --bs-btn-disabled-bg: var(--info);
+  --bs-btn-disabled-border-color: var(--info);
+}
+
+/* Outline buttons */
+.btn-outline-primary {
+  --bs-btn-color: var(--accent);
+  --bs-btn-border-color: var(--accent);
+  --bs-btn-hover-color: var(--accent-ink);
+  --bs-btn-hover-bg: var(--accent);
+  --bs-btn-hover-border-color: var(--accent);
+  --bs-btn-focus-shadow-rgb: var(--accent-rgb);
+  --bs-btn-active-color: var(--accent-ink);
+  --bs-btn-active-bg: var(--accent);
+  --bs-btn-active-border-color: var(--accent);
+  --bs-btn-disabled-color: var(--accent);
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: var(--accent);
+  --bs-gradient: none;
+}
+.btn-outline-secondary {
+  --bs-btn-color: var(--secondary);
+  --bs-btn-border-color: var(--secondary);
+  --bs-btn-hover-color: var(--accent-ink);
+  --bs-btn-hover-bg: var(--secondary);
+  --bs-btn-hover-border-color: var(--secondary);
+  --bs-btn-focus-shadow-rgb: var(--secondary-rgb);
+  --bs-btn-active-color: var(--accent-ink);
+  --bs-btn-active-bg: var(--secondary);
+  --bs-btn-active-border-color: var(--secondary);
+  --bs-btn-disabled-color: var(--secondary);
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: var(--secondary);
+  --bs-gradient: none;
+}
+.btn-outline-success {
+  --bs-btn-color: var(--success);
+  --bs-btn-border-color: var(--success);
+  --bs-btn-hover-color: var(--accent-ink);
+  --bs-btn-hover-bg: var(--success);
+  --bs-btn-hover-border-color: var(--success);
+  --bs-btn-focus-shadow-rgb: var(--success-rgb);
+  --bs-btn-active-color: var(--accent-ink);
+  --bs-btn-active-bg: var(--success);
+  --bs-btn-active-border-color: var(--success);
+  --bs-btn-disabled-color: var(--success);
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: var(--success);
+  --bs-gradient: none;
+}
+.btn-outline-danger {
+  --bs-btn-color: var(--danger);
+  --bs-btn-border-color: var(--danger);
+  --bs-btn-hover-color: var(--accent-ink);
+  --bs-btn-hover-bg: var(--danger);
+  --bs-btn-hover-border-color: var(--danger);
+  --bs-btn-focus-shadow-rgb: var(--danger-rgb);
+  --bs-btn-active-color: var(--accent-ink);
+  --bs-btn-active-bg: var(--danger);
+  --bs-btn-active-border-color: var(--danger);
+  --bs-btn-disabled-color: var(--danger);
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: var(--danger);
+  --bs-gradient: none;
+}
+.btn-outline-warning {
+  --bs-btn-color: var(--warning);
+  --bs-btn-border-color: var(--warning);
+  --bs-btn-hover-color: var(--ink);
+  --bs-btn-hover-bg: var(--warning);
+  --bs-btn-hover-border-color: var(--warning);
+  --bs-btn-focus-shadow-rgb: var(--warning-rgb);
+  --bs-btn-active-color: var(--ink);
+  --bs-btn-active-bg: var(--warning);
+  --bs-btn-active-border-color: var(--warning);
+  --bs-btn-disabled-color: var(--warning);
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: var(--warning);
+  --bs-gradient: none;
+}
+.btn-outline-info {
+  --bs-btn-color: var(--info);
+  --bs-btn-border-color: var(--info);
+  --bs-btn-hover-color: var(--ink);
+  --bs-btn-hover-bg: var(--info);
+  --bs-btn-hover-border-color: var(--info);
+  --bs-btn-focus-shadow-rgb: var(--info-rgb);
+  --bs-btn-active-color: var(--ink);
+  --bs-btn-active-bg: var(--info);
+  --bs-btn-active-border-color: var(--info);
+  --bs-btn-disabled-color: var(--info);
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: var(--info);
+  --bs-gradient: none;
+}
+
+/* Pagination — active page + link colours */
+.pagination {
+  --bs-pagination-color: var(--accent);
+  --bs-pagination-hover-color: var(--accent-dark);
+  --bs-pagination-focus-color: var(--accent-dark);
+  --bs-pagination-focus-bg: var(--accent-tint);
+  --bs-pagination-focus-box-shadow: 0 0 0 var(--focus-ring-width) var(--focus-ring-color);
+  --bs-pagination-active-color: var(--accent-ink);
+  --bs-pagination-active-bg: var(--accent);
+  --bs-pagination-active-border-color: var(--accent);
+}
+
+/* Nav-pills active */
+.nav-pills {
+  --bs-nav-pills-link-active-color: var(--accent-ink);
+  --bs-nav-pills-link-active-bg: var(--accent);
+}
+
+/* Nav-underline active (5.3+) */
+.nav-underline {
+  --bs-nav-underline-link-active-color: var(--accent);
+  --bs-nav-underline-gap: 1rem;
+}
+.nav-underline .nav-link.active,
+.nav-underline .show > .nav-link {
+  border-bottom-color: var(--accent);
+}
+
+/* Nav-tabs — keep neutral; only override the focus ring */
+.nav-tabs .nav-link:focus { border-color: var(--accent) var(--accent) var(--border); }
+
+/* Dropdown active item */
+.dropdown-menu {
+  --bs-dropdown-link-active-color: var(--accent-ink);
+  --bs-dropdown-link-active-bg: var(--accent);
+}
+
+/* List group active item */
+.list-group {
+  --bs-list-group-active-color: var(--accent-ink);
+  --bs-list-group-active-bg: var(--accent);
+  --bs-list-group-active-border-color: var(--accent);
+}
+
+/* Accordion expanded panel + focus */
+.accordion {
+  --bs-accordion-active-color: var(--accent-emphasis);
+  --bs-accordion-active-bg: var(--accent-tint);
+  --bs-accordion-btn-focus-border-color: var(--accent);
+  --bs-accordion-btn-focus-box-shadow: 0 0 0 var(--focus-ring-width) var(--focus-ring-color);
+}
+
+/* Form-check checked state (background-color is hard-coded in Bootstrap source) */
+.form-check-input:checked {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+.form-check-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 var(--focus-ring-width) var(--focus-ring-color);
+}
+
+/* Progress bar default fill (uses --bs-primary indirectly but pin it explicitly) */
+.progress {
+  --bs-progress-bar-bg: var(--accent);
+}
+
+/* Form range — pseudo-element edge case.
+   Bootstrap 5.3 hard-codes the thumb color on each vendor pseudo-element with
+   no CSS variable, so we must override the property directly on each one. */
+.form-range::-webkit-slider-thumb        { background-color: var(--accent); }
+.form-range::-webkit-slider-thumb:active { background-color: var(--accent-dark); }
+.form-range::-moz-range-thumb            { background-color: var(--accent); }
+.form-range::-moz-range-thumb:active     { background-color: var(--accent-dark); }
+.form-range:focus::-webkit-slider-thumb  { box-shadow: 0 0 0 1px var(--bg), 0 0 0 var(--focus-ring-width) var(--focus-ring-color); }
+.form-range:focus::-moz-range-thumb      { box-shadow: 0 0 0 1px var(--bg), 0 0 0 var(--focus-ring-width) var(--focus-ring-color); }
+
+/* ============================================================
+   4. Base
+   ============================================================ */
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  font-weight: var(--weight-body);
+  line-height: var(--body-line-height);
+  font-size: var(--fs-body);
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color var(--motion-base) var(--easing-standard),
+              color var(--motion-base) var(--easing-standard);
+}
+
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); }
+
+/* ============================================================
+   5. Components — semantic tokens only
+   ============================================================ */
+
+/* Buttons */
+.btn-accent {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+  border-radius: var(--radius);
+  font-weight: var(--btn-weight);
+}
+.btn-accent:hover, .btn-accent:focus {
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+  color: var(--accent-ink);
+}
+
+/* Links */
+.link-accent {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: var(--weight-label);
+}
+.link-accent:hover { color: var(--accent-dark); text-decoration: underline; }
+
+/* Section headings (used standalone, no .section wrapper) */
+.section-title {
+  font-size: var(--fs-section);
+  font-weight: var(--weight-section);
+  letter-spacing: var(--heading-tracking);
+  text-transform: var(--heading-transform);
+  margin-bottom: var(--space-2);
+}
+.section-sub { color: var(--muted); font-size: var(--fs-meta); max-width: 640px; }
+
+/* Service icon (standalone — used without a .service wrapper) */
+.service-icon {
+  width: 44px; height: 44px; border-radius: var(--radius);
+  background: var(--service-icon-bg);
+  color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; margin-bottom: var(--space-4);
+}
+
+/* Work */
+.work-card { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: transform var(--motion-fast) var(--easing-standard), box-shadow var(--motion-fast) var(--easing-standard); }
+.work-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-card-hover); }
+.work-thumb { aspect-ratio: 16 / 9; background-size: cover; background-position: center; }
+.work-thumb-1 { background: linear-gradient(135deg, var(--accent-tint), var(--accent)); }
+.work-thumb-2 { background: linear-gradient(135deg, var(--bg-alt), var(--secondary)); }
+.work-thumb-3 { background: linear-gradient(135deg, var(--accent-tint), var(--secondary)); }
+
+/* Testimonials */
+.quote {
+  background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--space-5);
+  height: 100%;
+}
+.quote blockquote { font-size: var(--fs-body); color: var(--ink); margin: 0; }
+.quote-attr { color: var(--muted); font-size: var(--fs-small); }
+
+/* Form */
+.form-label {
+  font-weight: var(--weight-label);
+  letter-spacing: var(--label-tracking);
+  text-transform: var(--label-transform);
+}
+.form-control { border-radius: var(--radius); }
+.form-control:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 var(--focus-ring-width) var(--focus-ring-color);
+}
+
+/* Dark-mode shadows are handled in the semantic layer above (--shadow-* re-alias). */

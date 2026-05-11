@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Insights · Frollo</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="bootstrap-bridge.css">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<div class="app-shell">
+
+  <aside class="app-sidebar">
+    <a href="index.html" class="brand"><span class="brand-dot"></span><span>Frollo</span></a>
+    <nav class="app-nav">
+      <a href="index.html"><i class="bi bi-house-door"></i>Dashboard</a>
+      <a href="transactions.html"><i class="bi bi-list-ul"></i>Transactions</a>
+      <a href="goals.html"><i class="bi bi-bullseye"></i>Goals</a>
+      <a href="accounts.html"><i class="bi bi-credit-card-2-front"></i>Accounts</a>
+      <a href="insights.html" class="is-active"><i class="bi bi-bar-chart-line"></i>Insights</a>
+      <a href="components.html"><i class="bi bi-grid-3x3-gap"></i>Components</a>
+      <div class="app-nav-spacer"></div>
+      <span class="app-nav-label">Account</span>
+      <a href="settings.html"><i class="bi bi-gear"></i>Settings</a>
+      <a href="signin.html"><i class="bi bi-box-arrow-right"></i>Sign out</a>
+    </nav>
+    <div class="user"><div class="avatar">GG</div><div class="flex-fill text-truncate"><div class="name text-truncate">Gavin Griffith</div><div class="role">Member · Frollo Plus</div></div></div>
+  </aside>
+
+  <div class="app-main">
+    <header class="app-topbar">
+      <div>
+        <div class="crumbs"><span>Home</span> · Insights</div>
+        <h1>Insights</h1>
+      </div>
+      <div></div>
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a class="nav-link" href="#">Week</a></li>
+        <li class="nav-item"><a class="nav-link active" href="#">Month</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Year</a></li>
+      </ul>
+    </header>
+
+    <main class="app-content">
+
+      <!-- KPIs -->
+      <div class="row g-3 mb-4">
+        <div class="col-6 col-md-3">
+          <div class="card"><div class="card-body">
+            <div class="small text-frollo-secondary">Spending</div>
+            <div class="fs-4 fw-medium mt-1">$3,212.48</div>
+            <div class="text-frollo-error" style="font-size: 12px;">+12% MoM</div>
+          </div></div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="card"><div class="card-body">
+            <div class="small text-frollo-secondary">Income</div>
+            <div class="fs-4 fw-medium mt-1">$4,360.00</div>
+            <div class="text-frollo-success" style="font-size: 12px;">+3% MoM</div>
+          </div></div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="card"><div class="card-body">
+            <div class="small text-frollo-secondary">Saved</div>
+            <div class="fs-4 fw-medium mt-1">$1,148.00</div>
+            <div class="text-frollo-secondary" style="font-size: 12px;">26% of income</div>
+          </div></div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="card"><div class="card-body">
+            <div class="small text-frollo-secondary">Biggest category</div>
+            <div class="fs-4 fw-medium mt-1">Groceries</div>
+            <div class="text-frollo-secondary" style="font-size: 12px;">$642 · 20%</div>
+          </div></div>
+        </div>
+      </div>
+
+      <!-- Big chart -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <div>
+              <h3 class="card-title mb-0">Daily spending</h3>
+              <p class="small text-frollo-secondary mb-0">Last 30 days</p>
+            </div>
+            <div class="d-flex align-items-center gap-3 small text-frollo-secondary">
+              <span class="d-inline-flex align-items-center gap-1"><span class="d-inline-block rounded-circle" style="width: 8px; height: 8px; background: var(--color-primary);"></span>This month</span>
+              <span class="d-inline-flex align-items-center gap-1"><span class="d-inline-block rounded-circle" style="width: 8px; height: 8px; background: var(--color-grey-light);"></span>Last month avg.</span>
+            </div>
+          </div>
+          <div class="fw-bar-chart" style="--bars: 30; height: 220px;">
+            <div class="bar" style="height: 20%"></div>
+            <div class="bar" style="height: 32%"></div>
+            <div class="bar" style="height: 18%"></div>
+            <div class="bar is-active" style="height: 70%"></div>
+            <div class="bar" style="height: 28%"></div>
+            <div class="bar" style="height: 50%"></div>
+            <div class="bar is-active" style="height: 85%"></div>
+            <div class="bar" style="height: 35%"></div>
+            <div class="bar" style="height: 42%"></div>
+            <div class="bar" style="height: 22%"></div>
+            <div class="bar" style="height: 60%"></div>
+            <div class="bar" style="height: 38%"></div>
+            <div class="bar is-active" style="height: 90%"></div>
+            <div class="bar" style="height: 28%"></div>
+            <div class="bar" style="height: 18%"></div>
+            <div class="bar" style="height: 55%"></div>
+            <div class="bar" style="height: 32%"></div>
+            <div class="bar" style="height: 78%"></div>
+            <div class="bar" style="height: 28%"></div>
+            <div class="bar" style="height: 44%"></div>
+            <div class="bar" style="height: 36%"></div>
+            <div class="bar" style="height: 52%"></div>
+            <div class="bar" style="height: 72%"></div>
+            <div class="bar" style="height: 26%"></div>
+            <div class="bar" style="height: 40%"></div>
+            <div class="bar" style="height: 28%"></div>
+            <div class="bar is-active" style="height: 65%"></div>
+            <div class="bar" style="height: 30%"></div>
+            <div class="bar" style="height: 18%"></div>
+            <div class="bar" style="height: 48%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category + insights -->
+      <div class="row g-3 mb-4">
+        <div class="col-lg-6">
+          <div class="card h-100">
+            <div class="card-body">
+              <h3 class="card-title mb-1">Spending by category</h3>
+              <p class="small text-frollo-secondary mb-4">May 2026</p>
+              <div class="vstack gap-3">
+                <div>
+                  <div class="d-flex justify-content-between small mb-1">
+                    <span><span class="d-inline-block rounded-circle me-2" style="width: 8px; height: 8px; background: var(--color-primary);"></span>Groceries</span>
+                    <span class="fw-medium">$642.10 · 20%</span>
+                  </div>
+                  <div class="progress" style="height: 6px;" role="progressbar" aria-valuenow="20"><div class="progress-bar" style="width: 20%"></div></div>
+                </div>
+                <div>
+                  <div class="d-flex justify-content-between small mb-1">
+                    <span><span class="d-inline-block rounded-circle me-2" style="width: 8px; height: 8px; background: var(--color-primary-hover);"></span>Transport</span>
+                    <span class="fw-medium">$486.00 · 15%</span>
+                  </div>
+                  <div class="progress" style="height: 6px;" role="progressbar" aria-valuenow="15"><div class="progress-bar" style="width: 15%; background-color: var(--color-primary-hover);"></div></div>
+                </div>
+                <div>
+                  <div class="d-flex justify-content-between small mb-1">
+                    <span><span class="d-inline-block rounded-circle me-2" style="width: 8px; height: 8px; background: var(--color-border-strong);"></span>Bills &amp; utilities</span>
+                    <span class="fw-medium">$412.20 · 13%</span>
+                  </div>
+                  <div class="progress" style="height: 6px;" role="progressbar" aria-valuenow="13"><div class="progress-bar" style="width: 13%; background-color: var(--color-border-strong);"></div></div>
+                </div>
+                <div>
+                  <div class="d-flex justify-content-between small mb-1">
+                    <span><span class="d-inline-block rounded-circle me-2" style="width: 8px; height: 8px; background: var(--color-border-accent);"></span>Dining out</span>
+                    <span class="fw-medium">$320.90 · 10%</span>
+                  </div>
+                  <div class="progress" style="height: 6px;" role="progressbar" aria-valuenow="10"><div class="progress-bar" style="width: 10%; background-color: var(--color-border-accent);"></div></div>
+                </div>
+                <div>
+                  <div class="d-flex justify-content-between small mb-1">
+                    <span><span class="d-inline-block rounded-circle me-2" style="width: 8px; height: 8px; background: var(--color-warning);"></span>Entertainment</span>
+                    <span class="fw-medium">$184.50 · 6%</span>
+                  </div>
+                  <div class="progress" style="height: 6px;" role="progressbar" aria-valuenow="6"><div class="progress-bar" style="width: 6%; background-color: var(--color-warning);"></div></div>
+                </div>
+                <div>
+                  <div class="d-flex justify-content-between small mb-1">
+                    <span><span class="d-inline-block rounded-circle me-2" style="width: 8px; height: 8px; background: var(--color-grey-light);"></span>Other</span>
+                    <span class="fw-medium">$1,166.78 · 36%</span>
+                  </div>
+                  <div class="progress" style="height: 6px;" role="progressbar" aria-valuenow="36"><div class="progress-bar" style="width: 36%; background-color: var(--color-grey-light);"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card h-100">
+            <div class="card-body">
+              <h3 class="card-title mb-1">Insights</h3>
+              <p class="small text-frollo-secondary mb-4">Generated 11 May 2026</p>
+              <div class="vstack gap-3">
+                <div class="alert alert-success d-flex gap-3 mb-0">
+                  <i class="bi bi-graph-up"></i>
+                  <div class="small text-frollo-default">Your savings rate (26%) is in the top quartile of Frollo members your age.</div>
+                </div>
+                <div class="alert alert-info d-flex gap-3 mb-0">
+                  <i class="bi bi-info-circle"></i>
+                  <div class="small text-frollo-default">Groceries are up <strong>$84</strong> vs. last month — mostly from larger weekly shops on Saturdays.</div>
+                </div>
+                <div class="alert alert-warning d-flex gap-3 mb-0">
+                  <i class="bi bi-exclamation-triangle"></i>
+                  <div class="small">A $120 charge on 06 May is still uncategorised. <a href="transactions.html" class="link-light text-decoration-underline">Review →</a></div>
+                </div>
+                <div class="alert alert-primary d-flex gap-3 mb-0">
+                  <i class="bi bi-clock-history"></i>
+                  <div class="small text-frollo-default">You spent $32 on subscriptions you haven't used in 30 days. <a href="#" class="link-primary fw-medium text-decoration-none">Show me →</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Top merchants -->
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title mb-1">Top merchants this month</h3>
+          <p class="small text-frollo-secondary mb-4">Ranked by total spend</p>
+          <ul class="list-unstyled mb-0">
+            <li class="d-flex align-items-center justify-content-between py-3 border-bottom" style="border-color: var(--color-grey-30) !important;">
+              <div class="d-flex align-items-center gap-3">
+                <span class="badge text-bg-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 28px; height: 28px;">1</span>
+                <div>
+                  <div class="small fw-medium">Coles</div>
+                  <div class="text-frollo-secondary" style="font-size: 12px;">9 transactions · Groceries</div>
+                </div>
+              </div>
+              <div class="small fw-medium">$420.50</div>
+            </li>
+            <li class="d-flex align-items-center justify-content-between py-3 border-bottom" style="border-color: var(--color-grey-30) !important;">
+              <div class="d-flex align-items-center gap-3">
+                <span class="badge text-bg-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 28px; height: 28px;">2</span>
+                <div>
+                  <div class="small fw-medium">BP</div>
+                  <div class="text-frollo-secondary" style="font-size: 12px;">5 transactions · Transport</div>
+                </div>
+              </div>
+              <div class="small fw-medium">$284.40</div>
+            </li>
+            <li class="d-flex align-items-center justify-content-between py-3 border-bottom" style="border-color: var(--color-grey-30) !important;">
+              <div class="d-flex align-items-center gap-3">
+                <span class="badge text-bg-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 28px; height: 28px;">3</span>
+                <div>
+                  <div class="small fw-medium">Energy Australia</div>
+                  <div class="text-frollo-secondary" style="font-size: 12px;">1 transaction · Bills</div>
+                </div>
+              </div>
+              <div class="small fw-medium">$148.20</div>
+            </li>
+            <li class="d-flex align-items-center justify-content-between py-3 border-bottom" style="border-color: var(--color-grey-30) !important;">
+              <div class="d-flex align-items-center gap-3">
+                <span class="badge text-bg-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 28px; height: 28px;">4</span>
+                <div>
+                  <div class="small fw-medium">Uber Eats</div>
+                  <div class="text-frollo-secondary" style="font-size: 12px;">7 transactions · Dining</div>
+                </div>
+              </div>
+              <div class="small fw-medium">$112.80</div>
+            </li>
+            <li class="d-flex align-items-center justify-content-between py-3">
+              <div class="d-flex align-items-center gap-3">
+                <span class="badge text-bg-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 28px; height: 28px;">5</span>
+                <div>
+                  <div class="small fw-medium">Dawn Patrol Cafe</div>
+                  <div class="text-frollo-secondary" style="font-size: 12px;">14 transactions · Dining</div>
+                </div>
+              </div>
+              <div class="small fw-medium">$98.40</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

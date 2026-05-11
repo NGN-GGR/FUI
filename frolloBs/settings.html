@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Settings · Frollo</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="bootstrap-bridge.css">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<div class="app-shell">
+
+  <aside class="app-sidebar">
+    <a href="index.html" class="brand"><span class="brand-dot"></span><span>Frollo</span></a>
+    <nav class="app-nav">
+      <a href="index.html"><i class="bi bi-house-door"></i>Dashboard</a>
+      <a href="transactions.html"><i class="bi bi-list-ul"></i>Transactions</a>
+      <a href="goals.html"><i class="bi bi-bullseye"></i>Goals</a>
+      <a href="accounts.html"><i class="bi bi-credit-card-2-front"></i>Accounts</a>
+      <a href="insights.html"><i class="bi bi-bar-chart-line"></i>Insights</a>
+      <a href="components.html"><i class="bi bi-grid-3x3-gap"></i>Components</a>
+      <div class="app-nav-spacer"></div>
+      <span class="app-nav-label">Account</span>
+      <a href="settings.html" class="is-active"><i class="bi bi-gear"></i>Settings</a>
+      <a href="signin.html"><i class="bi bi-box-arrow-right"></i>Sign out</a>
+    </nav>
+    <div class="user"><div class="avatar">GG</div><div class="flex-fill text-truncate"><div class="name text-truncate">Gavin Griffith</div><div class="role">Member · Frollo Plus</div></div></div>
+  </aside>
+
+  <div class="app-main">
+    <header class="app-topbar">
+      <div>
+        <div class="crumbs"><span>Home</span> · Settings</div>
+        <h1>Settings</h1>
+      </div>
+      <div></div>
+      <div>
+        <button class="btn btn-primary btn-sm">Save changes</button>
+      </div>
+    </header>
+
+    <main class="app-content">
+
+      <!-- Tabs -->
+      <ul class="nav nav-tabs mb-4">
+        <li class="nav-item"><a class="nav-link active" href="#">Profile</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Preferences</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Notifications</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Security</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Plan &amp; billing</a></li>
+      </ul>
+
+      <div class="row g-3">
+
+        <!-- Main column -->
+        <div class="col-lg-8">
+
+          <!-- Personal details -->
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="card-title mb-1">Personal details</h3>
+              <p class="small text-frollo-secondary mb-4">These are visible to you only. Your bank handles legal identity.</p>
+
+              <div class="d-flex align-items-center gap-3 mb-4">
+                <div class="rounded-circle bg-frollo-gradient d-inline-flex align-items-center justify-content-center text-white fw-medium fs-5" style="width: 64px; height: 64px;">GG</div>
+                <div>
+                  <button class="btn btn-secondary btn-sm">Change photo</button>
+                  <button class="btn btn-link btn-sm text-frollo-error">Remove</button>
+                  <div class="small text-frollo-secondary mt-1">PNG or JPG · up to 2 MB.</div>
+                </div>
+              </div>
+
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label">First name</label>
+                  <input type="text" value="Gavin" class="form-control">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Last name</label>
+                  <input type="text" value="Griffith" class="form-control">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Email</label>
+                  <input type="email" value="gavin.griffith@nextgen.net" class="form-control is-valid">
+                  <div class="valid-feedback">Verified</div>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Phone</label>
+                  <input type="tel" value="+61 412 345 678" class="form-control">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Date of birth</label>
+                  <input type="date" value="1990-05-11" class="form-control">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Country</label>
+                  <select class="form-select">
+                    <option selected>Australia</option>
+                    <option>New Zealand</option>
+                    <option>United Kingdom</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Preferences -->
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="card-title mb-1">Preferences</h3>
+              <p class="small text-frollo-secondary mb-4">How the app feels and behaves.</p>
+
+              <div class="vstack gap-3">
+                <div class="d-flex align-items-center justify-content-between gap-3">
+                  <div>
+                    <div class="fw-medium">Round-up savings</div>
+                    <div class="small text-frollo-secondary">Round every spend up to the nearest dollar and move the difference to your goal.</div>
+                  </div>
+                  <div class="form-check form-switch fw-switch m-0">
+                    <input class="form-check-input" type="checkbox" role="switch" checked>
+                  </div>
+                </div>
+                <hr class="divider my-1">
+                <div class="d-flex align-items-center justify-content-between gap-3">
+                  <div>
+                    <div class="fw-medium">Auto-categorisation</div>
+                    <div class="small text-frollo-secondary">Frollo learns from your edits and re-categorises automatically.</div>
+                  </div>
+                  <div class="form-check form-switch fw-switch m-0">
+                    <input class="form-check-input" type="checkbox" role="switch" checked>
+                  </div>
+                </div>
+                <hr class="divider my-1">
+                <div class="d-flex align-items-center justify-content-between gap-3">
+                  <div>
+                    <div class="fw-medium">Show pending transactions</div>
+                    <div class="small text-frollo-secondary">Display transactions before they clear your bank.</div>
+                  </div>
+                  <div class="form-check form-switch fw-switch m-0">
+                    <input class="form-check-input" type="checkbox" role="switch">
+                  </div>
+                </div>
+                <hr class="divider my-1">
+                <div class="d-flex align-items-center justify-content-between gap-3">
+                  <div>
+                    <div class="fw-medium">Privacy mode</div>
+                    <div class="small text-frollo-secondary">Mask balances on the dashboard.</div>
+                  </div>
+                  <div class="form-check form-switch fw-switch m-0">
+                    <input class="form-check-input" type="checkbox" role="switch">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notifications -->
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title mb-1">Notifications</h3>
+              <p class="small text-frollo-secondary mb-4">Choose where alerts arrive.</p>
+              <table class="table align-middle mb-0">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th class="text-center">Email</th>
+                    <th class="text-center">Push</th>
+                    <th class="text-center">SMS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td class="small">Goal milestones</td><td class="text-center"><input type="checkbox" checked class="form-check-input"></td><td class="text-center"><input type="checkbox" checked class="form-check-input"></td><td class="text-center"><input type="checkbox" class="form-check-input"></td></tr>
+                  <tr><td class="small">Unusual spending</td><td class="text-center"><input type="checkbox" class="form-check-input"></td><td class="text-center"><input type="checkbox" checked class="form-check-input"></td><td class="text-center"><input type="checkbox" checked class="form-check-input"></td></tr>
+                  <tr><td class="small">Weekly digest</td><td class="text-center"><input type="checkbox" checked class="form-check-input"></td><td class="text-center"><input type="checkbox" class="form-check-input"></td><td class="text-center"><input type="checkbox" class="form-check-input"></td></tr>
+                  <tr><td class="small">Connection issues</td><td class="text-center"><input type="checkbox" checked class="form-check-input"></td><td class="text-center"><input type="checkbox" checked class="form-check-input"></td><td class="text-center"><input type="checkbox" class="form-check-input"></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Side column -->
+        <div class="col-lg-4">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="card-title mb-1">Plan</h3>
+              <p class="small text-frollo-secondary mb-3">Frollo Plus · billed monthly</p>
+              <div class="border rounded-3 p-3 mb-3" style="border-color: var(--color-border-default) !important;">
+                <div class="d-flex align-items-center justify-content-between mb-1">
+                  <span class="fw-medium">$9.99 / month</span>
+                  <span class="badge text-bg-success">Active</span>
+                </div>
+                <p class="small text-frollo-secondary mb-0">Next charge 12 Jun 2026 · Visa ending 0712.</p>
+              </div>
+              <button class="btn btn-secondary w-100 mb-2">Switch to yearly</button>
+              <button class="btn btn-link text-frollo-error w-100">Cancel plan</button>
+            </div>
+          </div>
+
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="card-title mb-2">Data &amp; privacy</h3>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex align-items-center justify-content-between px-0">
+                  <span class="small">Download my data</span>
+                  <button class="btn btn-link btn-sm p-0">Request</button>
+                </li>
+                <li class="list-group-item d-flex align-items-center justify-content-between px-0">
+                  <span class="small">Manage CDR consents</span>
+                  <button class="btn btn-link btn-sm p-0">Open</button>
+                </li>
+                <li class="list-group-item d-flex align-items-center justify-content-between px-0">
+                  <span class="small">Delete my account</span>
+                  <button class="btn btn-link btn-sm p-0 text-frollo-error">Start</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="alert alert-info d-flex gap-3 mb-0">
+            <i class="bi bi-info-circle"></i>
+            <div class="small">Need help? Check our <a href="#" class="link-primary text-decoration-none">support docs</a> or <a href="#" class="link-primary text-decoration-none">contact us</a>.</div>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

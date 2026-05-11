@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frollo Vue components — verified preview</title>
+
+  <!-- Frollo tokens (font-face + CSS custom properties) -->
+  <link rel="stylesheet" href="tokens.css">
+
+  <!-- Preview chrome -->
+  <link rel="stylesheet" href="preview-shell.css">
+
+  <!-- Tailwind via Play CDN, configured with the Frollo theme -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        colors: {
+          // Core
+          white: '#FFFFFF',
+          black: '#000000',
+          transparent: 'transparent',
+
+          // Brand
+          primary: '#512ABD',
+          'primary-hover': '#854cff',
+          'primary-dark': '#3A1E8A',
+          'primary-tertiary-fade': '#f5f3ff',
+          secondary: '#141414',
+          tertiary: '#FFFFFF',
+
+          // State
+          success: '#00C696',
+          'success-bg': '#D8FFF6',
+          'success-new': '#4BF0C8',
+          error: '#E74C4C',
+          'error-bg': '#FEE0D9',
+          warning: '#FB6340',
+          info: '#0DCAF0',
+
+          // Text
+          'text-default': '#393C56',
+          'text-secondary': '#5F6489',
+          'text-tertiary': '#8B8FAC',
+          'text-accent': '#CDC3FF',
+          'text-on-dark': '#FFFFFF',
+
+          // Backgrounds
+          'app-bg': '#F7F7F7',
+          'bg-dark': '#292B3D',
+          'bg-pink': '#FDDBFD',
+          'bg-coral': '#FEE0D9',
+          'bg-sky': '#D4EDF7',
+          'button-secondary-bg': '#E6E1FF',
+
+          // Borders
+          'border-default': '#AFB2C7',
+          'border-accent': '#CDC3FF',
+          'border-strong': '#8E7DFF',
+
+          // Greys
+          grey: {
+            base: '#4B4B4B',
+            light: '#BCBCBC',
+            lightest: '#F5F5F5',
+            10: '#F8F8F8',
+            20: '#F2F2F2',
+            30: '#EEEFF1',
+            40: '#E4E4E4',
+            60: '#DEE0E3',
+            80: '#C9C9C9',
+            100: '#C8CBD0',
+          },
+        },
+        fontFamily: {
+          sans: ['Forma DJR Text', 'system-ui', '-apple-system', 'sans-serif'],
+          frollo: ['Forma DJR Text', 'system-ui', '-apple-system', 'sans-serif'],
+        },
+        fontSize: {
+          xs: ['12px', { lineHeight: '19px', letterSpacing: '0.4px' }],
+          sm: ['14px', { lineHeight: '19px', letterSpacing: '0.45px' }],
+          base: ['16px', { lineHeight: '19px', letterSpacing: '0.45px' }],
+          lg: ['18px', '1.5'],
+          xl: ['20px', { lineHeight: '26px', letterSpacing: '0.4px', fontWeight: '500' }],
+          '2xl': ['20px', { lineHeight: '26px', letterSpacing: '0.4px', fontWeight: '500' }],
+          '3xl': ['42px', { lineHeight: '46px', letterSpacing: '0.84px' }],
+          p: ['20px', { lineHeight: '26px', letterSpacing: '0.4px' }],
+          'p-small': ['15px', { lineHeight: '19px', letterSpacing: '0.45px' }],
+          p2: ['14px', { lineHeight: '19px', letterSpacing: '0.45px' }],
+        },
+        boxShadow: {
+          card: '0px 4px 4px rgba(0, 0, 0, 0.1714)',
+          top: '0 -1px 0 0 rgba(20, 20, 20, 0.25)',
+          bottom: '0px 1px 0px rgba(20, 20, 20, 0.25)',
+          dropdown: '0 4px 4px 0 rgba(0, 0, 0, 0.25)',
+        },
+        extend: {
+          minWidth: { banner: '420px' },
+          backgroundImage: {
+            'frollo-gradient': 'linear-gradient(87.77deg, #D327E7, #512ABD 23.8%, #512ABD 42.37%, #00D19F)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Component-specific styles that don't sit naturally in Tailwind utilities -->
+  <style>
+    /* Switch — built from a peer-styled checkbox */
+    .fw-switch {
+      position: relative;
+      display: inline-flex;
+      width: 40px;
+      height: 22px;
+      align-items: center;
+    }
+    .fw-switch input { position: absolute; opacity: 0; pointer-events: none; }
+    .fw-switch .track {
+      width: 100%;
+      height: 100%;
+      background: #E4E4E4;
+      border-radius: 9999px;
+      transition: background-color 200ms ease;
+    }
+    .fw-switch .thumb {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 18px;
+      height: 18px;
+      background: #FFFFFF;
+      border-radius: 50%;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+      transition: transform 200ms ease;
+    }
+    .fw-switch input:checked + .track { background: #512ABD; }
+    .fw-switch input:checked + .track + .thumb { transform: translateX(18px); }
+
+    /* Loading skeletons */
+    @keyframes fwShimmer {
+      0%   { background-position: -200px 0; }
+      100% { background-position: 200px 0; }
+    }
+    .fw-skeleton {
+      background: linear-gradient(90deg, #E4E4E4 0%, #F2F2F2 50%, #E4E4E4 100%);
+      background-size: 400px 100%;
+      animation: fwShimmer 1.4s ease-in-out infinite;
+      border-radius: 4px;
+    }
+    .fw-loading-dots {
+      display: inline-flex;
+      gap: 6px;
+    }
+    .fw-loading-dots span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #512ABD;
+      animation: fwBounce 1.2s ease-in-out infinite;
+    }
+    .fw-loading-dots span:nth-child(2) { animation-delay: 0.15s; }
+    .fw-loading-dots span:nth-child(3) { animation-delay: 0.3s; }
+    @keyframes fwBounce {
+      0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+      40%           { transform: translateY(-6px); opacity: 1; }
+    }
+
+    /* Bar chart (static SVG-style with divs) */
+    .fw-bar-chart {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 12px;
+      align-items: end;
+      height: 160px;
+      padding: 12px 4px;
+      border-bottom: 1px solid #C6C7D5;
+    }
+    .fw-bar-chart .bar {
+      background: rgba(75, 75, 75, 0.8);
+      border-radius: 4px 4px 0 0;
+    }
+    .fw-bar-chart .bar.is-active { background: #512ABD; }
+
+    /* Tab underline */
+    .fw-tabs { border-bottom: 1px solid #AFB2C7; display: flex; gap: 28px; }
+    .fw-tabs button {
+      background: transparent;
+      border: 0;
+      padding: 12px 0;
+      font-family: inherit;
+      font-size: 16px;
+      letter-spacing: 0.4px;
+      color: #5F6489;
+      position: relative;
+      cursor: pointer;
+    }
+    .fw-tabs button.is-active { color: #512ABD; font-weight: 500; }
+    .fw-tabs button.is-active::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; bottom: -1px;
+      height: 2px;
+      background: #512ABD;
+    }
+
+    /* Success animation circle */
+    @keyframes fwSuccessCircle { to { stroke-dashoffset: 0; } }
+    @keyframes fwSuccessTick   { to { stroke-dashoffset: 0; } }
+    .fw-success-anim circle {
+      stroke-dasharray: 166;
+      stroke-dashoffset: 166;
+      animation: fwSuccessCircle 0.7s ease forwards;
+    }
+    .fw-success-anim path {
+      stroke-dasharray: 48;
+      stroke-dashoffset: 48;
+      animation: fwSuccessTick 0.4s ease 0.7s forwards;
+    }
+
+    /* Slider — native range styled */
+    .fw-slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 9999px;
+      background: linear-gradient(to right, #512ABD 0%, #512ABD 50%, #E4E4E4 50%, #E4E4E4 100%);
+      outline: none;
+    }
+    .fw-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 2px solid #512ABD;
+      cursor: pointer;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+    .fw-slider::-moz-range-thumb {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 2px solid #512ABD;
+      cursor: pointer;
+    }
+
+    /* Provider list row hover */
+    .fw-provider-row:hover { background: #F7F7F7; }
+  </style>
+</head>
+<body class="font-frollo bg-app-bg text-text-default text-base">
+
+  <header class="preview-header">
+    <a href="#" class="brand">
+      <span class="brand-dot"></span>
+      <span>Frollo</span>
+      <span class="brand-tag">Vue components</span>
+    </a>
+    <button type="button"
+            onclick="history.length > 1 ? history.back() : location.href='index.html'"
+            class="inline-flex items-center gap-2 rounded-full bg-grey-20 text-text-secondary text-sm font-medium px-4 py-1.5 hover:bg-grey-30 hover:text-text-default transition-colors">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+      Back
+    </button>
+  </header>
+
+  <main class="preview-shell">
+
+    <!-- HERO -->
+    <section class="preview-hero">
+      <span class="eyebrow">Component matrix</span>
+      <h1>Frollo Web UI — verified components.</h1>
+      <p class="lede">Every component declared in <code>verifiedFrolloDesign.md</code>, rendered statically with the Frollo Tailwind theme: pill buttons, Forma DJR Text, the brand purple cascade, and the four-tier shadow language.</p>
+    </section>
+
+    <!-- BUTTONS -->
+    <section class="preview-section" id="buttons">
+      <h2>FwButton</h2>
+      <p class="section-lede">Pill geometry across all variants. Sizes scale horizontal padding and font size; vertical padding is fixed by size token.</p>
+
+      <div class="preview-frame">
+        <span class="frame-label">Variants · default size (lg)</span>
+        <div class="preview-cluster">
+          <button class="rounded-full bg-primary text-white text-p px-7 py-2 hover:bg-primary-hover transition-colors">Primary</button>
+          <button class="rounded-full bg-button-secondary-bg text-secondary text-p px-7 py-2 hover:bg-border-accent transition-colors">Secondary</button>
+          <button class="rounded-full bg-transparent text-primary text-p px-7 py-2 hover:bg-primary-tertiary-fade transition-colors">Tertiary</button>
+          <button class="rounded-full bg-border-accent text-bg-dark text-p px-7 py-2 hover:bg-border-strong hover:text-white transition-colors">Quaternary</button>
+          <button class="rounded-full bg-success text-white text-p px-7 py-2 transition-colors">Success</button>
+          <button class="rounded-full bg-error text-white text-p px-7 py-2 transition-colors">Error</button>
+          <button class="rounded-full bg-frollo-gradient text-white text-p px-7 py-2 transition-opacity hover:opacity-90">Gradient</button>
+          <button class="text-primary text-p underline-offset-4 hover:underline px-2 py-2">Link</button>
+        </div>
+      </div>
+
+      <div class="preview-frame">
+        <span class="frame-label">Sizes · primary variant</span>
+        <div class="preview-cluster">
+          <button class="rounded-full bg-primary text-white text-sm px-3 py-1 hover:bg-primary-hover transition-colors">Small</button>
+          <button class="rounded-full bg-primary text-white text-p-small px-6 py-2 hover:bg-primary-hover transition-colors">Medium</button>
+          <button class="rounded-full bg-primary text-white text-p px-7 py-2 hover:bg-primary-hover transition-colors">Large</button>
+          <button class="rounded-full bg-primary text-white text-p px-12 py-3 hover:bg-primary-hover transition-colors">X-Large</button>
+          <button class="rounded-full bg-primary text-white text-2xl px-16 py-4 hover:bg-primary-hover transition-colors">2X-Large</button>
+        </div>
+      </div>
+
+      <div class="preview-frame">
+        <span class="frame-label">States · primary</span>
+        <div class="preview-cluster">
+          <button class="rounded-full bg-primary text-white text-p px-7 py-2">Default</button>
+          <button class="rounded-full bg-primary-hover text-white text-p px-7 py-2">Hover</button>
+          <button class="rounded-full bg-primary text-white text-p px-7 py-2 ring-4 ring-primary/30">Focused</button>
+          <button class="rounded-full bg-primary text-white text-p px-7 py-2 opacity-60 cursor-not-allowed" disabled>Disabled</button>
+          <button class="rounded-full bg-primary text-white text-p px-7 py-2 inline-flex items-center gap-2">
+            <span class="fw-loading-dots"><span></span><span></span><span></span></span>
+            Loading
+          </button>
+        </div>
+      </div>
+
+      <div class="preview-frame">
+        <span class="frame-label">With icon · primary</span>
+        <div class="preview-cluster">
+          <button class="rounded-full bg-primary text-white text-p px-7 py-2 inline-flex items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+            Add account
+          </button>
+          <button class="rounded-full bg-primary text-white text-p px-7 py-2 inline-flex items-center gap-2">
+            Continue
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAGS -->
+    <section class="preview-section" id="tags">
+      <h2>FwTag</h2>
+      <p class="section-lede">Pill labels — seven variants combine state hue with surface tint.</p>
+      <div class="preview-frame">
+        <span class="frame-label">Variants · md size</span>
+        <div class="preview-cluster">
+          <span class="rounded-full bg-primary text-white text-sm px-4 py-1">Primary</span>
+          <span class="rounded-full bg-button-secondary-bg text-primary text-sm px-4 py-1">Secondary</span>
+          <span class="rounded-full bg-bg-sky text-secondary text-sm px-4 py-1">Tertiary</span>
+          <span class="rounded-full bg-bg-coral text-secondary text-sm px-4 py-1">Quaternary</span>
+          <span class="rounded-full bg-warning text-white text-sm px-4 py-1">Alert</span>
+          <span class="rounded-full bg-success-bg text-text-secondary text-sm px-4 py-1">Success</span>
+          <span class="rounded-full bg-error text-white text-sm px-4 py-1">Error</span>
+        </div>
+      </div>
+
+      <div class="preview-frame">
+        <span class="frame-label">Sizes · primary</span>
+        <div class="preview-cluster">
+          <span class="rounded-full bg-primary text-white text-xs px-2 py-px">xs</span>
+          <span class="rounded-full bg-primary text-white text-sm px-4 py-1">sm</span>
+          <span class="rounded-full bg-primary text-white text-base px-4 py-3 leading-none">md</span>
+        </div>
+      </div>
+
+      <div class="preview-frame">
+        <span class="frame-label">Dismissable</span>
+        <div class="preview-cluster">
+          <span class="rounded-full bg-button-secondary-bg text-primary text-sm px-4 py-1 inline-flex items-center gap-2">
+            Connected
+            <button class="text-primary hover:opacity-60" aria-label="Remove">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ALERTS -->
+    <section class="preview-section" id="alerts">
+      <h2>FwAlert</h2>
+      <p class="section-lede">Inline status messages. <code>alert-warning</code> uses a saturated surface with white text — there is no soft warning tint.</p>
+      <div class="preview-frame">
+        <div class="preview-stack">
+          <div class="rounded-md bg-success-bg text-success p-4 inline-flex items-center gap-3">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+            <span class="text-p-small">Your account was successfully connected.</span>
+          </div>
+          <div class="rounded-md bg-error-bg text-error p-4 inline-flex items-center gap-3">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            <span class="text-p-small">We couldn't verify your details. Try again.</span>
+          </div>
+          <div class="rounded-md bg-warning text-white p-4 inline-flex items-center gap-3">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <span class="text-p-small">Heads up — your statement period ends in 2 days.</span>
+          </div>
+          <div class="rounded-md bg-bg-sky text-text-default p-4 inline-flex items-center gap-3">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <span class="text-p-small">Your CDR consent will expire in 90 days.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INPUTS / FORMS -->
+    <section class="preview-section" id="forms">
+      <h2>FwInput · FwDropdown · FwCheckbox · FwSwitch · FwSlider · FwDatePicker</h2>
+      <p class="section-lede">Form controls share a single language: white surface, 1px border, <code>rounded-sm</code>, 8&times;12px padding, 40px height.</p>
+
+      <div class="preview-grid-2">
+        <div class="preview-frame">
+          <span class="frame-label">Input · default</span>
+          <div class="preview-stack">
+            <div>
+              <label class="block text-sm text-text-secondary mb-1">Email address</label>
+              <input class="w-full rounded border border-border-default bg-white px-3 py-2 text-base text-text-default placeholder:text-grey-light focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" type="email" placeholder="you@frollo.com" value="">
+              <span class="text-xs text-text-secondary mt-1 block">We'll never share your email.</span>
+            </div>
+            <div>
+              <label class="block text-sm text-text-secondary mb-1">Account number</label>
+              <input class="w-full rounded border border-error bg-white px-3 py-2 text-base text-text-default focus:outline-none" type="text" value="00021">
+              <span class="text-xs text-error mt-1 block">Account number must be at least 6 digits.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-frame">
+          <span class="frame-label">Dropdown · default + open</span>
+          <div class="preview-stack">
+            <div>
+              <label class="block text-sm text-text-secondary mb-1">Bank</label>
+              <select class="w-full rounded border border-border-default bg-white px-3 py-2 text-base text-text-default focus:outline-none focus:border-primary">
+                <option>Choose a bank</option>
+                <option>Commonwealth Bank</option>
+                <option>Westpac</option>
+                <option>NAB</option>
+              </select>
+            </div>
+            <div class="relative">
+              <label class="block text-sm text-text-secondary mb-1">Currency</label>
+              <button class="w-full rounded border border-primary bg-white px-3 py-2 text-base text-text-default text-left ring-2 ring-primary/20 focus:outline-none">AUD — Australian Dollar</button>
+              <div class="absolute z-10 mt-1 w-full rounded-md bg-white shadow-dropdown border border-border-default overflow-hidden">
+                <button class="w-full text-left px-3 py-2 text-base text-text-default bg-button-secondary-bg">AUD — Australian Dollar</button>
+                <button class="w-full text-left px-3 py-2 text-base text-text-default hover:bg-grey-20">USD — US Dollar</button>
+                <button class="w-full text-left px-3 py-2 text-base text-text-default hover:bg-grey-20">NZD — New Zealand Dollar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-frame">
+          <span class="frame-label">Checkbox</span>
+          <div class="preview-stack">
+            <label class="inline-flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" class="size-5 rounded border-border-default text-primary focus:ring-2 focus:ring-primary/20" checked>
+              <span class="text-p-small">Send me product updates</span>
+            </label>
+            <label class="inline-flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" class="size-5 rounded border-border-default">
+              <span class="text-p-small">Subscribe to insights newsletter</span>
+            </label>
+            <label class="inline-flex items-center gap-3 cursor-not-allowed opacity-60">
+              <input type="checkbox" class="size-5 rounded border-border-default" disabled>
+              <span class="text-p-small">Disabled option</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="preview-frame">
+          <span class="frame-label">Switch</span>
+          <div class="preview-stack">
+            <label class="inline-flex items-center gap-3 cursor-pointer">
+              <span class="fw-switch">
+                <input type="checkbox" checked>
+                <span class="track"></span>
+                <span class="thumb"></span>
+              </span>
+              <span class="text-p-small">Round-up savings</span>
+            </label>
+            <label class="inline-flex items-center gap-3 cursor-pointer">
+              <span class="fw-switch">
+                <input type="checkbox">
+                <span class="track"></span>
+                <span class="thumb"></span>
+              </span>
+              <span class="text-p-small">Email weekly digest</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="preview-frame">
+          <span class="frame-label">Slider</span>
+          <div class="preview-stack">
+            <div>
+              <div class="flex justify-between text-xs text-text-secondary mb-2">
+                <span>$0</span><span>$10,000</span>
+              </div>
+              <input type="range" min="0" max="100" value="50" class="fw-slider w-full">
+              <div class="text-p-small text-text-default mt-2">Goal: <strong>$5,000</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-frame">
+          <span class="frame-label">Date picker (mini calendar)</span>
+          <div class="rounded-lg border border-border-default p-3 bg-white inline-block">
+            <div class="flex items-center justify-between mb-2">
+              <button class="size-7 rounded hover:bg-grey-20 inline-flex items-center justify-center text-text-secondary">‹</button>
+              <span class="text-p-small font-medium">May 2026</span>
+              <button class="size-7 rounded hover:bg-grey-20 inline-flex items-center justify-center text-text-secondary">›</button>
+            </div>
+            <div class="grid grid-cols-7 gap-1 text-xs text-text-secondary text-center mb-1">
+              <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+            </div>
+            <div class="grid grid-cols-7 gap-1 text-sm text-center">
+              <span class="size-7 inline-flex items-center justify-center text-text-tertiary">26</span>
+              <span class="size-7 inline-flex items-center justify-center text-text-tertiary">27</span>
+              <span class="size-7 inline-flex items-center justify-center text-text-tertiary">28</span>
+              <span class="size-7 inline-flex items-center justify-center text-text-tertiary">29</span>
+              <span class="size-7 inline-flex items-center justify-center text-text-tertiary">30</span>
+              <span class="size-7 inline-flex items-center justify-center">1</span>
+              <span class="size-7 inline-flex items-center justify-center">2</span>
+              <span class="size-7 inline-flex items-center justify-center">3</span>
+              <span class="size-7 inline-flex items-center justify-center">4</span>
+              <span class="size-7 inline-flex items-center justify-center">5</span>
+              <span class="size-7 inline-flex items-center justify-center">6</span>
+              <span class="size-7 inline-flex items-center justify-center">7</span>
+              <span class="size-7 inline-flex items-center justify-center">8</span>
+              <span class="size-7 inline-flex items-center justify-center">9</span>
+              <span class="size-7 inline-flex items-center justify-center">10</span>
+              <span class="size-7 inline-flex items-center justify-center rounded-full bg-primary text-white">11</span>
+              <span class="size-7 inline-flex items-center justify-center">12</span>
+              <span class="size-7 inline-flex items-center justify-center">13</span>
+              <span class="size-7 inline-flex items-center justify-center">14</span>
+              <span class="size-7 inline-flex items-center justify-center">15</span>
+              <span class="size-7 inline-flex items-center justify-center">16</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-frame">
+          <span class="frame-label">Media picker</span>
+          <div class="rounded-lg border-2 border-dashed border-border-default bg-white px-6 py-8 text-center">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#5F6489" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <p class="text-p-small text-text-default mb-1">Drop a file or <button class="text-primary underline">browse</button></p>
+            <p class="text-xs text-text-secondary">PNG, JPG up to 5 MB</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARD -->
+    <section class="preview-section" id="cards">
+      <h2>FwCard</h2>
+      <p class="section-lede">White surface · <code>rounded-lg</code> · 16px padding · either <code>shadow-card</code> or 1px border, never both.</p>
+      <div class="preview-grid-2">
+        <div class="preview-frame">
+          <span class="frame-label">Card · with shadow</span>
+          <div class="rounded-lg bg-white shadow-card p-4 max-w-sm">
+            <h3 class="text-xl font-medium mb-1">Auto-savings goal</h3>
+            <p class="text-p-small text-text-secondary mb-4">$420 of $1,000 saved</p>
+            <div class="h-1 w-full bg-grey-40 rounded-full mb-4 overflow-hidden">
+              <div class="h-full bg-primary" style="width: 42%"></div>
+            </div>
+            <button class="rounded-full bg-primary text-white text-sm px-4 py-1 hover:bg-primary-hover transition-colors">Top up</button>
+          </div>
+        </div>
+        <div class="preview-frame">
+          <span class="frame-label">Card · with border + header</span>
+          <div class="rounded-lg bg-white border border-border-default max-w-sm overflow-hidden">
+            <header class="px-4 py-3 border-b border-border-default">
+              <h3 class="text-xl font-medium m-0">Connected accounts</h3>
+            </header>
+            <div class="p-4">
+              <p class="text-p-small text-text-secondary m-0">3 banks · 7 accounts · last synced 2 minutes ago.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODAL -->
+    <section class="preview-section" id="modal">
+      <h2>FwModal</h2>
+      <p class="section-lede">Centered dialog at 750px (default) or 800px (with banner). Padding stays 24px.</p>
+      <div class="preview-frame">
+        <span class="frame-label">Modal · default 750px</span>
+        <div class="rounded-lg bg-white shadow-card max-w-[750px] mx-auto">
+          <header class="flex items-center justify-between px-6 py-4 border-b border-border-default">
+            <h3 class="text-xl font-medium m-0">Confirm transfer</h3>
+            <button class="size-8 rounded-full hover:bg-grey-20 inline-flex items-center justify-center text-text-secondary" aria-label="Close">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+          </header>
+          <div class="px-6 py-5">
+            <p class="text-p text-text-default mb-2">You're about to transfer <strong>$420.00</strong> from Everyday to Savings.</p>
+            <p class="text-p-small text-text-secondary m-0">This action can't be undone — funds will appear instantly.</p>
+          </div>
+          <footer class="flex justify-end gap-2 px-6 py-4 border-t border-border-default">
+            <button class="rounded-full bg-transparent text-primary text-p-small px-6 py-2 hover:bg-primary-tertiary-fade">Cancel</button>
+            <button class="rounded-full bg-primary text-white text-p-small px-6 py-2 hover:bg-primary-hover">Confirm transfer</button>
+          </footer>
+        </div>
+      </div>
+
+      <div class="preview-frame">
+        <span class="frame-label">Modal · with banner 800px</span>
+        <div class="rounded-lg bg-white shadow-card max-w-[800px] mx-auto overflow-hidden">
+          <div class="h-32 bg-frollo-gradient"></div>
+          <div class="px-6 py-5">
+            <h3 class="text-xl font-medium m-0 mb-1">You hit your savings goal!</h3>
+            <p class="text-p-small text-text-secondary m-0">Auto-savings will continue toward your next target unless you pause it.</p>
+          </div>
+          <footer class="flex justify-end gap-2 px-6 py-4">
+            <button class="rounded-full bg-primary text-white text-p-small px-6 py-2 hover:bg-primary-hover">Set new goal</button>
+          </footer>
+        </div>
+      </div>
+    </section>
+
+    <!-- TABLE -->
+    <section class="preview-section" id="table">
+      <h2>FwTable</h2>
+      <p class="section-lede">Container is <code>rounded-lg</code>; rows are flat. Header uses caption typography in <code>text-secondary</code>.</p>
+      <div class="preview-frame">
+        <div class="rounded-lg border border-border-default bg-white overflow-hidden">
+          <table class="w-full">
+            <thead>
+              <tr class="border-b border-border-default">
+                <th class="text-left px-4 py-3 text-sm text-text-secondary uppercase tracking-wide font-medium">Date</th>
+                <th class="text-left px-4 py-3 text-sm text-text-secondary uppercase tracking-wide font-medium">Description</th>
+                <th class="text-left px-4 py-3 text-sm text-text-secondary uppercase tracking-wide font-medium">Category</th>
+                <th class="text-right px-4 py-3 text-sm text-text-secondary uppercase tracking-wide font-medium">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-border-default last:border-0">
+                <td class="px-4 py-3 text-p-small">11 May</td>
+                <td class="px-4 py-3 text-p-small">Coles Norwood</td>
+                <td class="px-4 py-3"><span class="rounded-full bg-bg-sky text-secondary text-xs px-2 py-px">Groceries</span></td>
+                <td class="px-4 py-3 text-p-small text-right text-error">−$84.20</td>
+              </tr>
+              <tr class="border-b border-border-default last:border-0">
+                <td class="px-4 py-3 text-p-small">10 May</td>
+                <td class="px-4 py-3 text-p-small">Salary — Acme Co.</td>
+                <td class="px-4 py-3"><span class="rounded-full bg-success-bg text-text-secondary text-xs px-2 py-px">Income</span></td>
+                <td class="px-4 py-3 text-p-small text-right text-success">+$3,420.00</td>
+              </tr>
+              <tr class="border-b border-border-default last:border-0">
+                <td class="px-4 py-3 text-p-small">09 May</td>
+                <td class="px-4 py-3 text-p-small">Spotify Premium</td>
+                <td class="px-4 py-3"><span class="rounded-full bg-bg-coral text-secondary text-xs px-2 py-px">Entertainment</span></td>
+                <td class="px-4 py-3 text-p-small text-right text-error">−$14.99</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 text-p-small">08 May</td>
+                <td class="px-4 py-3 text-p-small">Round-up to savings</td>
+                <td class="px-4 py-3"><span class="rounded-full bg-button-secondary-bg text-primary text-xs px-2 py-px">Savings</span></td>
+                <td class="px-4 py-3 text-p-small text-right text-text-default">$2.36</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACCORDION -->
+    <section class="preview-section" id="accordion">
+      <h2>FwAccordion</h2>
+      <p class="section-lede">Expanded header takes the <code>primary-dark</code> emphasis token at weight 500.</p>
+      <div class="preview-frame">
+        <div class="rounded-lg border border-border-default bg-white overflow-hidden">
+          <details open class="border-b border-border-default last:border-0">
+            <summary class="px-4 py-3 text-xl text-primary-dark font-medium cursor-pointer flex items-center justify-between">
+              How does Frollo connect to my bank?
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="rotate-180 transition-transform"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="px-4 pb-4 pt-1 text-p-small text-text-default">
+              We use the Consumer Data Right (CDR) for live, read-only access to your accounts. Your credentials never leave your bank.
+            </div>
+          </details>
+          <details class="border-b border-border-default last:border-0">
+            <summary class="px-4 py-3 text-xl text-text-default cursor-pointer flex items-center justify-between">
+              How is my data protected?
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="px-4 pb-4 pt-1 text-p-small text-text-default">
+              All transmissions are TLS-encrypted; tokens are rotated; no access ever leaves Australia.
+            </div>
+          </details>
+          <details>
+            <summary class="px-4 py-3 text-xl text-text-default cursor-pointer flex items-center justify-between">
+              Can I revoke access?
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="px-4 pb-4 pt-1 text-p-small text-text-default">
+              Yes — disconnect at any time from your bank's dashboard or from Frollo Settings.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- TABS -->
+    <section class="preview-section" id="tabs">
+      <h2>FwTabs</h2>
+      <p class="section-lede">Underline tabs over <code>border-default</code>; active tab takes the primary 2px underline.</p>
+      <div class="preview-frame">
+        <div class="fw-tabs">
+          <button class="is-active">Overview</button>
+          <button>Transactions</button>
+          <button>Insights</button>
+          <button>Settings</button>
+        </div>
+        <div class="pt-4 text-p-small text-text-secondary">Tab content area.</div>
+      </div>
+    </section>
+
+    <!-- NAVIGATION + SIDEBAR -->
+    <section class="preview-section" id="navigation">
+      <h2>FwNavigationMenu · FwSidebarMenu</h2>
+      <p class="section-lede">Top navigation is 72px tall on white with <code>shadow-bottom</code>; sidebar uses <code>bg-dark</code> with white text.</p>
+
+      <div class="preview-frame">
+        <span class="frame-label">Navigation · top bar</span>
+        <div class="rounded-lg overflow-hidden border border-border-default">
+          <header class="bg-white shadow-bottom h-[72px] px-6 flex items-center justify-between">
+            <div class="flex items-center gap-6">
+              <span class="inline-flex items-center gap-2 text-xl font-medium text-text-default">
+                <span class="size-3 rounded-full bg-primary"></span>
+                Frollo
+              </span>
+              <nav class="flex items-center gap-2">
+                <a class="px-3 py-2 text-p-small text-primary font-medium rounded-full bg-button-secondary-bg" href="#">Dashboard</a>
+                <a class="px-3 py-2 text-p-small text-text-secondary hover:text-text-default" href="#">Transactions</a>
+                <a class="px-3 py-2 text-p-small text-text-secondary hover:text-text-default" href="#">Goals</a>
+                <a class="px-3 py-2 text-p-small text-text-secondary hover:text-text-default" href="#">Insights</a>
+              </nav>
+            </div>
+            <div class="flex items-center gap-3">
+              <button class="size-9 rounded-full hover:bg-grey-20 inline-flex items-center justify-center" aria-label="Notifications">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 00-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+              </button>
+              <button class="rounded-full bg-primary text-white text-p-small px-4 py-1 hover:bg-primary-hover">Sign out</button>
+            </div>
+          </header>
+        </div>
+      </div>
+
+      <div class="preview-frame">
+        <span class="frame-label">Sidebar</span>
+        <div class="rounded-lg overflow-hidden border border-border-default">
+          <aside class="bg-bg-dark text-white w-64 p-4">
+            <span class="inline-flex items-center gap-2 text-xl font-medium mb-6">
+              <span class="size-3 rounded-full bg-text-accent"></span>
+              Frollo
+            </span>
+            <nav class="flex flex-col gap-1">
+              <a class="px-3 py-2 rounded-md bg-primary text-white text-p-small font-medium" href="#">Dashboard</a>
+              <a class="px-3 py-2 rounded-md text-text-accent hover:bg-secondary text-p-small" href="#">Transactions</a>
+              <a class="px-3 py-2 rounded-md text-text-accent hover:bg-secondary text-p-small" href="#">Goals</a>
+              <a class="px-3 py-2 rounded-md text-text-accent hover:bg-secondary text-p-small" href="#">Insights</a>
+              <a class="px-3 py-2 rounded-md text-text-accent hover:bg-secondary text-p-small" href="#">Settings</a>
+            </nav>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- POPOVER + DRAWER -->
+    <section class="preview-section" id="overlays">
+      <h2>FwPopover · FwDrawer · FwToast</h2>
+      <p class="section-lede">Three overlay surfaces: white popover, white drawer, dark toast.</p>
+
+      <div class="preview-grid-2">
+        <div class="preview-frame">
+          <span class="frame-label">Popover</span>
+          <div class="relative inline-block">
+            <button class="rounded-full bg-button-secondary-bg text-primary text-p-small px-4 py-1">Trigger</button>
+            <div class="absolute left-0 top-full mt-2 w-64 rounded-md bg-white border border-border-default shadow-dropdown p-3 z-10">
+              <p class="text-p-small font-medium m-0 mb-1">Quick tip</p>
+              <p class="text-sm text-text-secondary m-0">Connect at least one account to unlock insights.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-frame">
+          <span class="frame-label">Toast · dark surface</span>
+          <div class="rounded-md bg-bg-dark text-white px-4 py-3 inline-flex items-center gap-3 shadow-card max-w-md">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4BF0C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+            <span class="text-p-small">Your goal is on track this month.</span>
+            <button class="ml-2 size-6 rounded hover:bg-secondary inline-flex items-center justify-center" aria-label="Dismiss">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="preview-frame">
+        <span class="frame-label">Drawer · right slide-in</span>
+        <div class="rounded-lg overflow-hidden border border-border-default flex" style="height: 320px;">
+          <div class="flex-1 bg-grey-20 p-4 text-text-tertiary text-sm">Page content (faded behind drawer)</div>
+          <aside class="w-80 bg-white border-l border-border-default p-6 flex flex-col">
+            <header class="flex items-center justify-between mb-4">
+              <h3 class="text-xl font-medium m-0">Filter transactions</h3>
+              <button class="size-8 rounded-full hover:bg-grey-20 inline-flex items-center justify-center text-text-secondary">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              </button>
+            </header>
+            <div class="flex-1 space-y-3">
+              <label class="block">
+                <span class="text-sm text-text-secondary">Category</span>
+                <select class="mt-1 w-full rounded border border-border-default bg-white px-3 py-2 text-base">
+                  <option>All</option>
+                  <option>Groceries</option>
+                  <option>Income</option>
+                </select>
+              </label>
+            </div>
+            <button class="rounded-full bg-primary text-white text-p-small px-6 py-2 mt-auto">Apply filters</button>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROGRESS / LOADING -->
+    <section class="preview-section" id="progress">
+      <h2>FwProgressBar · FwLoading*</h2>
+      <p class="section-lede">Step progress, skeletons, dots loader.</p>
+
+      <div class="preview-frame">
+        <span class="frame-label">Progress · steps</span>
+        <div class="flex items-center gap-3">
+          <div class="size-8 rounded-full bg-primary text-white inline-flex items-center justify-center text-sm">1</div>
+          <div class="flex-1 h-1 bg-primary rounded-full"></div>
+          <div class="size-8 rounded-full bg-primary text-white inline-flex items-center justify-center text-sm">2</div>
+          <div class="flex-1 h-1 bg-grey-40 rounded-full"></div>
+          <div class="size-8 rounded-full bg-grey-40 text-grey-light inline-flex items-center justify-center text-sm">3</div>
+        </div>
+        <div class="grid grid-cols-3 mt-2 text-sm text-text-secondary text-center">
+          <span class="text-text-default">Account</span>
+          <span class="text-text-default">Identity</span>
+          <span>Confirm</span>
+        </div>
+      </div>
+
+      <div class="preview-grid-2">
+        <div class="preview-frame">
+          <span class="frame-label">Loading · bar</span>
+          <div class="space-y-3">
+            <div class="fw-skeleton h-3 w-1/2"></div>
+            <div class="fw-skeleton h-3 w-3/4"></div>
+            <div class="fw-skeleton h-3 w-2/3"></div>
+          </div>
+        </div>
+
+        <div class="preview-frame">
+          <span class="frame-label">Loading · card</span>
+          <div class="rounded-lg bg-white shadow-card p-4 max-w-sm">
+            <div class="fw-skeleton size-10 rounded-full mb-3"></div>
+            <div class="fw-skeleton h-4 w-2/3 mb-2"></div>
+            <div class="fw-skeleton h-3 w-1/2 mb-3"></div>
+            <div class="fw-skeleton h-2 w-full"></div>
+          </div>
+        </div>
+
+        <div class="preview-frame">
+          <span class="frame-label">Loading · table</span>
+          <div class="rounded-lg border border-border-default p-4 space-y-2">
+            <div class="fw-skeleton h-4 w-1/4"></div>
+            <div class="fw-skeleton h-3 w-full"></div>
+            <div class="fw-skeleton h-3 w-full"></div>
+            <div class="fw-skeleton h-3 w-3/4"></div>
+            <div class="fw-skeleton h-3 w-full"></div>
+          </div>
+        </div>
+
+        <div class="preview-frame">
+          <span class="frame-label">Loading · dots</span>
+          <div class="flex items-center justify-center h-24">
+            <span class="fw-loading-dots"><span></span><span></span><span></span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BAR CHART + SUCCESS ANIM -->
+    <section class="preview-section" id="visuals">
+      <h2>FwBarChart · FwSuccessAnimation</h2>
+
+      <div class="preview-grid-2">
+        <div class="preview-frame">
+          <span class="frame-label">Bar chart · weekly spending</span>
+          <div class="fw-bar-chart">
+            <div class="bar" style="height: 30%"></div>
+            <div class="bar" style="height: 55%"></div>
+            <div class="bar is-active" style="height: 80%"></div>
+            <div class="bar" style="height: 45%"></div>
+            <div class="bar" style="height: 70%"></div>
+            <div class="bar" style="height: 35%"></div>
+            <div class="bar" style="height: 50%"></div>
+          </div>
+          <div class="grid grid-cols-7 text-xs text-text-secondary text-center mt-2">
+            <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
+          </div>
+        </div>
+
+        <div class="preview-frame">
+          <span class="frame-label">Success animation</span>
+          <div class="flex items-center justify-center h-32">
+            <svg class="fw-success-anim" width="64" height="64" viewBox="0 0 64 64">
+              <circle cx="32" cy="32" r="28" fill="none" stroke="#00C696" stroke-width="3"/>
+              <path d="M20 33 L29 42 L45 24" fill="none" stroke="#00C696" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMAGE / PROVIDER LIST / TRANSACTIONS CARD -->
+    <section class="preview-section" id="domain">
+      <h2>FwImage · FwProviderList · FwTransactionsCard</h2>
+      <p class="section-lede">Domain components for the financial-wellness path.</p>
+
+      <div class="preview-grid-2">
+        <div class="preview-frame">
+          <span class="frame-label">Image · with fallback</span>
+          <div class="size-24 rounded-lg bg-grey-20 inline-flex items-center justify-center text-text-tertiary">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+        </div>
+
+        <div class="preview-frame">
+          <span class="frame-label">Provider list</span>
+          <div class="rounded-lg border border-border-default bg-white overflow-hidden divide-y divide-border-default">
+            <div class="fw-provider-row flex items-center gap-3 px-4 py-3 cursor-pointer">
+              <div class="size-10 rounded-full bg-button-secondary-bg inline-flex items-center justify-center text-primary font-medium">CB</div>
+              <div class="flex-1">
+                <div class="text-p-small font-medium">Commonwealth Bank</div>
+                <div class="text-xs text-text-secondary">2 accounts · last sync 2m ago</div>
+              </div>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5F6489" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </div>
+            <div class="fw-provider-row flex items-center gap-3 px-4 py-3 cursor-pointer">
+              <div class="size-10 rounded-full bg-button-secondary-bg inline-flex items-center justify-center text-primary font-medium">WP</div>
+              <div class="flex-1">
+                <div class="text-p-small font-medium">Westpac</div>
+                <div class="text-xs text-text-secondary">1 account · last sync 5m ago</div>
+              </div>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5F6489" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </div>
+            <div class="fw-provider-row flex items-center gap-3 px-4 py-3 cursor-pointer">
+              <div class="size-10 rounded-full bg-button-secondary-bg inline-flex items-center justify-center text-primary font-medium">NA</div>
+              <div class="flex-1">
+                <div class="text-p-small font-medium">NAB</div>
+                <div class="text-xs text-text-secondary">3 accounts · last sync 14m ago</div>
+              </div>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5F6489" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-frame">
+          <span class="frame-label">Transactions card</span>
+          <div class="rounded-lg bg-white shadow-card overflow-hidden">
+            <header class="px-4 py-3 border-b border-border-default flex items-center justify-between">
+              <h3 class="text-xl font-medium m-0">Recent transactions</h3>
+              <a class="text-p-small text-primary hover:underline" href="#">See all</a>
+            </header>
+            <ul class="divide-y divide-border-default m-0 p-0 list-none">
+              <li class="flex items-center justify-between px-4 py-3">
+                <div class="flex items-center gap-3">
+                  <div class="size-9 rounded-full bg-bg-sky inline-flex items-center justify-center">🛒</div>
+                  <div>
+                    <div class="text-p-small">Coles Norwood</div>
+                    <div class="text-xs text-text-secondary">Groceries</div>
+                  </div>
+                </div>
+                <div class="text-p-small text-error">−$84.20</div>
+              </li>
+              <li class="flex items-center justify-between px-4 py-3">
+                <div class="flex items-center gap-3">
+                  <div class="size-9 rounded-full bg-success-bg inline-flex items-center justify-center">💵</div>
+                  <div>
+                    <div class="text-p-small">Salary — Acme Co.</div>
+                    <div class="text-xs text-text-secondary">Income</div>
+                  </div>
+                </div>
+                <div class="text-p-small text-success">+$3,420.00</div>
+              </li>
+              <li class="flex items-center justify-between px-4 py-3">
+                <div class="flex items-center gap-3">
+                  <div class="size-9 rounded-full bg-bg-coral inline-flex items-center justify-center">🎵</div>
+                  <div>
+                    <div class="text-p-small">Spotify Premium</div>
+                    <div class="text-xs text-text-secondary">Entertainment</div>
+                  </div>
+                </div>
+                <div class="text-p-small text-error">−$14.99</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="preview-footer">
+      <span>Tokens from <code>verifiedFrolloDesign.md</code> · components rendered statically.</span>
+      <span><a href="verifiedFrolloBootstrapComponents.html" style="color: var(--accent);">View Bootstrap rendering →</a></span>
+    </footer>
+
+  </main>
+
+</body>
+</html>

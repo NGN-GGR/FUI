@@ -1,0 +1,328 @@
+/* ============================================================
+   Bootstrap 5.3 → Frollo bridge.
+   Loads after Bootstrap CSS so :root overrides cascade.
+
+   Bootstrap declares body-color tokens under
+   `:root, [data-bs-theme=light]` (specificity 0,1,0). To beat
+   that, we redeclare under the same matched specificity.
+   ============================================================ */
+
+:root, [data-bs-theme="light"] {
+  /* Theme colors */
+  --bs-primary: var(--color-primary);
+  --bs-primary-rgb: var(--color-primary-rgb);
+  --bs-secondary: var(--color-secondary);
+  --bs-secondary-rgb: var(--color-secondary-rgb);
+  --bs-success: var(--color-success);
+  --bs-success-rgb: var(--color-success-rgb);
+  --bs-danger: var(--color-error);
+  --bs-danger-rgb: var(--color-error-rgb);
+  --bs-warning: var(--color-warning);
+  --bs-warning-rgb: var(--color-warning-rgb);
+  --bs-info: var(--color-info);
+  --bs-info-rgb: var(--color-info-rgb);
+
+  /* Body */
+  --bs-body-color: var(--color-text-default);
+  --bs-body-color-rgb: var(--color-text-default-rgb);
+  --bs-body-bg: var(--color-app-bg);
+  --bs-body-font-family: var(--font-frollo);
+
+  /* Secondary/tertiary text */
+  --bs-secondary-color: var(--color-text-secondary);
+  --bs-tertiary-color: var(--color-text-tertiary);
+
+  /* Links */
+  --bs-link-color: var(--color-primary);
+  --bs-link-color-rgb: var(--color-primary-rgb);
+  --bs-link-hover-color: var(--color-primary-hover);
+
+  /* Border */
+  --bs-border-color: var(--color-border-default);
+  --bs-border-radius: var(--radius-lg);
+  --bs-border-radius-sm: var(--radius-sm);
+  --bs-border-radius-lg: var(--radius-lg);
+  --bs-border-radius-xl: var(--radius-xl);
+  --bs-border-radius-pill: var(--radius-full);
+
+  /* Subtle (alert/badge backgrounds) */
+  --bs-primary-bg-subtle: var(--color-button-secondary-bg);
+  --bs-primary-text-emphasis: var(--color-primary-dark);
+  --bs-primary-border-subtle: var(--color-border-accent);
+
+  --bs-success-bg-subtle: var(--color-success-bg);
+  --bs-success-text-emphasis: var(--color-success);
+  --bs-success-border-subtle: var(--color-success);
+
+  --bs-danger-bg-subtle: var(--color-error-bg);
+  --bs-danger-text-emphasis: var(--color-error);
+  --bs-danger-border-subtle: var(--color-error);
+
+  --bs-warning-bg-subtle: var(--color-bg-coral);
+  --bs-warning-text-emphasis: var(--color-warning);
+  --bs-warning-border-subtle: var(--color-warning);
+
+  --bs-info-bg-subtle: var(--color-bg-sky);
+  --bs-info-text-emphasis: var(--color-text-default);
+  --bs-info-border-subtle: var(--color-info);
+
+  /* Form validation */
+  --bs-form-valid-color: var(--color-success);
+  --bs-form-valid-border-color: var(--color-success);
+  --bs-form-invalid-color: var(--color-error);
+  --bs-form-invalid-border-color: var(--color-error);
+
+  /* Focus ring */
+  --bs-focus-ring-color: rgba(var(--color-primary-rgb), 0.25);
+}
+
+/* ============================================================
+   Component-scoped overrides for tokens that Bootstrap
+   hard-codes per-component (not reachable from :root bridge).
+   ============================================================ */
+
+/* === Solid buttons === */
+.btn-primary {
+  --bs-btn-color: var(--color-tertiary);
+  --bs-btn-bg: var(--color-primary);
+  --bs-btn-border-color: var(--color-primary);
+  --bs-btn-hover-color: var(--color-tertiary);
+  --bs-btn-hover-bg: var(--color-primary-hover);
+  --bs-btn-hover-border-color: var(--color-primary-hover);
+  --bs-btn-focus-shadow-rgb: var(--color-primary-rgb);
+  --bs-btn-active-color: var(--color-tertiary);
+  --bs-btn-active-bg: var(--color-primary-hover);
+  --bs-btn-active-border-color: var(--color-primary-hover);
+  --bs-btn-disabled-color: var(--color-tertiary);
+  --bs-btn-disabled-bg: var(--color-primary);
+  --bs-btn-disabled-border-color: var(--color-primary);
+  border-radius: var(--radius-full);
+}
+.btn-secondary {
+  --bs-btn-color: var(--color-secondary);
+  --bs-btn-bg: var(--color-button-secondary-bg);
+  --bs-btn-border-color: var(--color-button-secondary-bg);
+  --bs-btn-hover-color: var(--color-secondary);
+  --bs-btn-hover-bg: var(--color-border-accent);
+  --bs-btn-hover-border-color: var(--color-border-accent);
+  --bs-btn-active-bg: var(--color-border-accent);
+  --bs-btn-active-border-color: var(--color-border-accent);
+  border-radius: var(--radius-full);
+}
+.btn-success {
+  --bs-btn-color: var(--color-tertiary);
+  --bs-btn-bg: var(--color-success);
+  --bs-btn-border-color: var(--color-success);
+  --bs-btn-hover-color: var(--color-tertiary);
+  --bs-btn-hover-bg: #00a87e;
+  --bs-btn-hover-border-color: #00a87e;
+  --bs-btn-active-bg: #00a87e;
+  --bs-btn-active-border-color: #00a87e;
+  border-radius: var(--radius-full);
+}
+.btn-danger {
+  --bs-btn-color: var(--color-tertiary);
+  --bs-btn-bg: var(--color-error);
+  --bs-btn-border-color: var(--color-error);
+  --bs-btn-hover-color: var(--color-tertiary);
+  --bs-btn-hover-bg: #cf3a3a;
+  --bs-btn-hover-border-color: #cf3a3a;
+  --bs-btn-active-bg: #cf3a3a;
+  --bs-btn-active-border-color: #cf3a3a;
+  border-radius: var(--radius-full);
+}
+.btn-warning {
+  --bs-btn-color: var(--color-tertiary);
+  --bs-btn-bg: var(--color-warning);
+  --bs-btn-border-color: var(--color-warning);
+  --bs-btn-hover-color: var(--color-tertiary);
+  --bs-btn-hover-bg: #e74e29;
+  --bs-btn-hover-border-color: #e74e29;
+  border-radius: var(--radius-full);
+}
+.btn-info {
+  --bs-btn-color: var(--color-secondary);
+  --bs-btn-bg: var(--color-info);
+  --bs-btn-border-color: var(--color-info);
+  --bs-btn-hover-color: var(--color-secondary);
+  --bs-btn-hover-bg: #0bb6d8;
+  --bs-btn-hover-border-color: #0bb6d8;
+  border-radius: var(--radius-full);
+}
+.btn-light {
+  --bs-btn-color: var(--color-text-default);
+  --bs-btn-bg: var(--color-grey-20);
+  --bs-btn-border-color: var(--color-grey-30);
+  --bs-btn-hover-bg: var(--color-grey-30);
+  --bs-btn-hover-border-color: var(--color-grey-40);
+  border-radius: var(--radius-full);
+}
+.btn-dark {
+  --bs-btn-color: var(--color-tertiary);
+  --bs-btn-bg: var(--color-bg-dark);
+  --bs-btn-border-color: var(--color-bg-dark);
+  --bs-btn-hover-bg: var(--color-secondary);
+  --bs-btn-hover-border-color: var(--color-secondary);
+  border-radius: var(--radius-full);
+}
+.btn-link {
+  --bs-btn-color: var(--color-primary);
+  --bs-btn-hover-color: var(--color-primary-hover);
+  text-decoration: none;
+}
+
+/* === Outline buttons === */
+.btn-outline-primary {
+  --bs-btn-color: var(--color-primary);
+  --bs-btn-border-color: var(--color-primary);
+  --bs-btn-hover-color: var(--color-tertiary);
+  --bs-btn-hover-bg: var(--color-primary);
+  --bs-btn-hover-border-color: var(--color-primary);
+  --bs-btn-active-bg: var(--color-primary);
+  --bs-btn-active-border-color: var(--color-primary);
+  border-radius: var(--radius-full);
+}
+.btn-outline-secondary {
+  --bs-btn-color: var(--color-text-secondary);
+  --bs-btn-border-color: var(--color-border-default);
+  --bs-btn-hover-color: var(--color-text-default);
+  --bs-btn-hover-bg: var(--color-grey-20);
+  --bs-btn-hover-border-color: var(--color-text-secondary);
+  border-radius: var(--radius-full);
+}
+.btn-outline-success { border-radius: var(--radius-full); }
+.btn-outline-danger  { border-radius: var(--radius-full); }
+.btn-outline-warning { border-radius: var(--radius-full); }
+.btn-outline-info    { border-radius: var(--radius-full); }
+.btn-outline-light   { border-radius: var(--radius-full); }
+.btn-outline-dark    { border-radius: var(--radius-full); }
+
+/* === Cards === */
+.card {
+  --bs-card-border-color: var(--color-border-default);
+  --bs-card-bg: var(--color-tertiary);
+  --bs-card-color: var(--color-text-default);
+  --bs-card-cap-bg: var(--color-tertiary);
+  --bs-card-border-radius: var(--radius-lg);
+  --bs-card-inner-border-radius: calc(var(--radius-lg) - 1px);
+}
+
+/* === Form controls === */
+.form-control,
+.form-select {
+  border-color: var(--color-border-default);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-default);
+}
+.form-control::placeholder { color: var(--color-grey-light); }
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 0.2rem rgba(var(--color-primary-rgb), 0.18);
+}
+.form-check-input:checked {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+.form-check-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 0.2rem rgba(var(--color-primary-rgb), 0.18);
+}
+.form-switch .form-check-input:checked {
+  background-color: var(--color-primary);
+}
+
+/* === Badges (pill by default to match Frollo tags) === */
+.badge { border-radius: var(--radius-full); }
+
+/* === Alerts === */
+.alert { border-radius: var(--radius-md); }
+
+/* === Modal === */
+.modal-content { border-radius: var(--radius-lg); }
+
+/* === Navbar === */
+.navbar { box-shadow: var(--shadow-bottom); }
+.navbar-light { background: var(--color-tertiary); }
+
+/* === Pagination === */
+.pagination {
+  --bs-pagination-color: var(--color-text-secondary);
+  --bs-pagination-active-color: var(--color-tertiary);
+  --bs-pagination-active-bg: var(--color-primary);
+  --bs-pagination-active-border-color: var(--color-primary);
+  --bs-pagination-hover-color: var(--color-primary);
+  --bs-pagination-hover-bg: var(--color-button-secondary-bg);
+  --bs-pagination-focus-color: var(--color-primary);
+  --bs-pagination-focus-bg: var(--color-button-secondary-bg);
+  --bs-pagination-focus-box-shadow: 0 0 0 0.2rem rgba(var(--color-primary-rgb), 0.18);
+}
+
+/* === List group === */
+.list-group {
+  --bs-list-group-active-bg: var(--color-primary);
+  --bs-list-group-active-border-color: var(--color-primary);
+  --bs-list-group-action-active-bg: var(--color-button-secondary-bg);
+}
+
+/* === Dropdowns === */
+.dropdown-menu {
+  --bs-dropdown-link-active-bg: var(--color-primary);
+  --bs-dropdown-link-hover-bg: var(--color-button-secondary-bg);
+  --bs-dropdown-border-radius: var(--radius-md);
+  box-shadow: var(--shadow-dropdown);
+}
+
+/* === Nav pills / tabs === */
+.nav-pills {
+  --bs-nav-pills-link-active-bg: var(--color-primary);
+  --bs-nav-pills-border-radius: var(--radius-full);
+}
+.nav-tabs .nav-link.active {
+  border-bottom-color: var(--color-primary);
+}
+
+/* === Progress === */
+.progress {
+  --bs-progress-bar-bg: var(--color-primary);
+  --bs-progress-bg: var(--color-grey-40);
+  --bs-progress-border-radius: var(--radius-full);
+}
+
+/* === Accordion === */
+.accordion {
+  --bs-accordion-active-color: var(--color-primary-dark);
+  --bs-accordion-active-bg: var(--color-tertiary);
+  --bs-accordion-btn-focus-border-color: var(--color-primary);
+  --bs-accordion-btn-focus-box-shadow: 0 0 0 0.2rem rgba(var(--color-primary-rgb), 0.18);
+  --bs-accordion-border-radius: var(--radius-lg);
+}
+.accordion-button:not(.collapsed) {
+  font-weight: 500;
+}
+
+/* === Toast === */
+.toast {
+  border-radius: var(--radius-md);
+  background: var(--color-bg-dark);
+  color: var(--color-text-on-dark);
+  box-shadow: var(--shadow-card);
+}
+.toast-header {
+  background: var(--color-bg-dark);
+  color: var(--color-text-on-dark);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* === Tooltip / Popover === */
+.tooltip-inner {
+  background: var(--color-bg-dark);
+  border-radius: var(--radius-md);
+}
+.popover {
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-dropdown);
+}
+
+/* === Spinner === */
+.spinner-border, .spinner-grow { color: var(--color-primary); }

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Get started · Frollo</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="app.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="tailwind-frollo.js"></script>
+</head>
+<body class="font-frollo bg-app-bg text-text-default">
+
+<header class="bg-white border-b border-grey-30 px-6 py-4 flex items-center justify-between">
+  <a href="index.html" class="inline-flex items-center gap-2 text-xl font-medium text-text-default no-underline">
+    <span class="inline-block size-2.5 rounded-full bg-primary"></span>
+    Frollo
+  </a>
+  <a class="text-sm text-text-secondary hover:text-text-default" href="signin.html">Have an account? <span class="text-primary font-medium">Sign in</span></a>
+</header>
+
+<main class="max-w-3xl mx-auto px-6 py-10 space-y-6">
+
+  <!-- Stepper -->
+  <section class="fw-stepper">
+    <div class="step done"><span class="num">✓</span>Account</div>
+    <div class="connector done"></div>
+    <div class="step current"><span class="num">2</span>Connect bank</div>
+    <div class="connector"></div>
+    <div class="step"><span class="num">3</span>Identity</div>
+    <div class="connector"></div>
+    <div class="step"><span class="num">4</span>Confirm</div>
+  </section>
+
+  <!-- Heading -->
+  <section>
+    <span class="rounded-full bg-button-secondary-bg text-primary text-xs px-3 py-1 inline-block">Step 2 of 4</span>
+    <h1 class="text-3xl font-medium mt-3 mb-2" style="font-size: 32px; line-height: 38px;">Connect your bank</h1>
+    <p class="text-text-secondary m-0">Frollo connects via the Consumer Data Right (CDR). Read-only · revocable any time · your credentials stay with your bank.</p>
+  </section>
+
+  <!-- Search -->
+  <section class="rounded-lg bg-white shadow-card p-5">
+    <label class="block text-sm text-text-secondary mb-2">Search for your bank</label>
+    <div class="relative">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5F6489" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute left-3 top-1/2 -translate-y-1/2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="search" placeholder="e.g. CBA, Westpac, NAB…" class="w-full rounded border border-border-default bg-white pl-9 pr-3 py-2 text-base focus:outline-none focus:border-primary">
+    </div>
+
+    <div class="flex flex-wrap gap-2 mt-3">
+      <span class="text-xs text-text-secondary mr-1 self-center">Popular:</span>
+      <button class="rounded-full bg-button-secondary-bg text-primary text-xs px-3 py-1 hover:bg-border-accent">CBA</button>
+      <button class="rounded-full bg-button-secondary-bg text-primary text-xs px-3 py-1 hover:bg-border-accent">Westpac</button>
+      <button class="rounded-full bg-button-secondary-bg text-primary text-xs px-3 py-1 hover:bg-border-accent">NAB</button>
+      <button class="rounded-full bg-button-secondary-bg text-primary text-xs px-3 py-1 hover:bg-border-accent">ANZ</button>
+      <button class="rounded-full bg-button-secondary-bg text-primary text-xs px-3 py-1 hover:bg-border-accent">ING</button>
+      <button class="rounded-full bg-button-secondary-bg text-primary text-xs px-3 py-1 hover:bg-border-accent">Macquarie</button>
+    </div>
+  </section>
+
+  <!-- Provider list -->
+  <section class="rounded-lg border border-border-default bg-white overflow-hidden">
+    <header class="px-5 py-3 border-b border-border-default bg-grey-10">
+      <span class="text-xs text-text-secondary uppercase tracking-wide font-medium">12 banks match</span>
+    </header>
+    <div class="divide-y divide-grey-30">
+
+      <button class="w-full text-left flex items-center gap-3 px-5 py-3 hover:bg-grey-10 transition-colors">
+        <div class="size-10 rounded-full bg-button-secondary-bg inline-flex items-center justify-center text-primary font-medium">CB</div>
+        <div class="flex-1">
+          <div class="text-p-small font-medium">Commonwealth Bank</div>
+          <div class="text-xs text-text-secondary">Personal · Business · Credit cards</div>
+        </div>
+        <span class="rounded-full bg-success-bg text-success text-xs px-2 py-px">CDR</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5F6489" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+
+      <button class="w-full text-left flex items-center gap-3 px-5 py-3 hover:bg-grey-10 transition-colors">
+        <div class="size-10 rounded-full bg-bg-coral inline-flex items-center justify-center text-error font-medium">WP</div>
+        <div class="flex-1">
+          <div class="text-p-small font-medium">Westpac</div>
+          <div class="text-xs text-text-secondary">Personal · Business · Loans</div>
+        </div>
+        <span class="rounded-full bg-success-bg text-success text-xs px-2 py-px">CDR</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5F6489" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+
+      <button class="w-full text-left flex items-center gap-3 px-5 py-3 hover:bg-grey-10 transition-colors">
+        <div class="size-10 rounded-full bg-bg-sky inline-flex items-center justify-center text-secondary font-medium">NA</div>
+        <div class="flex-1">
+          <div class="text-p-small font-medium">NAB</div>
+          <div class="text-xs text-text-secondary">Personal · Business · Mortgages</div>
+        </div>
+        <span class="rounded-full bg-success-bg text-success text-xs px-2 py-px">CDR</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5F6489" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+
+      <button class="w-full text-left flex items-center gap-3 px-5 py-3 hover:bg-grey-10 transition-colors">
+        <div class="size-10 rounded-full bg-bg-pink inline-flex items-center justify-center text-primary font-medium">AN</div>
+        <div class="flex-1">
+          <div class="text-p-small font-medium">ANZ</div>
+          <div class="text-xs text-text-secondary">Personal · Business · Credit cards</div>
+        </div>
+        <span class="rounded-full bg-success-bg text-success text-xs px-2 py-px">CDR</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5F6489" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+
+      <button class="w-full text-left flex items-center gap-3 px-5 py-3 hover:bg-grey-10 transition-colors">
+        <div class="size-10 rounded-full bg-button-secondary-bg inline-flex items-center justify-center text-primary font-medium">IN</div>
+        <div class="flex-1">
+          <div class="text-p-small font-medium">ING</div>
+          <div class="text-xs text-text-secondary">Personal · Savings · Home loans</div>
+        </div>
+        <span class="rounded-full bg-success-bg text-success text-xs px-2 py-px">CDR</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5F6489" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+
+      <button class="w-full text-left flex items-center gap-3 px-5 py-3 hover:bg-grey-10 transition-colors">
+        <div class="size-10 rounded-full bg-bg-coral inline-flex items-center justify-center text-error font-medium">MQ</div>
+        <div class="flex-1">
+          <div class="text-p-small font-medium">Macquarie</div>
+          <div class="text-xs text-text-secondary">Personal · Wealth · Cash management</div>
+        </div>
+        <span class="rounded-full bg-warning text-white text-xs px-2 py-px">Beta</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5F6489" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+
+    </div>
+    <footer class="px-5 py-3 border-t border-border-default bg-grey-10 text-xs text-text-secondary">
+      Don't see your bank? <a href="#" class="text-primary hover:underline">Request support →</a>
+    </footer>
+  </section>
+
+  <!-- Trust note -->
+  <section class="rounded-md bg-bg-sky text-text-default p-4 flex items-start gap-3 text-sm">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0DCAF0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <div>
+      <div class="text-p-small font-medium text-text-default mb-1">Your data, your rules</div>
+      <div class="text-text-secondary">All bank connections use the Australian Consumer Data Right. Frollo only ever has <strong>read-only</strong> access, and you can revoke it from your bank's dashboard at any time.</div>
+    </div>
+  </section>
+
+  <!-- Footer nav -->
+  <section class="flex items-center justify-between pt-2">
+    <a href="signin.html" class="rounded-full bg-transparent text-text-secondary text-p-small px-6 py-2 hover:bg-grey-20 hover:text-text-default">← Back</a>
+    <button class="rounded-full bg-primary text-white text-p px-7 py-2 hover:bg-primary-hover transition-colors inline-flex items-center gap-2">
+      Skip for now
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </button>
+  </section>
+
+</main>
+
+</body>
+</html>
