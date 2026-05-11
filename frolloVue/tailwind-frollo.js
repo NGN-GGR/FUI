@@ -1,12 +1,8 @@
 /* ============================================================
    Shared Tailwind Play CDN config for the Frollo application.
-   Loaded BEFORE the CDN script — primes window.tailwind so the
-   JIT engine sees the theme on its first compile pass (matters
-   when the page is rendered through htmlpreview.github.io,
-   which injects scripts after document parsing has completed).
+   Loaded after the CDN script on every page.
    ============================================================ */
-window.tailwind = window.tailwind || {};
-window.tailwind.config = {
+tailwind.config = {
   theme: {
     colors: {
       white: '#FFFFFF',
