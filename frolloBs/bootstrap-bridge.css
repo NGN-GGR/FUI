@@ -13,19 +13,19 @@
   --bs-primary-rgb: var(--color-primary-rgb);
   --bs-secondary: var(--color-secondary);
   --bs-secondary-rgb: var(--color-secondary-rgb);
-  --bs-success: var(--color-success);
-  --bs-success-rgb: var(--color-success-rgb);
-  --bs-danger: var(--color-error);
-  --bs-danger-rgb: var(--color-error-rgb);
-  --bs-warning: var(--color-warning);
-  --bs-warning-rgb: var(--color-warning-rgb);
-  --bs-info: var(--color-info);
-  --bs-info-rgb: var(--color-info-rgb);
+  --bs-success: var(--color-state-success);
+  --bs-success-rgb: var(--color-state-success-rgb);
+  --bs-danger: var(--color-state-error);
+  --bs-danger-rgb: var(--color-state-error-rgb);
+  --bs-warning: var(--color-state-warning);
+  --bs-warning-rgb: var(--color-state-warning-rgb);
+  --bs-info: var(--color-state-info);
+  --bs-info-rgb: var(--color-state-info-rgb);
 
   /* Body + typography */
   --bs-body-color: var(--color-text-default);
   --bs-body-color-rgb: var(--color-text-default-rgb);
-  --bs-body-bg: var(--color-app-bg);
+  --bs-body-bg: var(--color-background-app);
   --bs-body-font-family: var(--font-frollo);
 
   /* Secondary/tertiary text */
@@ -47,27 +47,27 @@
   --bs-border-radius-pill: var(--radius-full);
 
   /* Subtle (alert/badge backgrounds) */
-  --bs-primary-bg-subtle: var(--color-button-secondary-bg);
+  --bs-primary-bg-subtle: var(--color-background-button-secondary);
   --bs-primary-text-emphasis: var(--color-primary-dark);
   --bs-primary-border-subtle: var(--color-border-accent);
-  --bs-success-bg-subtle: var(--color-success-bg);
-  --bs-success-text-emphasis: var(--color-success);
-  --bs-success-border-subtle: var(--color-success);
-  --bs-danger-bg-subtle: var(--color-error-bg);
-  --bs-danger-text-emphasis: var(--color-error);
-  --bs-danger-border-subtle: var(--color-error);
-  --bs-warning-bg-subtle: var(--color-bg-coral);
-  --bs-warning-text-emphasis: var(--color-warning);
-  --bs-warning-border-subtle: var(--color-warning);
-  --bs-info-bg-subtle: var(--color-bg-sky);
+  --bs-success-bg-subtle: var(--color-state-success-bg);
+  --bs-success-text-emphasis: var(--color-state-success);
+  --bs-success-border-subtle: var(--color-state-success);
+  --bs-danger-bg-subtle: var(--color-state-error-bg);
+  --bs-danger-text-emphasis: var(--color-state-error);
+  --bs-danger-border-subtle: var(--color-state-error);
+  --bs-warning-bg-subtle: var(--color-background-coral);
+  --bs-warning-text-emphasis: var(--color-state-warning);
+  --bs-warning-border-subtle: var(--color-state-warning);
+  --bs-info-bg-subtle: var(--color-background-sky);
   --bs-info-text-emphasis: var(--color-text-default);
-  --bs-info-border-subtle: var(--color-info);
+  --bs-info-border-subtle: var(--color-state-info);
 
   /* Form validation */
-  --bs-form-valid-color: var(--color-success);
-  --bs-form-valid-border-color: var(--color-success);
-  --bs-form-invalid-color: var(--color-error);
-  --bs-form-invalid-border-color: var(--color-error);
+  --bs-form-valid-color: var(--color-state-success);
+  --bs-form-valid-border-color: var(--color-state-success);
+  --bs-form-invalid-color: var(--color-state-error);
+  --bs-form-invalid-border-color: var(--color-state-error);
 
   /* Focus ring */
   --bs-focus-ring-color: rgba(var(--color-primary-rgb), 0.25);
@@ -76,7 +76,7 @@
 /* Body baseline (Bootstrap sets these but tokens are useful too) */
 body {
   font-family: var(--font-frollo);
-  background-color: var(--color-app-bg);
+  background-color: var(--color-background-app);
   color: var(--color-text-default);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -106,8 +106,8 @@ body {
 }
 .btn-secondary {
   --bs-btn-color: var(--color-secondary);
-  --bs-btn-bg: var(--color-button-secondary-bg);
-  --bs-btn-border-color: var(--color-button-secondary-bg);
+  --bs-btn-bg: var(--color-background-button-secondary);
+  --bs-btn-border-color: var(--color-background-button-secondary);
   --bs-btn-hover-color: var(--color-secondary);
   --bs-btn-hover-bg: var(--color-border-accent);
   --bs-btn-hover-border-color: var(--color-border-accent);
@@ -117,8 +117,8 @@ body {
 }
 .btn-success {
   --bs-btn-color: var(--color-tertiary);
-  --bs-btn-bg: var(--color-success);
-  --bs-btn-border-color: var(--color-success);
+  --bs-btn-bg: var(--color-state-success);
+  --bs-btn-border-color: var(--color-state-success);
   --bs-btn-hover-bg: #00a87e;
   --bs-btn-hover-border-color: #00a87e;
   --bs-btn-active-bg: #00a87e;
@@ -127,8 +127,8 @@ body {
 }
 .btn-danger {
   --bs-btn-color: var(--color-tertiary);
-  --bs-btn-bg: var(--color-error);
-  --bs-btn-border-color: var(--color-error);
+  --bs-btn-bg: var(--color-state-error);
+  --bs-btn-border-color: var(--color-state-error);
   --bs-btn-hover-bg: #cf3a3a;
   --bs-btn-hover-border-color: #cf3a3a;
   --bs-btn-active-bg: #cf3a3a;
@@ -137,16 +137,16 @@ body {
 }
 .btn-warning {
   --bs-btn-color: var(--color-tertiary);
-  --bs-btn-bg: var(--color-warning);
-  --bs-btn-border-color: var(--color-warning);
+  --bs-btn-bg: var(--color-state-warning);
+  --bs-btn-border-color: var(--color-state-warning);
   --bs-btn-hover-bg: #e74e29;
   --bs-btn-hover-border-color: #e74e29;
   border-radius: var(--radius-full);
 }
 .btn-info {
   --bs-btn-color: var(--color-secondary);
-  --bs-btn-bg: var(--color-info);
-  --bs-btn-border-color: var(--color-info);
+  --bs-btn-bg: var(--color-state-info);
+  --bs-btn-border-color: var(--color-state-info);
   --bs-btn-hover-bg: #0bb6d8;
   --bs-btn-hover-border-color: #0bb6d8;
   border-radius: var(--radius-full);
@@ -161,8 +161,8 @@ body {
 }
 .btn-dark {
   --bs-btn-color: var(--color-tertiary);
-  --bs-btn-bg: var(--color-bg-dark);
-  --bs-btn-border-color: var(--color-bg-dark);
+  --bs-btn-bg: var(--color-background-dark);
+  --bs-btn-border-color: var(--color-background-dark);
   --bs-btn-hover-bg: var(--color-secondary);
   --bs-btn-hover-border-color: var(--color-secondary);
   border-radius: var(--radius-full);
@@ -253,9 +253,9 @@ body {
   --bs-pagination-active-bg: var(--color-primary);
   --bs-pagination-active-border-color: var(--color-primary);
   --bs-pagination-hover-color: var(--color-primary);
-  --bs-pagination-hover-bg: var(--color-button-secondary-bg);
+  --bs-pagination-hover-bg: var(--color-background-button-secondary);
   --bs-pagination-focus-color: var(--color-primary);
-  --bs-pagination-focus-bg: var(--color-button-secondary-bg);
+  --bs-pagination-focus-bg: var(--color-background-button-secondary);
   --bs-pagination-focus-box-shadow: 0 0 0 0.2rem rgba(var(--color-primary-rgb), 0.18);
   --bs-pagination-border-radius: var(--radius-full);
 }
@@ -264,13 +264,13 @@ body {
 .list-group {
   --bs-list-group-active-bg: var(--color-primary);
   --bs-list-group-active-border-color: var(--color-primary);
-  --bs-list-group-action-active-bg: var(--color-button-secondary-bg);
+  --bs-list-group-action-active-bg: var(--color-background-button-secondary);
 }
 
 /* === Dropdowns === */
 .dropdown-menu {
   --bs-dropdown-link-active-bg: var(--color-primary);
-  --bs-dropdown-link-hover-bg: var(--color-button-secondary-bg);
+  --bs-dropdown-link-hover-bg: var(--color-background-button-secondary);
   --bs-dropdown-border-radius: var(--radius-md);
   box-shadow: var(--shadow-dropdown);
 }
@@ -318,19 +318,19 @@ body {
 /* === Toast === */
 .toast {
   border-radius: var(--radius-md);
-  background: var(--color-bg-dark);
+  background: var(--color-background-dark);
   color: var(--color-text-on-dark);
   box-shadow: var(--shadow-card);
   border: 0;
 }
 .toast-header {
-  background: var(--color-bg-dark);
+  background: var(--color-background-dark);
   color: var(--color-text-on-dark);
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 /* === Tooltip / Popover === */
-.tooltip-inner { background: var(--color-bg-dark); border-radius: var(--radius-md); }
+.tooltip-inner { background: var(--color-background-dark); border-radius: var(--radius-md); }
 .popover { border-radius: var(--radius-md); box-shadow: var(--shadow-dropdown); }
 
 /* === Spinner === */

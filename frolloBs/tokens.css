@@ -1,6 +1,10 @@
 /* ============================================================
-   Frollo design tokens — derived from verifiedFrolloDesign.md.
+   Frollo design tokens — derived from ../DESIGN.md.
    Loaded first; pure values; no component rules.
+
+   Token names mirror the DESIGN.md spec one-to-one:
+   `colors.state-success` in DESIGN.md ↔ `--color-state-success` here.
+   Partner brands can re-skin by overriding `--color-*` on `:root`.
    ============================================================ */
 
 /* ---------- Forma DJR Text (Frollo CDN) ---------- */
@@ -48,20 +52,24 @@
   --color-secondary-rgb: 20, 20, 20;
   --color-tertiary: #FFFFFF;
 
-  --gradient-frollo: linear-gradient(87.77deg, #D327E7, #512ABD 23.8%, #512ABD 42.37%, #00D19F);
+  /* === Gradient stops === */
+  --color-gradient-start: #D327E7;
+  --color-gradient-mid: #512ABD;
+  --color-gradient-end: #00D19F;
+  --gradient-frollo: linear-gradient(87.77deg, var(--color-gradient-start), var(--color-gradient-mid) 23.8%, var(--color-gradient-mid) 42.37%, var(--color-gradient-end));
 
   /* === State === */
-  --color-success: #00C696;
-  --color-success-rgb: 0, 198, 150;
-  --color-success-bg: #D8FFF6;
-  --color-success-new: #4BF0C8;
-  --color-error: #E74C4C;
-  --color-error-rgb: 231, 76, 76;
-  --color-error-bg: #FEE0D9;
-  --color-warning: #FB6340;
-  --color-warning-rgb: 251, 99, 64;
-  --color-info: #0DCAF0;
-  --color-info-rgb: 13, 202, 240;
+  --color-state-success: #00C696;
+  --color-state-success-rgb: 0, 198, 150;
+  --color-state-success-bg: #D8FFF6;
+  --color-state-success-new: #4BF0C8;
+  --color-state-error: #E74C4C;
+  --color-state-error-rgb: 231, 76, 76;
+  --color-state-error-bg: #FEE0D9;
+  --color-state-warning: #FB6340;
+  --color-state-warning-rgb: 251, 99, 64;
+  --color-state-info: #0DCAF0;
+  --color-state-info-rgb: 13, 202, 240;
 
   /* === Text === */
   --color-text-default: #393C56;
@@ -73,12 +81,12 @@
   --color-text-on-dark: #FFFFFF;
 
   /* === Backgrounds === */
-  --color-app-bg: #F7F7F7;
-  --color-bg-dark: #292B3D;
-  --color-bg-pink: #FDDBFD;
-  --color-bg-coral: #FEE0D9;
-  --color-bg-sky: #D4EDF7;
-  --color-button-secondary-bg: #E6E1FF;
+  --color-background-app: #F7F7F7;
+  --color-background-dark: #292B3D;
+  --color-background-pink: #FDDBFD;
+  --color-background-coral: #FEE0D9;
+  --color-background-sky: #D4EDF7;
+  --color-background-button-secondary: #E6E1FF;
 
   /* === Borders === */
   --color-border-default: #AFB2C7;
