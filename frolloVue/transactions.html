@@ -9,7 +9,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="tailwind-frollo.js"></script>
 </head>
-<body class="font-frollo bg-app-bg text-text-default">
+<body class="font-frollo bg-background-app text-text-default">
 
 <div class="app-shell">
 
@@ -91,10 +91,10 @@
         </div>
         <div class="flex flex-wrap gap-2 mt-3 pt-3 border-t border-grey-30">
           <span class="text-xs text-text-secondary mr-1">Quick filters:</span>
-          <button class="rounded-full bg-button-secondary-bg text-primary text-xs px-3 py-1">This week</button>
-          <button class="rounded-full bg-grey-20 text-text-secondary text-xs px-3 py-1 hover:bg-button-secondary-bg hover:text-primary">This month</button>
-          <button class="rounded-full bg-grey-20 text-text-secondary text-xs px-3 py-1 hover:bg-button-secondary-bg hover:text-primary">Last 90 days</button>
-          <button class="rounded-full bg-grey-20 text-text-secondary text-xs px-3 py-1 hover:bg-button-secondary-bg hover:text-primary">Year to date</button>
+          <button class="rounded-full bg-background-button-secondary text-primary text-xs px-3 py-1">This week</button>
+          <button class="rounded-full bg-grey-20 text-text-secondary text-xs px-3 py-1 hover:bg-background-button-secondary hover:text-primary">This month</button>
+          <button class="rounded-full bg-grey-20 text-text-secondary text-xs px-3 py-1 hover:bg-background-button-secondary hover:text-primary">Last 90 days</button>
+          <button class="rounded-full bg-grey-20 text-text-secondary text-xs px-3 py-1 hover:bg-background-button-secondary hover:text-primary">Year to date</button>
         </div>
       </section>
 
@@ -102,7 +102,7 @@
       <section class="grid grid-cols-1 md:grid-cols-4 gap-4">
         <div class="rounded-lg bg-white shadow-card p-4">
           <div class="text-xs text-text-secondary">Net change</div>
-          <div class="text-xl font-medium text-success mt-1">+$2,140.50</div>
+          <div class="text-xl font-medium text-state-success mt-1">+$2,140.50</div>
         </div>
         <div class="rounded-lg bg-white shadow-card p-4">
           <div class="text-xs text-text-secondary">Income</div>
@@ -124,7 +124,7 @@
         <button>Income</button>
         <button>Spending</button>
         <button>Transfers</button>
-        <button>Uncategorised <span class="ml-1 rounded-full bg-warning text-white text-xs px-2 py-px">3</span></button>
+        <button>Uncategorised <span class="ml-1 rounded-full bg-state-warning text-white text-xs px-2 py-px">3</span></button>
       </div>
 
       <!-- Table -->
@@ -146,63 +146,63 @@
               <td class="px-4 py-3 text-p-small">11 May 2026</td>
               <td class="px-4 py-3 text-p-small">
                 <div class="flex items-center gap-2">
-                  <div class="size-7 rounded-full bg-bg-sky inline-flex items-center justify-center text-sm">🛒</div>
+                  <div class="size-7 rounded-full bg-background-sky inline-flex items-center justify-center text-sm">🛒</div>
                   Coles Norwood
                 </div>
               </td>
-              <td class="px-4 py-3"><span class="rounded-full bg-bg-sky text-secondary text-xs px-2 py-px">Groceries</span></td>
+              <td class="px-4 py-3"><span class="rounded-full bg-background-sky text-secondary text-xs px-2 py-px">Groceries</span></td>
               <td class="px-4 py-3 text-sm text-text-secondary">CBA · Everyday</td>
-              <td class="px-4 py-3 text-p-small text-right text-error font-medium">−$84.20</td>
+              <td class="px-4 py-3 text-p-small text-right text-state-error font-medium">−$84.20</td>
             </tr>
             <tr class="border-b border-grey-30 hover:bg-grey-10 transition-colors">
               <td class="px-4 py-3"><input type="checkbox" class="size-4 rounded border-border-default"></td>
               <td class="px-4 py-3 text-p-small">11 May 2026</td>
               <td class="px-4 py-3 text-p-small">
                 <div class="flex items-center gap-2">
-                  <div class="size-7 rounded-full bg-bg-coral inline-flex items-center justify-center text-sm">☕</div>
+                  <div class="size-7 rounded-full bg-background-coral inline-flex items-center justify-center text-sm">☕</div>
                   Dawn Patrol Cafe
                 </div>
               </td>
-              <td class="px-4 py-3"><span class="rounded-full bg-bg-coral text-secondary text-xs px-2 py-px">Dining</span></td>
+              <td class="px-4 py-3"><span class="rounded-full bg-background-coral text-secondary text-xs px-2 py-px">Dining</span></td>
               <td class="px-4 py-3 text-sm text-text-secondary">CBA · Everyday</td>
-              <td class="px-4 py-3 text-p-small text-right text-error font-medium">−$12.50</td>
+              <td class="px-4 py-3 text-p-small text-right text-state-error font-medium">−$12.50</td>
             </tr>
             <tr class="border-b border-grey-30 hover:bg-grey-10 transition-colors">
               <td class="px-4 py-3"><input type="checkbox" class="size-4 rounded border-border-default"></td>
               <td class="px-4 py-3 text-p-small">10 May 2026</td>
               <td class="px-4 py-3 text-p-small">
                 <div class="flex items-center gap-2">
-                  <div class="size-7 rounded-full bg-success-bg inline-flex items-center justify-center text-sm">💵</div>
+                  <div class="size-7 rounded-full bg-state-success-bg inline-flex items-center justify-center text-sm">💵</div>
                   Salary — Acme Co.
                 </div>
               </td>
-              <td class="px-4 py-3"><span class="rounded-full bg-success-bg text-text-secondary text-xs px-2 py-px">Income</span></td>
+              <td class="px-4 py-3"><span class="rounded-full bg-state-success-bg text-text-secondary text-xs px-2 py-px">Income</span></td>
               <td class="px-4 py-3 text-sm text-text-secondary">CBA · Everyday</td>
-              <td class="px-4 py-3 text-p-small text-right text-success font-medium">+$3,420.00</td>
+              <td class="px-4 py-3 text-p-small text-right text-state-success font-medium">+$3,420.00</td>
             </tr>
             <tr class="border-b border-grey-30 hover:bg-grey-10 transition-colors">
               <td class="px-4 py-3"><input type="checkbox" class="size-4 rounded border-border-default"></td>
               <td class="px-4 py-3 text-p-small">09 May 2026</td>
               <td class="px-4 py-3 text-p-small">
                 <div class="flex items-center gap-2">
-                  <div class="size-7 rounded-full bg-bg-coral inline-flex items-center justify-center text-sm">🎵</div>
+                  <div class="size-7 rounded-full bg-background-coral inline-flex items-center justify-center text-sm">🎵</div>
                   Spotify Premium
                 </div>
               </td>
-              <td class="px-4 py-3"><span class="rounded-full bg-bg-coral text-secondary text-xs px-2 py-px">Entertainment</span></td>
+              <td class="px-4 py-3"><span class="rounded-full bg-background-coral text-secondary text-xs px-2 py-px">Entertainment</span></td>
               <td class="px-4 py-3 text-sm text-text-secondary">CBA · Everyday</td>
-              <td class="px-4 py-3 text-p-small text-right text-error font-medium">−$14.99</td>
+              <td class="px-4 py-3 text-p-small text-right text-state-error font-medium">−$14.99</td>
             </tr>
             <tr class="border-b border-grey-30 hover:bg-grey-10 transition-colors">
               <td class="px-4 py-3"><input type="checkbox" class="size-4 rounded border-border-default"></td>
               <td class="px-4 py-3 text-p-small">08 May 2026</td>
               <td class="px-4 py-3 text-p-small">
                 <div class="flex items-center gap-2">
-                  <div class="size-7 rounded-full bg-button-secondary-bg inline-flex items-center justify-center text-sm">📈</div>
+                  <div class="size-7 rounded-full bg-background-button-secondary inline-flex items-center justify-center text-sm">📈</div>
                   Round-up to savings
                 </div>
               </td>
-              <td class="px-4 py-3"><span class="rounded-full bg-button-secondary-bg text-primary text-xs px-2 py-px">Savings</span></td>
+              <td class="px-4 py-3"><span class="rounded-full bg-background-button-secondary text-primary text-xs px-2 py-px">Savings</span></td>
               <td class="px-4 py-3 text-sm text-text-secondary">Westpac · Savings</td>
               <td class="px-4 py-3 text-p-small text-right font-medium">$2.36</td>
             </tr>
@@ -211,39 +211,39 @@
               <td class="px-4 py-3 text-p-small">07 May 2026</td>
               <td class="px-4 py-3 text-p-small">
                 <div class="flex items-center gap-2">
-                  <div class="size-7 rounded-full bg-bg-pink inline-flex items-center justify-center text-sm">⛽</div>
+                  <div class="size-7 rounded-full bg-background-pink inline-flex items-center justify-center text-sm">⛽</div>
                   BP Glenelg
                 </div>
               </td>
-              <td class="px-4 py-3"><span class="rounded-full bg-bg-pink text-secondary text-xs px-2 py-px">Transport</span></td>
+              <td class="px-4 py-3"><span class="rounded-full bg-background-pink text-secondary text-xs px-2 py-px">Transport</span></td>
               <td class="px-4 py-3 text-sm text-text-secondary">NAB · Credit</td>
-              <td class="px-4 py-3 text-p-small text-right text-error font-medium">−$62.10</td>
+              <td class="px-4 py-3 text-p-small text-right text-state-error font-medium">−$62.10</td>
             </tr>
             <tr class="border-b border-grey-30 hover:bg-grey-10 transition-colors">
               <td class="px-4 py-3"><input type="checkbox" class="size-4 rounded border-border-default"></td>
               <td class="px-4 py-3 text-p-small">06 May 2026</td>
               <td class="px-4 py-3 text-p-small">
                 <div class="flex items-center gap-2">
-                  <div class="size-7 rounded-full bg-warning inline-flex items-center justify-center text-sm">⚠️</div>
+                  <div class="size-7 rounded-full bg-state-warning inline-flex items-center justify-center text-sm">⚠️</div>
                   Unknown · CHK#01242
                 </div>
               </td>
-              <td class="px-4 py-3"><span class="rounded-full bg-warning text-white text-xs px-2 py-px">Uncategorised</span></td>
+              <td class="px-4 py-3"><span class="rounded-full bg-state-warning text-white text-xs px-2 py-px">Uncategorised</span></td>
               <td class="px-4 py-3 text-sm text-text-secondary">CBA · Everyday</td>
-              <td class="px-4 py-3 text-p-small text-right text-error font-medium">−$120.00</td>
+              <td class="px-4 py-3 text-p-small text-right text-state-error font-medium">−$120.00</td>
             </tr>
             <tr class="hover:bg-grey-10 transition-colors">
               <td class="px-4 py-3"><input type="checkbox" class="size-4 rounded border-border-default"></td>
               <td class="px-4 py-3 text-p-small">05 May 2026</td>
               <td class="px-4 py-3 text-p-small">
                 <div class="flex items-center gap-2">
-                  <div class="size-7 rounded-full bg-bg-sky inline-flex items-center justify-center text-sm">🏠</div>
+                  <div class="size-7 rounded-full bg-background-sky inline-flex items-center justify-center text-sm">🏠</div>
                   Energy Australia
                 </div>
               </td>
-              <td class="px-4 py-3"><span class="rounded-full bg-bg-sky text-secondary text-xs px-2 py-px">Utilities</span></td>
+              <td class="px-4 py-3"><span class="rounded-full bg-background-sky text-secondary text-xs px-2 py-px">Utilities</span></td>
               <td class="px-4 py-3 text-sm text-text-secondary">CBA · Everyday</td>
-              <td class="px-4 py-3 text-p-small text-right text-error font-medium">−$148.20</td>
+              <td class="px-4 py-3 text-p-small text-right text-state-error font-medium">−$148.20</td>
             </tr>
           </tbody>
         </table>

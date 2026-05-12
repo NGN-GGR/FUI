@@ -9,7 +9,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="tailwind-frollo.js"></script>
 </head>
-<body class="font-frollo bg-app-bg text-text-default">
+<body class="font-frollo bg-background-app text-text-default">
 
 <header class="bg-white border-b border-grey-30 px-6 py-4 flex items-center justify-between">
   <a href="index.html" class="inline-flex items-center gap-2 text-xl font-medium text-text-default no-underline">
@@ -34,7 +34,7 @@
 
   <!-- Heading -->
   <section>
-    <span class="rounded-full bg-button-secondary-bg text-primary text-xs px-3 py-1 inline-block">Step 2 of 4</span>
+    <span class="rounded-full bg-background-button-secondary text-primary text-xs px-3 py-1 inline-block">Step 2 of 4</span>
     <h1 class="text-3xl font-medium mt-3 mb-2" style="font-size: 32px; line-height: 38px;">Connect your bank</h1>
     <p class="text-text-secondary m-0">Frollo connects via the Consumer Data Right (CDR). Read-only · revocable any time · your credentials stay with your bank.</p>
   </section>
@@ -49,12 +49,12 @@
 
     <div class="flex flex-wrap gap-2 mt-3">
       <span class="text-xs text-text-secondary mr-1 self-center">Popular:</span>
-      <button class="rounded-full bg-button-secondary-bg text-primary text-xs px-3 py-1 hover:bg-border-accent">CBA</button>
-      <button class="rounded-full bg-button-secondary-bg text-primary text-xs px-3 py-1 hover:bg-border-accent">Westpac</button>
-      <button class="rounded-full bg-button-secondary-bg text-primary text-xs px-3 py-1 hover:bg-border-accent">NAB</button>
-      <button class="rounded-full bg-button-secondary-bg text-primary text-xs px-3 py-1 hover:bg-border-accent">ANZ</button>
-      <button class="rounded-full bg-button-secondary-bg text-primary text-xs px-3 py-1 hover:bg-border-accent">ING</button>
-      <button class="rounded-full bg-button-secondary-bg text-primary text-xs px-3 py-1 hover:bg-border-accent">Macquarie</button>
+      <button class="rounded-full bg-background-button-secondary text-primary text-xs px-3 py-1 hover:bg-border-accent">CBA</button>
+      <button class="rounded-full bg-background-button-secondary text-primary text-xs px-3 py-1 hover:bg-border-accent">Westpac</button>
+      <button class="rounded-full bg-background-button-secondary text-primary text-xs px-3 py-1 hover:bg-border-accent">NAB</button>
+      <button class="rounded-full bg-background-button-secondary text-primary text-xs px-3 py-1 hover:bg-border-accent">ANZ</button>
+      <button class="rounded-full bg-background-button-secondary text-primary text-xs px-3 py-1 hover:bg-border-accent">ING</button>
+      <button class="rounded-full bg-background-button-secondary text-primary text-xs px-3 py-1 hover:bg-border-accent">Macquarie</button>
     </div>
   </section>
 
@@ -66,62 +66,62 @@
     <div class="divide-y divide-grey-30">
 
       <button class="w-full text-left flex items-center gap-3 px-5 py-3 hover:bg-grey-10 transition-colors">
-        <div class="size-10 rounded-full bg-button-secondary-bg inline-flex items-center justify-center text-primary font-medium">CB</div>
+        <div class="size-10 rounded-full bg-background-button-secondary inline-flex items-center justify-center text-primary font-medium">CB</div>
         <div class="flex-1">
           <div class="text-p-small font-medium">Commonwealth Bank</div>
           <div class="text-xs text-text-secondary">Personal · Business · Credit cards</div>
         </div>
-        <span class="rounded-full bg-success-bg text-success text-xs px-2 py-px">CDR</span>
+        <span class="rounded-full bg-state-success-bg text-state-success text-xs px-2 py-px">CDR</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5F6489" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
       </button>
 
       <button class="w-full text-left flex items-center gap-3 px-5 py-3 hover:bg-grey-10 transition-colors">
-        <div class="size-10 rounded-full bg-bg-coral inline-flex items-center justify-center text-error font-medium">WP</div>
+        <div class="size-10 rounded-full bg-background-coral inline-flex items-center justify-center text-state-error font-medium">WP</div>
         <div class="flex-1">
           <div class="text-p-small font-medium">Westpac</div>
           <div class="text-xs text-text-secondary">Personal · Business · Loans</div>
         </div>
-        <span class="rounded-full bg-success-bg text-success text-xs px-2 py-px">CDR</span>
+        <span class="rounded-full bg-state-success-bg text-state-success text-xs px-2 py-px">CDR</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5F6489" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
       </button>
 
       <button class="w-full text-left flex items-center gap-3 px-5 py-3 hover:bg-grey-10 transition-colors">
-        <div class="size-10 rounded-full bg-bg-sky inline-flex items-center justify-center text-secondary font-medium">NA</div>
+        <div class="size-10 rounded-full bg-background-sky inline-flex items-center justify-center text-secondary font-medium">NA</div>
         <div class="flex-1">
           <div class="text-p-small font-medium">NAB</div>
           <div class="text-xs text-text-secondary">Personal · Business · Mortgages</div>
         </div>
-        <span class="rounded-full bg-success-bg text-success text-xs px-2 py-px">CDR</span>
+        <span class="rounded-full bg-state-success-bg text-state-success text-xs px-2 py-px">CDR</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5F6489" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
       </button>
 
       <button class="w-full text-left flex items-center gap-3 px-5 py-3 hover:bg-grey-10 transition-colors">
-        <div class="size-10 rounded-full bg-bg-pink inline-flex items-center justify-center text-primary font-medium">AN</div>
+        <div class="size-10 rounded-full bg-background-pink inline-flex items-center justify-center text-primary font-medium">AN</div>
         <div class="flex-1">
           <div class="text-p-small font-medium">ANZ</div>
           <div class="text-xs text-text-secondary">Personal · Business · Credit cards</div>
         </div>
-        <span class="rounded-full bg-success-bg text-success text-xs px-2 py-px">CDR</span>
+        <span class="rounded-full bg-state-success-bg text-state-success text-xs px-2 py-px">CDR</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5F6489" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
       </button>
 
       <button class="w-full text-left flex items-center gap-3 px-5 py-3 hover:bg-grey-10 transition-colors">
-        <div class="size-10 rounded-full bg-button-secondary-bg inline-flex items-center justify-center text-primary font-medium">IN</div>
+        <div class="size-10 rounded-full bg-background-button-secondary inline-flex items-center justify-center text-primary font-medium">IN</div>
         <div class="flex-1">
           <div class="text-p-small font-medium">ING</div>
           <div class="text-xs text-text-secondary">Personal · Savings · Home loans</div>
         </div>
-        <span class="rounded-full bg-success-bg text-success text-xs px-2 py-px">CDR</span>
+        <span class="rounded-full bg-state-success-bg text-state-success text-xs px-2 py-px">CDR</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5F6489" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
       </button>
 
       <button class="w-full text-left flex items-center gap-3 px-5 py-3 hover:bg-grey-10 transition-colors">
-        <div class="size-10 rounded-full bg-bg-coral inline-flex items-center justify-center text-error font-medium">MQ</div>
+        <div class="size-10 rounded-full bg-background-coral inline-flex items-center justify-center text-state-error font-medium">MQ</div>
         <div class="flex-1">
           <div class="text-p-small font-medium">Macquarie</div>
           <div class="text-xs text-text-secondary">Personal · Wealth · Cash management</div>
         </div>
-        <span class="rounded-full bg-warning text-white text-xs px-2 py-px">Beta</span>
+        <span class="rounded-full bg-state-warning text-white text-xs px-2 py-px">Beta</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5F6489" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
       </button>
 
@@ -132,7 +132,7 @@
   </section>
 
   <!-- Trust note -->
-  <section class="rounded-md bg-bg-sky text-text-default p-4 flex items-start gap-3 text-sm">
+  <section class="rounded-md bg-background-sky text-text-default p-4 flex items-start gap-3 text-sm">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0DCAF0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
     <div>
       <div class="text-p-small font-medium text-text-default mb-1">Your data, your rules</div>

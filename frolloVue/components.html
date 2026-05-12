@@ -248,7 +248,7 @@
     .fw-provider-row:hover { background: #F7F7F7; }
   </style>
 </head>
-<body class="font-frollo bg-app-bg text-text-default text-base">
+<body class="font-frollo bg-background-app text-text-default text-base">
 
   <header class="preview-header">
     <a href="#" class="brand">
@@ -270,7 +270,7 @@
     <section class="preview-hero">
       <span class="eyebrow">Component matrix</span>
       <h1>Frollo Web UI — verified components.</h1>
-      <p class="lede">Every component declared in <code>verifiedFrolloDesign.md</code>, rendered statically with the Frollo Tailwind theme: pill buttons, Forma DJR Text, the brand purple cascade, and the four-tier shadow language.</p>
+      <p class="lede">Every component declared in <code>../DESIGN.md</code>, rendered statically with the Frollo Tailwind theme: pill buttons, Forma DJR Text, the brand purple cascade, and the four-tier shadow language.</p>
     </section>
 
     <!-- BUTTONS -->
@@ -282,11 +282,11 @@
         <span class="frame-label">Variants · default size (lg)</span>
         <div class="preview-cluster">
           <button class="rounded-full bg-primary text-white text-p px-7 py-2 hover:bg-primary-hover transition-colors">Primary</button>
-          <button class="rounded-full bg-button-secondary-bg text-secondary text-p px-7 py-2 hover:bg-border-accent transition-colors">Secondary</button>
+          <button class="rounded-full bg-background-button-secondary text-secondary text-p px-7 py-2 hover:bg-border-accent transition-colors">Secondary</button>
           <button class="rounded-full bg-transparent text-primary text-p px-7 py-2 hover:bg-primary-tertiary-fade transition-colors">Tertiary</button>
-          <button class="rounded-full bg-border-accent text-bg-dark text-p px-7 py-2 hover:bg-border-strong hover:text-white transition-colors">Quaternary</button>
-          <button class="rounded-full bg-success text-white text-p px-7 py-2 transition-colors">Success</button>
-          <button class="rounded-full bg-error text-white text-p px-7 py-2 transition-colors">Error</button>
+          <button class="rounded-full bg-border-accent text-background-dark text-p px-7 py-2 hover:bg-border-strong hover:text-white transition-colors">Quaternary</button>
+          <button class="rounded-full bg-state-success text-white text-p px-7 py-2 transition-colors">Success</button>
+          <button class="rounded-full bg-state-error text-white text-p px-7 py-2 transition-colors">Error</button>
           <button class="rounded-full bg-frollo-gradient text-white text-p px-7 py-2 transition-opacity hover:opacity-90">Gradient</button>
           <button class="text-primary text-p underline-offset-4 hover:underline px-2 py-2">Link</button>
         </div>
@@ -340,12 +340,12 @@
         <span class="frame-label">Variants · md size</span>
         <div class="preview-cluster">
           <span class="rounded-full bg-primary text-white text-sm px-4 py-1">Primary</span>
-          <span class="rounded-full bg-button-secondary-bg text-primary text-sm px-4 py-1">Secondary</span>
-          <span class="rounded-full bg-bg-sky text-secondary text-sm px-4 py-1">Tertiary</span>
-          <span class="rounded-full bg-bg-coral text-secondary text-sm px-4 py-1">Quaternary</span>
-          <span class="rounded-full bg-warning text-white text-sm px-4 py-1">Alert</span>
-          <span class="rounded-full bg-success-bg text-text-secondary text-sm px-4 py-1">Success</span>
-          <span class="rounded-full bg-error text-white text-sm px-4 py-1">Error</span>
+          <span class="rounded-full bg-background-button-secondary text-primary text-sm px-4 py-1">Secondary</span>
+          <span class="rounded-full bg-background-sky text-secondary text-sm px-4 py-1">Tertiary</span>
+          <span class="rounded-full bg-background-coral text-secondary text-sm px-4 py-1">Quaternary</span>
+          <span class="rounded-full bg-state-warning text-white text-sm px-4 py-1">Alert</span>
+          <span class="rounded-full bg-state-success-bg text-text-secondary text-sm px-4 py-1">Success</span>
+          <span class="rounded-full bg-state-error text-white text-sm px-4 py-1">Error</span>
         </div>
       </div>
 
@@ -361,7 +361,7 @@
       <div class="preview-frame">
         <span class="frame-label">Dismissable</span>
         <div class="preview-cluster">
-          <span class="rounded-full bg-button-secondary-bg text-primary text-sm px-4 py-1 inline-flex items-center gap-2">
+          <span class="rounded-full bg-background-button-secondary text-primary text-sm px-4 py-1 inline-flex items-center gap-2">
             Connected
             <button class="text-primary hover:opacity-60" aria-label="Remove">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
@@ -377,19 +377,19 @@
       <p class="section-lede">Inline status messages. <code>alert-warning</code> uses a saturated surface with white text — there is no soft warning tint.</p>
       <div class="preview-frame">
         <div class="preview-stack">
-          <div class="rounded-md bg-success-bg text-success p-4 inline-flex items-center gap-3">
+          <div class="rounded-md bg-state-success-bg text-state-success p-4 inline-flex items-center gap-3">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
             <span class="text-p-small">Your account was successfully connected.</span>
           </div>
-          <div class="rounded-md bg-error-bg text-error p-4 inline-flex items-center gap-3">
+          <div class="rounded-md bg-state-error-bg text-state-error p-4 inline-flex items-center gap-3">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
             <span class="text-p-small">We couldn't verify your details. Try again.</span>
           </div>
-          <div class="rounded-md bg-warning text-white p-4 inline-flex items-center gap-3">
+          <div class="rounded-md bg-state-warning text-white p-4 inline-flex items-center gap-3">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
             <span class="text-p-small">Heads up — your statement period ends in 2 days.</span>
           </div>
-          <div class="rounded-md bg-bg-sky text-text-default p-4 inline-flex items-center gap-3">
+          <div class="rounded-md bg-background-sky text-text-default p-4 inline-flex items-center gap-3">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
             <span class="text-p-small">Your CDR consent will expire in 90 days.</span>
           </div>
@@ -413,8 +413,8 @@
             </div>
             <div>
               <label class="block text-sm text-text-secondary mb-1">Account number</label>
-              <input class="w-full rounded border border-error bg-white px-3 py-2 text-base text-text-default focus:outline-none" type="text" value="00021">
-              <span class="text-xs text-error mt-1 block">Account number must be at least 6 digits.</span>
+              <input class="w-full rounded border border-state-error bg-white px-3 py-2 text-base text-text-default focus:outline-none" type="text" value="00021">
+              <span class="text-xs text-state-error mt-1 block">Account number must be at least 6 digits.</span>
             </div>
           </div>
         </div>
@@ -435,7 +435,7 @@
               <label class="block text-sm text-text-secondary mb-1">Currency</label>
               <button class="w-full rounded border border-primary bg-white px-3 py-2 text-base text-text-default text-left ring-2 ring-primary/20 focus:outline-none">AUD — Australian Dollar</button>
               <div class="absolute z-10 mt-1 w-full rounded-md bg-white shadow-dropdown border border-border-default overflow-hidden">
-                <button class="w-full text-left px-3 py-2 text-base text-text-default bg-button-secondary-bg">AUD — Australian Dollar</button>
+                <button class="w-full text-left px-3 py-2 text-base text-text-default bg-background-button-secondary">AUD — Australian Dollar</button>
                 <button class="w-full text-left px-3 py-2 text-base text-text-default hover:bg-grey-20">USD — US Dollar</button>
                 <button class="w-full text-left px-3 py-2 text-base text-text-default hover:bg-grey-20">NZD — New Zealand Dollar</button>
               </div>
@@ -632,25 +632,25 @@
               <tr class="border-b border-border-default last:border-0">
                 <td class="px-4 py-3 text-p-small">11 May</td>
                 <td class="px-4 py-3 text-p-small">Coles Norwood</td>
-                <td class="px-4 py-3"><span class="rounded-full bg-bg-sky text-secondary text-xs px-2 py-px">Groceries</span></td>
-                <td class="px-4 py-3 text-p-small text-right text-error">−$84.20</td>
+                <td class="px-4 py-3"><span class="rounded-full bg-background-sky text-secondary text-xs px-2 py-px">Groceries</span></td>
+                <td class="px-4 py-3 text-p-small text-right text-state-error">−$84.20</td>
               </tr>
               <tr class="border-b border-border-default last:border-0">
                 <td class="px-4 py-3 text-p-small">10 May</td>
                 <td class="px-4 py-3 text-p-small">Salary — Acme Co.</td>
-                <td class="px-4 py-3"><span class="rounded-full bg-success-bg text-text-secondary text-xs px-2 py-px">Income</span></td>
-                <td class="px-4 py-3 text-p-small text-right text-success">+$3,420.00</td>
+                <td class="px-4 py-3"><span class="rounded-full bg-state-success-bg text-text-secondary text-xs px-2 py-px">Income</span></td>
+                <td class="px-4 py-3 text-p-small text-right text-state-success">+$3,420.00</td>
               </tr>
               <tr class="border-b border-border-default last:border-0">
                 <td class="px-4 py-3 text-p-small">09 May</td>
                 <td class="px-4 py-3 text-p-small">Spotify Premium</td>
-                <td class="px-4 py-3"><span class="rounded-full bg-bg-coral text-secondary text-xs px-2 py-px">Entertainment</span></td>
-                <td class="px-4 py-3 text-p-small text-right text-error">−$14.99</td>
+                <td class="px-4 py-3"><span class="rounded-full bg-background-coral text-secondary text-xs px-2 py-px">Entertainment</span></td>
+                <td class="px-4 py-3 text-p-small text-right text-state-error">−$14.99</td>
               </tr>
               <tr>
                 <td class="px-4 py-3 text-p-small">08 May</td>
                 <td class="px-4 py-3 text-p-small">Round-up to savings</td>
-                <td class="px-4 py-3"><span class="rounded-full bg-button-secondary-bg text-primary text-xs px-2 py-px">Savings</span></td>
+                <td class="px-4 py-3"><span class="rounded-full bg-background-button-secondary text-primary text-xs px-2 py-px">Savings</span></td>
                 <td class="px-4 py-3 text-p-small text-right text-text-default">$2.36</td>
               </tr>
             </tbody>
@@ -726,7 +726,7 @@
                 Frollo
               </span>
               <nav class="flex items-center gap-2">
-                <a class="px-3 py-2 text-p-small text-primary font-medium rounded-full bg-button-secondary-bg" href="#">Dashboard</a>
+                <a class="px-3 py-2 text-p-small text-primary font-medium rounded-full bg-background-button-secondary" href="#">Dashboard</a>
                 <a class="px-3 py-2 text-p-small text-text-secondary hover:text-text-default" href="#">Transactions</a>
                 <a class="px-3 py-2 text-p-small text-text-secondary hover:text-text-default" href="#">Goals</a>
                 <a class="px-3 py-2 text-p-small text-text-secondary hover:text-text-default" href="#">Insights</a>
@@ -745,7 +745,7 @@
       <div class="preview-frame">
         <span class="frame-label">Sidebar</span>
         <div class="rounded-lg overflow-hidden border border-border-default">
-          <aside class="bg-bg-dark text-white w-64 p-4">
+          <aside class="bg-background-dark text-white w-64 p-4">
             <span class="inline-flex items-center gap-2 text-xl font-medium mb-6">
               <span class="size-3 rounded-full bg-text-accent"></span>
               Frollo
@@ -771,7 +771,7 @@
         <div class="preview-frame">
           <span class="frame-label">Popover</span>
           <div class="relative inline-block">
-            <button class="rounded-full bg-button-secondary-bg text-primary text-p-small px-4 py-1">Trigger</button>
+            <button class="rounded-full bg-background-button-secondary text-primary text-p-small px-4 py-1">Trigger</button>
             <div class="absolute left-0 top-full mt-2 w-64 rounded-md bg-white border border-border-default shadow-dropdown p-3 z-10">
               <p class="text-p-small font-medium m-0 mb-1">Quick tip</p>
               <p class="text-sm text-text-secondary m-0">Connect at least one account to unlock insights.</p>
@@ -781,7 +781,7 @@
 
         <div class="preview-frame">
           <span class="frame-label">Toast · dark surface</span>
-          <div class="rounded-md bg-bg-dark text-white px-4 py-3 inline-flex items-center gap-3 shadow-card max-w-md">
+          <div class="rounded-md bg-background-dark text-white px-4 py-3 inline-flex items-center gap-3 shadow-card max-w-md">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4BF0C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
             <span class="text-p-small">Your goal is on track this month.</span>
             <button class="ml-2 size-6 rounded hover:bg-secondary inline-flex items-center justify-center" aria-label="Dismiss">
@@ -929,7 +929,7 @@
           <span class="frame-label">Provider list</span>
           <div class="rounded-lg border border-border-default bg-white overflow-hidden divide-y divide-border-default">
             <div class="fw-provider-row flex items-center gap-3 px-4 py-3 cursor-pointer">
-              <div class="size-10 rounded-full bg-button-secondary-bg inline-flex items-center justify-center text-primary font-medium">CB</div>
+              <div class="size-10 rounded-full bg-background-button-secondary inline-flex items-center justify-center text-primary font-medium">CB</div>
               <div class="flex-1">
                 <div class="text-p-small font-medium">Commonwealth Bank</div>
                 <div class="text-xs text-text-secondary">2 accounts · last sync 2m ago</div>
@@ -937,7 +937,7 @@
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5F6489" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
             </div>
             <div class="fw-provider-row flex items-center gap-3 px-4 py-3 cursor-pointer">
-              <div class="size-10 rounded-full bg-button-secondary-bg inline-flex items-center justify-center text-primary font-medium">WP</div>
+              <div class="size-10 rounded-full bg-background-button-secondary inline-flex items-center justify-center text-primary font-medium">WP</div>
               <div class="flex-1">
                 <div class="text-p-small font-medium">Westpac</div>
                 <div class="text-xs text-text-secondary">1 account · last sync 5m ago</div>
@@ -945,7 +945,7 @@
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5F6489" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
             </div>
             <div class="fw-provider-row flex items-center gap-3 px-4 py-3 cursor-pointer">
-              <div class="size-10 rounded-full bg-button-secondary-bg inline-flex items-center justify-center text-primary font-medium">NA</div>
+              <div class="size-10 rounded-full bg-background-button-secondary inline-flex items-center justify-center text-primary font-medium">NA</div>
               <div class="flex-1">
                 <div class="text-p-small font-medium">NAB</div>
                 <div class="text-xs text-text-secondary">3 accounts · last sync 14m ago</div>
@@ -965,33 +965,33 @@
             <ul class="divide-y divide-border-default m-0 p-0 list-none">
               <li class="flex items-center justify-between px-4 py-3">
                 <div class="flex items-center gap-3">
-                  <div class="size-9 rounded-full bg-bg-sky inline-flex items-center justify-center">🛒</div>
+                  <div class="size-9 rounded-full bg-background-sky inline-flex items-center justify-center">🛒</div>
                   <div>
                     <div class="text-p-small">Coles Norwood</div>
                     <div class="text-xs text-text-secondary">Groceries</div>
                   </div>
                 </div>
-                <div class="text-p-small text-error">−$84.20</div>
+                <div class="text-p-small text-state-error">−$84.20</div>
               </li>
               <li class="flex items-center justify-between px-4 py-3">
                 <div class="flex items-center gap-3">
-                  <div class="size-9 rounded-full bg-success-bg inline-flex items-center justify-center">💵</div>
+                  <div class="size-9 rounded-full bg-state-success-bg inline-flex items-center justify-center">💵</div>
                   <div>
                     <div class="text-p-small">Salary — Acme Co.</div>
                     <div class="text-xs text-text-secondary">Income</div>
                   </div>
                 </div>
-                <div class="text-p-small text-success">+$3,420.00</div>
+                <div class="text-p-small text-state-success">+$3,420.00</div>
               </li>
               <li class="flex items-center justify-between px-4 py-3">
                 <div class="flex items-center gap-3">
-                  <div class="size-9 rounded-full bg-bg-coral inline-flex items-center justify-center">🎵</div>
+                  <div class="size-9 rounded-full bg-background-coral inline-flex items-center justify-center">🎵</div>
                   <div>
                     <div class="text-p-small">Spotify Premium</div>
                     <div class="text-xs text-text-secondary">Entertainment</div>
                   </div>
                 </div>
-                <div class="text-p-small text-error">−$14.99</div>
+                <div class="text-p-small text-state-error">−$14.99</div>
               </li>
             </ul>
           </div>
@@ -1000,7 +1000,7 @@
     </section>
 
     <footer class="preview-footer">
-      <span>Tokens from <code>verifiedFrolloDesign.md</code> · components rendered statically.</span>
+      <span>Tokens from <code>../DESIGN.md</code> · components rendered statically.</span>
       <span><a href="verifiedFrolloBootstrapComponents.html" style="color: var(--accent);">View Bootstrap rendering →</a></span>
     </footer>
 

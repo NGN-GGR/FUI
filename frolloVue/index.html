@@ -9,7 +9,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="tailwind-frollo.js"></script>
 </head>
-<body class="font-frollo bg-app-bg text-text-default">
+<body class="font-frollo bg-background-app text-text-default">
 
 <div class="app-shell">
 
@@ -95,7 +95,7 @@
         <div class="rounded-lg bg-white shadow-card p-5">
           <div class="text-sm text-text-secondary mb-1">Total balance</div>
           <div class="text-3xl text-text-default font-medium">$24,820.36</div>
-          <div class="mt-2 inline-flex items-center gap-1 text-sm text-success">
+          <div class="mt-2 inline-flex items-center gap-1 text-sm text-state-success">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 15 12 9 18 15"/></svg>
             +$420.12 this week
           </div>
@@ -111,7 +111,7 @@
         <div class="rounded-lg bg-white shadow-card p-5">
           <div class="text-sm text-text-secondary mb-1">Spending this month</div>
           <div class="text-3xl text-text-default font-medium">$3,212.48</div>
-          <div class="mt-2 inline-flex items-center gap-1 text-sm text-error">
+          <div class="mt-2 inline-flex items-center gap-1 text-sm text-state-error">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
             +12% vs. last month
           </div>
@@ -124,7 +124,7 @@
         <div class="rounded-lg bg-white shadow-card p-5 lg:col-span-2">
           <div class="flex items-start justify-between mb-3">
             <div>
-              <span class="rounded-full bg-button-secondary-bg text-primary text-xs px-2 py-px">Active goal</span>
+              <span class="rounded-full bg-background-button-secondary text-primary text-xs px-2 py-px">Active goal</span>
               <h3 class="text-xl font-medium mt-2 mb-1">Holiday in Japan</h3>
               <p class="text-sm text-text-secondary m-0">$3,200 saved of $5,000 · target Sep 2026</p>
             </div>
@@ -144,7 +144,7 @@
             </div>
             <div class="rounded-md bg-grey-10 p-3">
               <div class="text-xs text-text-secondary">On track</div>
-              <div class="text-base font-medium text-success">Yes</div>
+              <div class="text-base font-medium text-state-success">Yes</div>
             </div>
           </div>
         </div>
@@ -178,37 +178,37 @@
           <ul class="divide-y divide-grey-30 m-0 p-0 list-none">
             <li class="flex items-center justify-between py-3">
               <div class="flex items-center gap-3">
-                <div class="size-9 rounded-full bg-bg-sky inline-flex items-center justify-center text-base">🛒</div>
+                <div class="size-9 rounded-full bg-background-sky inline-flex items-center justify-center text-base">🛒</div>
                 <div>
                   <div class="text-p-small">Coles Norwood</div>
                   <div class="text-xs text-text-secondary">Today · Groceries</div>
                 </div>
               </div>
-              <div class="text-p-small text-error font-medium">−$84.20</div>
+              <div class="text-p-small text-state-error font-medium">−$84.20</div>
             </li>
             <li class="flex items-center justify-between py-3">
               <div class="flex items-center gap-3">
-                <div class="size-9 rounded-full bg-success-bg inline-flex items-center justify-center text-base">💵</div>
+                <div class="size-9 rounded-full bg-state-success-bg inline-flex items-center justify-center text-base">💵</div>
                 <div>
                   <div class="text-p-small">Salary — Acme Co.</div>
                   <div class="text-xs text-text-secondary">10 May · Income</div>
                 </div>
               </div>
-              <div class="text-p-small text-success font-medium">+$3,420.00</div>
+              <div class="text-p-small text-state-success font-medium">+$3,420.00</div>
             </li>
             <li class="flex items-center justify-between py-3">
               <div class="flex items-center gap-3">
-                <div class="size-9 rounded-full bg-bg-coral inline-flex items-center justify-center text-base">🎵</div>
+                <div class="size-9 rounded-full bg-background-coral inline-flex items-center justify-center text-base">🎵</div>
                 <div>
                   <div class="text-p-small">Spotify Premium</div>
                   <div class="text-xs text-text-secondary">09 May · Entertainment</div>
                 </div>
               </div>
-              <div class="text-p-small text-error font-medium">−$14.99</div>
+              <div class="text-p-small text-state-error font-medium">−$14.99</div>
             </li>
             <li class="flex items-center justify-between py-3">
               <div class="flex items-center gap-3">
-                <div class="size-9 rounded-full bg-button-secondary-bg inline-flex items-center justify-center text-base">📈</div>
+                <div class="size-9 rounded-full bg-background-button-secondary inline-flex items-center justify-center text-base">📈</div>
                 <div>
                   <div class="text-p-small">Round-up to savings</div>
                   <div class="text-xs text-text-secondary">08 May · Savings</div>
@@ -218,20 +218,20 @@
             </li>
             <li class="flex items-center justify-between py-3">
               <div class="flex items-center gap-3">
-                <div class="size-9 rounded-full bg-bg-pink inline-flex items-center justify-center text-base">⛽</div>
+                <div class="size-9 rounded-full bg-background-pink inline-flex items-center justify-center text-base">⛽</div>
                 <div>
                   <div class="text-p-small">BP Glenelg</div>
                   <div class="text-xs text-text-secondary">07 May · Transport</div>
                 </div>
               </div>
-              <div class="text-p-small text-error font-medium">−$62.10</div>
+              <div class="text-p-small text-state-error font-medium">−$62.10</div>
             </li>
           </ul>
         </div>
 
         <!-- Side cards -->
         <div class="space-y-4">
-          <div class="rounded-md bg-bg-sky text-text-default p-4 flex items-start gap-3">
+          <div class="rounded-md bg-background-sky text-text-default p-4 flex items-start gap-3">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
             <div>
               <div class="text-p-small font-medium">CDR consent expires soon</div>
@@ -239,7 +239,7 @@
               <button class="rounded-full bg-primary text-white text-sm px-3 py-1 mt-3 hover:bg-primary-hover">Review</button>
             </div>
           </div>
-          <div class="rounded-md bg-success-bg text-success p-4 flex items-start gap-3">
+          <div class="rounded-md bg-state-success-bg text-state-success p-4 flex items-start gap-3">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
             <div>
               <div class="text-p-small font-medium">You're on track this month</div>
@@ -254,9 +254,9 @@
         <h3 class="text-xl font-medium mb-3">Quick actions</h3>
         <div class="flex flex-wrap gap-3">
           <button class="rounded-full bg-primary text-white text-p px-7 py-2 hover:bg-primary-hover transition-colors">Transfer money</button>
-          <button class="rounded-full bg-button-secondary-bg text-secondary text-p px-7 py-2 hover:bg-border-accent transition-colors">Add an account</button>
+          <button class="rounded-full bg-background-button-secondary text-secondary text-p px-7 py-2 hover:bg-border-accent transition-colors">Add an account</button>
           <button class="rounded-full bg-transparent text-primary text-p px-7 py-2 hover:bg-primary-tertiary-fade transition-colors">Create a goal</button>
-          <button class="rounded-full bg-border-accent text-bg-dark text-p px-7 py-2 hover:bg-border-strong hover:text-white transition-colors">Export statement</button>
+          <button class="rounded-full bg-border-accent text-background-dark text-p px-7 py-2 hover:bg-border-strong hover:text-white transition-colors">Export statement</button>
         </div>
       </section>
 

@@ -1,6 +1,10 @@
 /* ============================================================
-   Frollo design tokens — derived from verifiedFrolloDesign.md.
+   Frollo design tokens — derived from ../DESIGN.md.
    Pure values; no component rules.
+
+   Token names mirror the DESIGN.md spec one-to-one:
+   `colors.state-success` in DESIGN.md ↔ `--color-state-success` here.
+   Partner brands can re-skin by overriding `--color-*` on `:root`.
    ============================================================ */
 
 /* ---------- Forma DJR Text (Frollo CDN) ---------- */
@@ -48,16 +52,20 @@
   --color-secondary-rgb: 20, 20, 20;
   --color-tertiary: #FFFFFF;
 
-  --gradient-frollo: linear-gradient(87.77deg, #D327E7, #512ABD 23.8%, #512ABD 42.37%, #00D19F);
+  /* === Gradient stops (consumed by --gradient-frollo and by Tailwind from-/via-/to- utilities) === */
+  --color-gradient-start: #D327E7;
+  --color-gradient-mid: #512ABD;
+  --color-gradient-end: #00D19F;
+  --gradient-frollo: linear-gradient(87.77deg, var(--color-gradient-start), var(--color-gradient-mid) 23.8%, var(--color-gradient-mid) 42.37%, var(--color-gradient-end));
 
   /* === State === */
-  --color-success: #00C696;
-  --color-success-bg: #D8FFF6;
-  --color-success-new: #4BF0C8;
-  --color-error: #E74C4C;
-  --color-error-bg: #FEE0D9;
-  --color-warning: #FB6340;
-  --color-info: #0DCAF0;
+  --color-state-success: #00C696;
+  --color-state-success-bg: #D8FFF6;
+  --color-state-success-new: #4BF0C8;
+  --color-state-error: #E74C4C;
+  --color-state-error-bg: #FEE0D9;
+  --color-state-warning: #FB6340;
+  --color-state-info: #0DCAF0;
 
   /* === Text === */
   --color-text-default: #393C56;
@@ -67,12 +75,12 @@
   --color-text-on-dark: #FFFFFF;
 
   /* === Backgrounds === */
-  --color-app-bg: #F7F7F7;
-  --color-bg-dark: #292B3D;
-  --color-bg-pink: #FDDBFD;
-  --color-bg-coral: #FEE0D9;
-  --color-bg-sky: #D4EDF7;
-  --color-button-secondary-bg: #E6E1FF;
+  --color-background-app: #F7F7F7;
+  --color-background-dark: #292B3D;
+  --color-background-pink: #FDDBFD;
+  --color-background-coral: #FEE0D9;
+  --color-background-sky: #D4EDF7;
+  --color-background-button-secondary: #E6E1FF;
 
   /* === Borders === */
   --color-border-default: #AFB2C7;
@@ -115,7 +123,7 @@ html, body { margin: 0; padding: 0; }
 body {
   font-family: var(--font-frollo);
   color: var(--color-text-default);
-  background: var(--color-app-bg);
+  background: var(--color-background-app);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;

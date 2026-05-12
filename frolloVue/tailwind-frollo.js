@@ -18,14 +18,19 @@ tailwind.config = {
       secondary: '#141414',
       tertiary: '#FFFFFF',
 
+      // Gradient stops (consumed by from-/via-/to-* utilities)
+      'gradient-start': '#D327E7',
+      'gradient-mid': '#512ABD',
+      'gradient-end': '#00D19F',
+
       // State
-      success: '#00C696',
-      'success-bg': '#D8FFF6',
-      'success-new': '#4BF0C8',
-      error: '#E74C4C',
-      'error-bg': '#FEE0D9',
-      warning: '#FB6340',
-      info: '#0DCAF0',
+      'state-success': '#00C696',
+      'state-success-bg': '#D8FFF6',
+      'state-success-new': '#4BF0C8',
+      'state-error': '#E74C4C',
+      'state-error-bg': '#FEE0D9',
+      'state-warning': '#FB6340',
+      'state-info': '#0DCAF0',
 
       // Text
       'text-default': '#393C56',
@@ -35,12 +40,12 @@ tailwind.config = {
       'text-on-dark': '#FFFFFF',
 
       // Backgrounds
-      'app-bg': '#F7F7F7',
-      'bg-dark': '#292B3D',
-      'bg-pink': '#FDDBFD',
-      'bg-coral': '#FEE0D9',
-      'bg-sky': '#D4EDF7',
-      'button-secondary-bg': '#E6E1FF',
+      'background-app': '#F7F7F7',
+      'background-dark': '#292B3D',
+      'background-pink': '#FDDBFD',
+      'background-coral': '#FEE0D9',
+      'background-sky': '#D4EDF7',
+      'background-button-secondary': '#E6E1FF',
 
       // Borders
       'border-default': '#AFB2C7',

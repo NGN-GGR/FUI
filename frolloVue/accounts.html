@@ -9,7 +9,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="tailwind-frollo.js"></script>
 </head>
-<body class="font-frollo bg-app-bg text-text-default">
+<body class="font-frollo bg-background-app text-text-default">
 
 <div class="app-shell">
 
@@ -56,10 +56,10 @@
           <div class="text-xl font-medium text-text-default mt-1">2 minutes ago</div>
           <button class="text-p-small text-primary hover:underline mt-2">Sync now</button>
         </div>
-        <div class="rounded-lg bg-success-bg text-success p-5 flex items-start gap-3">
+        <div class="rounded-lg bg-state-success-bg text-state-success p-5 flex items-start gap-3">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
           <div>
-            <div class="text-p-small font-medium text-success">All accounts active</div>
+            <div class="text-p-small font-medium text-state-success">All accounts active</div>
             <p class="text-sm text-text-secondary m-0 mt-1">No expiring consents in the next 30 days.</p>
           </div>
         </div>
@@ -74,12 +74,12 @@
 
           <article class="rounded-lg bg-white shadow-card overflow-hidden">
             <header class="flex items-center gap-4 px-5 py-4">
-              <div class="size-12 rounded-lg bg-button-secondary-bg inline-flex items-center justify-center text-primary font-medium text-base">CB</div>
+              <div class="size-12 rounded-lg bg-background-button-secondary inline-flex items-center justify-center text-primary font-medium text-base">CB</div>
               <div class="flex-1">
                 <div class="text-xl font-medium">Commonwealth Bank</div>
                 <div class="text-sm text-text-secondary">2 accounts · last sync 2m ago</div>
               </div>
-              <span class="rounded-full bg-success-bg text-success text-xs px-2 py-px">Connected</span>
+              <span class="rounded-full bg-state-success-bg text-state-success text-xs px-2 py-px">Connected</span>
               <button class="text-text-secondary hover:text-text-default size-9 rounded-full hover:bg-grey-20 inline-flex items-center justify-center">⋯</button>
             </header>
             <div class="border-t border-grey-30 divide-y divide-grey-30">
@@ -95,19 +95,19 @@
                   <div class="text-p-small font-medium">Credit Card · Awards</div>
                   <div class="text-xs text-text-secondary">card ****0712 · balance owed</div>
                 </div>
-                <div class="text-p font-medium text-error">−$642.10</div>
+                <div class="text-p font-medium text-state-error">−$642.10</div>
               </div>
             </div>
           </article>
 
           <article class="rounded-lg bg-white shadow-card overflow-hidden">
             <header class="flex items-center gap-4 px-5 py-4">
-              <div class="size-12 rounded-lg bg-bg-coral inline-flex items-center justify-center text-error font-medium text-base">WP</div>
+              <div class="size-12 rounded-lg bg-background-coral inline-flex items-center justify-center text-state-error font-medium text-base">WP</div>
               <div class="flex-1">
                 <div class="text-xl font-medium">Westpac</div>
                 <div class="text-sm text-text-secondary">2 accounts · last sync 5m ago</div>
               </div>
-              <span class="rounded-full bg-success-bg text-success text-xs px-2 py-px">Connected</span>
+              <span class="rounded-full bg-state-success-bg text-state-success text-xs px-2 py-px">Connected</span>
               <button class="text-text-secondary hover:text-text-default size-9 rounded-full hover:bg-grey-20 inline-flex items-center justify-center">⋯</button>
             </header>
             <div class="border-t border-grey-30 divide-y divide-grey-30">
@@ -116,26 +116,26 @@
                   <div class="text-p-small font-medium">eSaver Reward</div>
                   <div class="text-xs text-text-secondary">BSB 032-000 · acct ****8810</div>
                 </div>
-                <div class="text-p font-medium text-success">$18,420.00</div>
+                <div class="text-p font-medium text-state-success">$18,420.00</div>
               </div>
               <div class="px-5 py-3 flex items-center justify-between">
                 <div>
                   <div class="text-p-small font-medium">Goal: Holiday in Japan</div>
                   <div class="text-xs text-text-secondary">virtual sub-account · BSB 032-000</div>
                 </div>
-                <div class="text-p font-medium text-success">$3,200.00</div>
+                <div class="text-p font-medium text-state-success">$3,200.00</div>
               </div>
             </div>
           </article>
 
           <article class="rounded-lg bg-white shadow-card overflow-hidden">
             <header class="flex items-center gap-4 px-5 py-4">
-              <div class="size-12 rounded-lg bg-bg-sky inline-flex items-center justify-center text-secondary font-medium text-base">NA</div>
+              <div class="size-12 rounded-lg bg-background-sky inline-flex items-center justify-center text-secondary font-medium text-base">NA</div>
               <div class="flex-1">
                 <div class="text-xl font-medium">NAB</div>
                 <div class="text-sm text-text-secondary">3 accounts · last sync 14m ago</div>
               </div>
-              <span class="rounded-full bg-warning text-white text-xs px-2 py-px">Sync stalled</span>
+              <span class="rounded-full bg-state-warning text-white text-xs px-2 py-px">Sync stalled</span>
               <button class="text-text-secondary hover:text-text-default size-9 rounded-full hover:bg-grey-20 inline-flex items-center justify-center">⋯</button>
             </header>
             <div class="border-t border-grey-30 divide-y divide-grey-30">
@@ -151,17 +151,17 @@
                   <div class="text-p-small font-medium">Reward Saver</div>
                   <div class="text-xs text-text-secondary">BSB 084-009 · acct ****6618</div>
                 </div>
-                <div class="text-p font-medium text-success">$1,420.00</div>
+                <div class="text-p font-medium text-state-success">$1,420.00</div>
               </div>
               <div class="px-5 py-3 flex items-center justify-between">
                 <div>
                   <div class="text-p-small font-medium">Personal Loan</div>
                   <div class="text-xs text-text-secondary">loan ****7714 · 18 months remaining</div>
                 </div>
-                <div class="text-p font-medium text-error">−$2,420.10</div>
+                <div class="text-p font-medium text-state-error">−$2,420.10</div>
               </div>
             </div>
-            <footer class="bg-warning/10 border-t border-grey-30 px-5 py-3 flex items-center gap-3">
+            <footer class="bg-state-warning/10 border-t border-grey-30 px-5 py-3 flex items-center gap-3">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FB6340" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
               <div class="flex-1 text-sm">NAB sync hasn't run in 14 minutes. <a href="#" class="text-primary hover:underline">Reconnect →</a></div>
             </footer>
@@ -172,7 +172,7 @@
 
       <!-- Add bank CTA -->
       <section class="rounded-lg border-2 border-dashed border-border-default p-8 text-center bg-white">
-        <div class="size-12 rounded-full bg-button-secondary-bg inline-flex items-center justify-center text-primary mb-2">
+        <div class="size-12 rounded-full bg-background-button-secondary inline-flex items-center justify-center text-primary mb-2">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
         </div>
         <h3 class="text-xl font-medium m-0 mb-1">Add another bank</h3>
