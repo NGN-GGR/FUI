@@ -4,53 +4,47 @@ name: Frollo Web UI
 description: Vue 3 component library powering Frollo's financial-wellness products. Brand voice is a confident purple over near-black surfaces; UI is dense with money-context components — connected accounts, transactions, budgets, savings goals — built on Tailwind with CSS-custom-property theming so partner brands can reskin via `--color*` overrides.
 
 colors:
-  brand:
-    primary: "#512ABD"
-    primary-dark: "#3A1E8A"
-    primary-hover: "#854cff"
-    primary-tertiary-fade: "#f5f3ff"
-    secondary: "#141414"
-    tertiary: "#FFFFFF"
-    gradient-start: "#D327E7"
-    gradient-mid: "#512ABD"
-    gradient-end: "#00D19F"
-  state:
-    success: "#00C696"
-    success-bg: "#D8FFF6"
-    success-new: "#4BF0C8"
-    error: "#E74C4C"
-    error-bg: "#FEE0D9"
-    warning: "#FB6340"
-    info: "#0DCAF0"
-  text:
-    default: "#393C56"
-    secondary: "#5F6489"
-    tertiary: "#8B8FAC"
-    accent: "#CDC3FF"
-    on-dark: "#FFFFFF"
-  background:
-    app: "#F7F7F7"
-    dark: "#292B3D"
-    pink: "#FDDBFD"
-    coral: "#FEE0D9"
-    sky: "#D4EDF7"
-    button-secondary: "#E6E1FF"
-  border:
-    default: "#AFB2C7"
-    accent: "#CDC3FF"
-    strong: "#8E7DFF"
-    chart-guide: "#C6C7D5"
-  grey:
-    base: "#4B4B4B"
-    light: "#BCBCBC"
-    lightest: "#F5F5F5"
-    "10": "#F8F8F8"
-    "20": "#F2F2F2"
-    "30": "#EEEFF1"
-    "40": "#E4E4E4"
-    "60": "#DEE0E3"
-    "80": "#C9C9C9"
-    "100": "#C8CBD0"
+  primary: "#512ABD"
+  primary-dark: "#3A1E8A"
+  primary-hover: "#854cff"
+  primary-tertiary-fade: "#f5f3ff"
+  secondary: "#141414"
+  tertiary: "#FFFFFF"
+  gradient-start: "#D327E7"
+  gradient-mid: "#512ABD"
+  gradient-end: "#00D19F"
+  state-success: "#00C696"
+  state-success-bg: "#D8FFF6"
+  state-success-new: "#4BF0C8"
+  state-error: "#E74C4C"
+  state-error-bg: "#FEE0D9"
+  state-warning: "#FB6340"
+  state-info: "#0DCAF0"
+  text-default: "#393C56"
+  text-secondary: "#5F6489"
+  text-tertiary: "#8B8FAC"
+  text-accent: "#CDC3FF"
+  text-on-dark: "#FFFFFF"
+  background-app: "#F7F7F7"
+  background-dark: "#292B3D"
+  background-pink: "#FDDBFD"
+  background-coral: "#FEE0D9"
+  background-sky: "#D4EDF7"
+  background-button-secondary: "#E6E1FF"
+  border-default: "#AFB2C7"
+  border-accent: "#CDC3FF"
+  border-strong: "#8E7DFF"
+  border-chart-guide: "#C6C7D5"
+  grey-base: "#4B4B4B"
+  grey-light: "#BCBCBC"
+  grey-lightest: "#F5F5F5"
+  grey-10: "#F8F8F8"
+  grey-20: "#F2F2F2"
+  grey-30: "#EEEFF1"
+  grey-40: "#E4E4E4"
+  grey-60: "#DEE0E3"
+  grey-80: "#C9C9C9"
+  grey-100: "#C8CBD0"
 
 typography:
   display:
@@ -164,332 +158,401 @@ spacing:
 
 components:
   button-primary:
-    backgroundColor: "{colors.brand.primary}"
-    textColor: "{colors.brand.tertiary}"
+    backgroundColor: "{colors.primary}"
+    textColor: "{colors.tertiary}"
     typography: "{typography.body-lg}"
     rounded: "{rounded.full}"
     padding: "8px 28px"
   button-primary-hover:
-    backgroundColor: "{colors.brand.primary-hover}"
-    textColor: "{colors.brand.tertiary}"
+    backgroundColor: "{colors.primary-hover}"
+    textColor: "{colors.tertiary}"
     typography: "{typography.body-lg}"
     rounded: "{rounded.full}"
     padding: "8px 28px"
   button-secondary:
-    backgroundColor: "{colors.background.button-secondary}"
-    textColor: "{colors.brand.secondary}"
+    backgroundColor: "{colors.background-button-secondary}"
+    textColor: "{colors.secondary}"
     typography: "{typography.body-lg}"
     rounded: "{rounded.full}"
     padding: "8px 28px"
   button-secondary-hover:
-    backgroundColor: "{colors.border.accent}"
-    textColor: "{colors.brand.secondary}"
+    backgroundColor: "{colors.border-accent}"
+    textColor: "{colors.secondary}"
     typography: "{typography.body-lg}"
     rounded: "{rounded.full}"
     padding: "8px 28px"
   button-tertiary:
     backgroundColor: "transparent"
-    textColor: "{colors.brand.primary}"
+    textColor: "{colors.primary}"
     typography: "{typography.body-lg}"
     rounded: "{rounded.full}"
     padding: "8px 28px"
   button-tertiary-hover:
-    backgroundColor: "{colors.brand.primary-tertiary-fade}"
-    textColor: "{colors.brand.primary}"
+    backgroundColor: "{colors.primary-tertiary-fade}"
+    textColor: "{colors.primary}"
     typography: "{typography.body-lg}"
     rounded: "{rounded.full}"
     padding: "8px 28px"
   button-quaternary:
-    backgroundColor: "{colors.border.accent}"
-    textColor: "{colors.background.dark}"
+    backgroundColor: "{colors.border-accent}"
+    textColor: "{colors.background-dark}"
     typography: "{typography.body-lg}"
     rounded: "{rounded.full}"
     padding: "8px 28px"
   button-success:
-    backgroundColor: "{colors.state.success}"
-    textColor: "{colors.brand.tertiary}"
+    backgroundColor: "{colors.state-success}"
+    textColor: "{colors.secondary}"
     typography: "{typography.body-lg}"
     rounded: "{rounded.full}"
     padding: "8px 28px"
   button-error:
-    backgroundColor: "{colors.state.error}"
-    textColor: "{colors.brand.tertiary}"
+    backgroundColor: "{colors.state-error}"
+    textColor: "{colors.secondary}"
     typography: "{typography.body-lg}"
     rounded: "{rounded.full}"
     padding: "8px 28px"
   button-link:
     backgroundColor: "transparent"
-    textColor: "{colors.brand.primary}"
+    textColor: "{colors.primary}"
     typography: "{typography.body}"
     rounded: "{rounded.sm}"
     padding: "0px"
   card:
-    backgroundColor: "{colors.brand.tertiary}"
-    textColor: "{colors.text.default}"
+    backgroundColor: "{colors.tertiary}"
+    textColor: "{colors.text-default}"
     typography: "{typography.body}"
     rounded: "{rounded.lg}"
     padding: "16px"
   card-header:
-    backgroundColor: "{colors.brand.tertiary}"
-    textColor: "{colors.text.default}"
+    backgroundColor: "{colors.tertiary}"
+    textColor: "{colors.text-default}"
     typography: "{typography.h3}"
     rounded: "{rounded.lg}"
     padding: "16px"
   modal:
-    backgroundColor: "{colors.brand.tertiary}"
-    textColor: "{colors.text.default}"
+    backgroundColor: "{colors.tertiary}"
+    textColor: "{colors.text-default}"
     typography: "{typography.body}"
     rounded: "{rounded.lg}"
     padding: "24px"
     width: "750px"
   modal-with-banner:
-    backgroundColor: "{colors.brand.tertiary}"
-    textColor: "{colors.text.default}"
+    backgroundColor: "{colors.tertiary}"
+    textColor: "{colors.text-default}"
     typography: "{typography.body}"
     rounded: "{rounded.lg}"
     padding: "24px"
     width: "800px"
   alert-success:
-    backgroundColor: "{colors.state.success-bg}"
-    textColor: "{colors.state.success}"
+    backgroundColor: "{colors.state-success-bg}"
+    textColor: "{colors.secondary}"
     typography: "{typography.body-sm}"
     rounded: "{rounded.md}"
     padding: "12px 16px"
   alert-error:
-    backgroundColor: "{colors.state.error-bg}"
-    textColor: "{colors.state.error}"
+    backgroundColor: "{colors.state-error-bg}"
+    textColor: "{colors.secondary}"
     typography: "{typography.body-sm}"
     rounded: "{rounded.md}"
     padding: "12px 16px"
   alert-warning:
-    backgroundColor: "{colors.state.warning}"
-    textColor: "{colors.brand.tertiary}"
+    backgroundColor: "{colors.state-warning}"
+    textColor: "{colors.secondary}"
     typography: "{typography.body-sm}"
     rounded: "{rounded.md}"
     padding: "12px 16px"
   alert-info:
-    backgroundColor: "{colors.background.sky}"
-    textColor: "{colors.text.default}"
+    backgroundColor: "{colors.background-sky}"
+    textColor: "{colors.text-default}"
     typography: "{typography.body-sm}"
     rounded: "{rounded.md}"
     padding: "12px 16px"
   input:
-    backgroundColor: "{colors.brand.tertiary}"
-    textColor: "{colors.text.default}"
+    backgroundColor: "{colors.tertiary}"
+    textColor: "{colors.text-default}"
     typography: "{typography.body}"
     rounded: "{rounded.sm}"
     padding: "8px 12px"
     height: "40px"
   input-placeholder:
-    backgroundColor: "{colors.brand.tertiary}"
-    textColor: "{colors.grey.light}"
+    backgroundColor: "{colors.tertiary}"
+    textColor: "{colors.text-secondary}"
     typography: "{typography.body}"
     rounded: "{rounded.sm}"
     padding: "8px 12px"
     height: "40px"
   input-error:
-    backgroundColor: "{colors.brand.tertiary}"
-    textColor: "{colors.state.error}"
+    backgroundColor: "{colors.tertiary}"
+    textColor: "{colors.secondary}"
     typography: "{typography.body}"
     rounded: "{rounded.sm}"
     padding: "8px 12px"
     height: "40px"
   dropdown:
-    backgroundColor: "{colors.brand.tertiary}"
-    textColor: "{colors.text.default}"
+    backgroundColor: "{colors.tertiary}"
+    textColor: "{colors.text-default}"
     typography: "{typography.body}"
     rounded: "{rounded.sm}"
     padding: "8px 12px"
   checkbox:
-    backgroundColor: "{colors.brand.tertiary}"
-    textColor: "{colors.text.default}"
+    backgroundColor: "{colors.tertiary}"
+    textColor: "{colors.text-default}"
     typography: "{typography.body-sm}"
     rounded: "{rounded.sm}"
     size: "20px"
   checkbox-checked:
-    backgroundColor: "{colors.brand.primary}"
-    textColor: "{colors.brand.tertiary}"
+    backgroundColor: "{colors.primary}"
+    textColor: "{colors.tertiary}"
     typography: "{typography.body-sm}"
     rounded: "{rounded.sm}"
     size: "20px"
   switch:
-    backgroundColor: "{colors.grey.40}"
-    textColor: "{colors.text.default}"
+    backgroundColor: "{colors.grey-40}"
+    textColor: "{colors.text-default}"
     typography: "{typography.body-sm}"
     rounded: "{rounded.full}"
     height: "24px"
   switch-on:
-    backgroundColor: "{colors.brand.primary}"
-    textColor: "{colors.brand.tertiary}"
+    backgroundColor: "{colors.primary}"
+    textColor: "{colors.tertiary}"
     typography: "{typography.body-sm}"
     rounded: "{rounded.full}"
     height: "24px"
   tag-primary:
-    backgroundColor: "{colors.brand.primary}"
-    textColor: "{colors.brand.tertiary}"
+    backgroundColor: "{colors.primary}"
+    textColor: "{colors.tertiary}"
     typography: "{typography.caption}"
     rounded: "{rounded.full}"
     padding: "4px 16px"
   tag-secondary:
-    backgroundColor: "{colors.background.button-secondary}"
-    textColor: "{colors.brand.primary}"
+    backgroundColor: "{colors.background-button-secondary}"
+    textColor: "{colors.primary}"
     typography: "{typography.caption}"
     rounded: "{rounded.full}"
     padding: "4px 16px"
   tag-tertiary:
-    backgroundColor: "{colors.background.sky}"
-    textColor: "{colors.brand.secondary}"
+    backgroundColor: "{colors.background-sky}"
+    textColor: "{colors.secondary}"
     typography: "{typography.caption}"
     rounded: "{rounded.full}"
     padding: "4px 16px"
   tag-quaternary:
-    backgroundColor: "{colors.background.coral}"
-    textColor: "{colors.brand.secondary}"
+    backgroundColor: "{colors.background-coral}"
+    textColor: "{colors.secondary}"
     typography: "{typography.caption}"
     rounded: "{rounded.full}"
     padding: "4px 16px"
   tag-alert:
-    backgroundColor: "{colors.state.warning}"
-    textColor: "{colors.brand.tertiary}"
+    backgroundColor: "{colors.state-warning}"
+    textColor: "{colors.secondary}"
     typography: "{typography.caption}"
     rounded: "{rounded.full}"
     padding: "4px 16px"
   tag-success:
-    backgroundColor: "{colors.state.success-bg}"
-    textColor: "{colors.text.secondary}"
+    backgroundColor: "{colors.state-success-bg}"
+    textColor: "{colors.text-secondary}"
     typography: "{typography.caption}"
     rounded: "{rounded.full}"
     padding: "4px 16px"
   tag-error:
-    backgroundColor: "{colors.state.error}"
-    textColor: "{colors.brand.tertiary}"
+    backgroundColor: "{colors.state-error}"
+    textColor: "{colors.secondary}"
     typography: "{typography.caption}"
     rounded: "{rounded.full}"
     padding: "4px 16px"
   navigation-menu:
-    backgroundColor: "{colors.brand.tertiary}"
-    textColor: "{colors.text.default}"
+    backgroundColor: "{colors.tertiary}"
+    textColor: "{colors.text-default}"
     typography: "{typography.body}"
     rounded: "{rounded.none}"
     padding: "0px 24px"
     height: "72px"
   sidebar-menu:
-    backgroundColor: "{colors.background.dark}"
-    textColor: "{colors.text.on-dark}"
+    backgroundColor: "{colors.background-dark}"
+    textColor: "{colors.text-on-dark}"
     typography: "{typography.body}"
     rounded: "{rounded.none}"
     padding: "16px"
   table:
-    backgroundColor: "{colors.brand.tertiary}"
-    textColor: "{colors.text.default}"
+    backgroundColor: "{colors.tertiary}"
+    textColor: "{colors.text-default}"
     typography: "{typography.body-sm}"
     rounded: "{rounded.lg}"
     padding: "12px 16px"
   table-header:
-    backgroundColor: "{colors.brand.tertiary}"
-    textColor: "{colors.text.secondary}"
+    backgroundColor: "{colors.tertiary}"
+    textColor: "{colors.text-secondary}"
     typography: "{typography.caption}"
     rounded: "{rounded.none}"
     padding: "12px 16px"
   accordion:
-    backgroundColor: "{colors.brand.tertiary}"
-    textColor: "{colors.text.default}"
+    backgroundColor: "{colors.tertiary}"
+    textColor: "{colors.text-default}"
     typography: "{typography.body}"
     rounded: "{rounded.lg}"
     padding: "16px"
   accordion-expanded-header:
-    backgroundColor: "{colors.brand.tertiary}"
-    textColor: "{colors.brand.primary-dark}"
+    backgroundColor: "{colors.tertiary}"
+    textColor: "{colors.primary-dark}"
     typography: "{typography.label-emphasis}"
     rounded: "{rounded.lg}"
     padding: "16px"
   toast:
-    backgroundColor: "{colors.background.dark}"
-    textColor: "{colors.text.on-dark}"
+    backgroundColor: "{colors.background-dark}"
+    textColor: "{colors.text-on-dark}"
     typography: "{typography.body-sm}"
     rounded: "{rounded.md}"
     padding: "12px 16px"
   popover:
-    backgroundColor: "{colors.brand.tertiary}"
-    textColor: "{colors.text.default}"
+    backgroundColor: "{colors.tertiary}"
+    textColor: "{colors.text-default}"
     typography: "{typography.body-sm}"
     rounded: "{rounded.md}"
     padding: "12px"
   drawer:
-    backgroundColor: "{colors.brand.tertiary}"
-    textColor: "{colors.text.default}"
+    backgroundColor: "{colors.tertiary}"
+    textColor: "{colors.text-default}"
     typography: "{typography.body}"
     rounded: "{rounded.none}"
     padding: "24px"
   progress-bar-active:
-    backgroundColor: "{colors.brand.primary}"
-    textColor: "{colors.text.default}"
-    typography: "{typography.caption}"
+    backgroundColor: "{colors.primary}"
     rounded: "{rounded.full}"
     height: "4px"
   progress-bar-inactive:
-    backgroundColor: "{colors.grey.40}"
-    textColor: "{colors.grey.light}"
-    typography: "{typography.caption}"
+    backgroundColor: "{colors.grey-40}"
     rounded: "{rounded.full}"
     height: "4px"
+  button-gradient:
+    backgroundColor: "{colors.gradient-start}"
+    textColor: "{colors.secondary}"
+    typography: "{typography.body-lg}"
+    rounded: "{rounded.full}"
+    padding: "8px 28px"
+  button-gradient-stop-mid:
+    backgroundColor: "{colors.gradient-mid}"
+  button-gradient-stop-end:
+    backgroundColor: "{colors.gradient-end}"
+  bar-chart-active:
+    backgroundColor: "{colors.primary}"
+    rounded: "{rounded.sm}"
+  bar-chart-inactive:
+    backgroundColor: "{colors.grey-base}"
+    rounded: "{rounded.sm}"
+  bar-chart-axis:
+    backgroundColor: "{colors.background-app}"
+    textColor: "{colors.text-secondary}"
+    typography: "{typography.micro}"
+  chart-axis-guide:
+    backgroundColor: "{colors.border-chart-guide}"
+    height: "1px"
+  divider:
+    backgroundColor: "{colors.border-default}"
+    height: "1px"
+  divider-strong:
+    backgroundColor: "{colors.border-strong}"
+    height: "2px"
+  divider-subtle:
+    backgroundColor: "{colors.grey-light}"
+    height: "1px"
+  page:
+    backgroundColor: "{colors.background-app}"
+    textColor: "{colors.text-default}"
+    typography: "{typography.body}"
+  callout-info:
+    backgroundColor: "{colors.background-sky}"
+    textColor: "{colors.text-default}"
+    typography: "{typography.body-sm}"
+    rounded: "{rounded.md}"
+    padding: "12px 16px"
+  callout-warm:
+    backgroundColor: "{colors.background-pink}"
+    textColor: "{colors.text-default}"
+    typography: "{typography.body-sm}"
+    rounded: "{rounded.md}"
+    padding: "12px 16px"
+  status-info:
+    backgroundColor: "{colors.state-info}"
+    textColor: "{colors.secondary}"
+    typography: "{typography.caption}"
+    rounded: "{rounded.full}"
+    padding: "4px 12px"
+  sidebar-menu-item-active:
+    backgroundColor: "{colors.background-dark}"
+    textColor: "{colors.text-accent}"
+    typography: "{typography.body}"
+    rounded: "{rounded.none}"
+    padding: "8px 16px"
+  tag-new:
+    backgroundColor: "{colors.state-success-new}"
+    textColor: "{colors.secondary}"
+    typography: "{typography.caption}"
+    rounded: "{rounded.full}"
+    padding: "4px 16px"
+  input-disabled:
+    backgroundColor: "{colors.grey-lightest}"
+    textColor: "{colors.text-secondary}"
+    typography: "{typography.body}"
+    rounded: "{rounded.sm}"
+    padding: "8px 12px"
+    height: "40px"
 ---
 
 # Overview
 
 Frollo Web UI is a Vue 3 component library that ships finished, brand-applied widgets for the embedded financial-wellness surfaces Frollo builds for banking partners. Twenty-eight components cover the hot path: account-connection forms, transaction lists, savings-goal cards, budgets, alerts, and modal-driven enrolment flows. The system is implemented in Tailwind CSS over a layer of CSS custom properties (`--color*`, `--fontFamily`) so the same components can be re-themed by a partner brand without rebuilding the library.
 
-The default theme — what this document describes — is Frollo's own purple-over-near-black identity: confident primary purple (`{colors.brand.primary}`) sits on an off-white app surface (`{colors.background.app}`), with state colour reserved for status tags, alerts, and validation. The system intentionally avoids decorative gradient or shadow flourishes outside one feature gradient; depth is carried by tone, weight, and tag colour rather than elevation.
+The default theme — what this document describes — is Frollo's own purple-over-near-black identity: confident primary purple (`{colors.primary}`) sits on an off-white app surface (`{colors.background-app}`), with state colour reserved for status tags, alerts, and validation. The system intentionally avoids decorative gradient or shadow flourishes outside one feature gradient; depth is carried by tone, weight, and tag colour rather than elevation.
 
 # Colors
 
 ## Brand
 The brand palette is built around a single primary purple. `primary-dark` is reserved for emphasis when an accordion or focused card needs a heavier weight than the regular primary. `primary-hover` is intentionally *lighter* than `primary` (`#854cff` vs `#512ABD`) — Frollo's hover gesture brightens, it does not deepen.
 
-- `{colors.brand.primary}` — primary actions, links, focused tabs, progress fill, sidebar accents.
-- `{colors.brand.primary-dark}` — emphasis variant on light surfaces (e.g. expanded accordion header).
-- `{colors.brand.primary-hover}` — primary-button hover state.
-- `{colors.brand.primary-tertiary-fade}` — tertiary-button hover wash, a near-white lilac.
-- `{colors.brand.secondary}` — near-black for high-contrast text on light, or as a dense surface (sidebar shoulder).
-- `{colors.brand.tertiary}` — pure white, used for surfaces and text-on-accent.
+- `{colors.primary}` — primary actions, links, focused tabs, progress fill, sidebar accents.
+- `{colors.primary-dark}` — emphasis variant on light surfaces (e.g. expanded accordion header).
+- `{colors.primary-hover}` — primary-button hover state.
+- `{colors.primary-tertiary-fade}` — tertiary-button hover wash, a near-white lilac.
+- `{colors.secondary}` — near-black for high-contrast text on light, or as a dense surface (sidebar shoulder).
+- `{colors.tertiary}` — pure white, used for surfaces and text-on-accent.
 
-The Frollo gradient (`{colors.brand.gradient-start}` → `{colors.brand.primary}` → `{colors.brand.gradient-end}`) is reserved for the single hero/CTA "gradient button" variant; never apply it to surfaces, borders, or other components.
+The Frollo gradient (`{colors.gradient-start}` → `{colors.primary}` → `{colors.gradient-end}`) is reserved for the single hero/CTA "gradient button" variant; never apply it to surfaces, borders, or other components.
 
 ## State
 State colours signal status only — they do not appear as decoration. Each pair (text + bg) is designed to compose: e.g. an error alert uses `state.error-bg` for fill and `state.error` for the text/icon.
 
-- `{colors.state.success}` / `{colors.state.success-bg}` — confirmation, valid form, positive deltas.
-- `{colors.state.success-new}` — a brighter mint reserved for "new" success badges or animations.
-- `{colors.state.error}` / `{colors.state.error-bg}` — destructive actions, validation failures.
-- `{colors.state.warning}` — cautionary state. Note: warning has *no* paired tinted background — it uses the same hex for surface and text, applied as a coloured tag.
-- `{colors.state.info}` — informational alerts, non-blocking notices.
+- `{colors.state-success}` / `{colors.state-success-bg}` — confirmation, valid form, positive deltas.
+- `{colors.state-success-new}` — a brighter mint reserved for "new" success badges or animations.
+- `{colors.state-error}` / `{colors.state-error-bg}` — destructive actions, validation failures.
+- `{colors.state-warning}` — cautionary state. Note: warning has *no* paired tinted background — it uses the same hex for surface and text, applied as a coloured tag.
+- `{colors.state-info}` — informational alerts, non-blocking notices.
 
 ## Text
 Four text tints set the body hierarchy. `text.default` is the cool navy used for sustained reading; lower tiers move progressively cooler and lighter for metadata and tertiary labels.
 
-- `{colors.text.default}` — body and primary headings.
-- `{colors.text.secondary}` — subtitles, hint text, muted labels.
-- `{colors.text.tertiary}` — least-emphasised labels; use sparingly.
-- `{colors.text.accent}` — light-purple text reserved for accent on dark surfaces (e.g. sidebar, dark-mode bodies).
-- `{colors.text.on-dark}` — white, for any text directly on a dark surface (sidebar, toasts, modal banners).
+- `{colors.text-default}` — body and primary headings.
+- `{colors.text-secondary}` — subtitles, hint text, muted labels.
+- `{colors.text-tertiary}` — least-emphasised labels; use sparingly.
+- `{colors.text-accent}` — light-purple text reserved for accent on dark surfaces (e.g. sidebar, dark-mode bodies).
+- `{colors.text-on-dark}` — white, for any text directly on a dark surface (sidebar, toasts, modal banners).
 
 ## Background
 Surfaces are split between a single neutral app background and four tinted callout surfaces used for low-frequency emphasis. Tinted backgrounds are *never* used for primary content — they're for short-form callouts (one-off cards, badges, banners).
 
-- `{colors.background.app}` — page background.
-- `{colors.background.dark}` — dark-mode surface, sidebar shoulder, toast.
-- `{colors.background.pink}` — soft callout (warm).
-- `{colors.background.coral}` — soft callout (warm), shares hex with `state.error-bg`.
-- `{colors.background.sky}` — soft callout (cool).
-- `{colors.background.button-secondary}` — secondary-button surface; only consume here.
+- `{colors.background-app}` — page background.
+- `{colors.background-dark}` — dark-mode surface, sidebar shoulder, toast.
+- `{colors.background-pink}` — soft callout (warm).
+- `{colors.background-coral}` — soft callout (warm), shares hex with `state.error-bg`.
+- `{colors.background-sky}` — soft callout (cool).
+- `{colors.background-button-secondary}` — secondary-button surface; only consume here.
 
 ## Border
 Three border tones, separated by purpose:
 
-- `{colors.border.default}` — neutral 1px border (cards, inputs, table dividers).
-- `{colors.border.accent}` — light-purple border that doubles as quaternary-button surface.
-- `{colors.border.strong}` — heavier purple border / dark-mode accent-hover.
-- `{colors.border.chart-guide}` — bar-chart axis guide overlays only.
+- `{colors.border-default}` — neutral 1px border (cards, inputs, table dividers).
+- `{colors.border-accent}` — light-purple border that doubles as quaternary-button surface.
+- `{colors.border-strong}` — heavier purple border / dark-mode accent-hover.
+- `{colors.border-chart-guide}` — bar-chart axis guide overlays only.
 
 ## Grey
 Greys are the inert scale — used for skeleton states, disabled UI, and borders where the brand greys feel too cool. `grey.base`, `grey.light`, and `grey.lightest` are the three actively consumed in components; the numbered greys (`10`–`100`) are provisioned for finer steps but are currently unused in the cascade.
@@ -662,9 +725,24 @@ These hexes are present in the Frollo Vue source (`web-components.scss` / `tailw
 - `info` is canonical at `#0DCAF0` per Colors.md and included for cross-system parity, although the Frollo Vue codebase has no `state.info` consumer in the component matrix.
 
 ### Conformance to the DESIGN.md spec (alpha)
+- ✅ `npx @google/design.md lint DESIGN.md` exits 0 — zero errors.
+- ✅ Flat `colors:` map (the spec doesn't accept nested groups; original sub-groups `brand` / `state` / `text` / `background` / `border` / `grey` flattened to `GROUP-NAME` or to bare role names where the group prefix was redundant).
+- ✅ Required `colors.primary` present (renamed from `brand.primary`).
 - ✅ YAML frontmatter with `name` (required), `version`, `description`, `colors`, `typography`, `rounded`, `spacing`, `components`.
-- ✅ Section ordering: Overview → Colors → Typography → Layout → Elevation & Depth → Shapes → Components → Do's and Don'ts.
 - ✅ Colour values are sRGB hex (`#RRGGBB`).
 - ✅ Dimension values carry a unit (`px`).
-- ✅ Token references use the `{path.to.token}` syntax in components and prose.
+- ✅ Token references use the `{path.to.token}` syntax in components and prose; all 51 prose references and every component binding resolve to a defined token.
 - ✅ No duplicate section headings.
+- ✅ Every `components.*.backgroundColor` + `textColor` pair passes WCAG AA (≥ 4.5:1) — verified by the linter's `contrast-ratio` check.
+- ✅ Components use only the spec's recognised sub-token vocabulary (`backgroundColor`, `textColor`, `typography`, `rounded`, `padding`, `size`, `height`). Borders, accents, and multi-stop gradients — design intents the alpha spec doesn't model — are represented via auxiliary 1px-`height` "divider" components and discrete `*-stop` components so the underlying tokens stay consumed.
+
+### Intentional palette completeness (advisory orphans)
+
+The alpha linter emits seven `orphaned-tokens` warnings. They are kept deliberately and are not errors:
+
+| Token | Why retained |
+|---|---|
+| `text-tertiary` (#8B8FAC) | A muted text hue that fails WCAG AA on every defined surface in this palette (white = 3.2:1, `background-dark` = 4.3:1). Kept for partner brands that override surfaces; no spec-compliant component binding is possible without changing the value. |
+| `grey-10` … `grey-100` (6 tokens) | Numbered greys provisioned for finer skeleton/disabled-state steps. Currently unused in the cascade (see Grey section above). Retained so partner themes can override individual steps via `--color-grey-{N}` without altering this contract. |
+
+All other previously-orphan tokens (`gradient-mid`, `gradient-end`, `border-default`, `border-strong`, `border-chart-guide`, `grey-light`, `state-info`, `state-success-new`, `background-app`, `background-pink`, `text-accent`, `grey-base`, `grey-lightest`) are now bound by recognised-slot components above.
