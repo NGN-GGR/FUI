@@ -45,10 +45,10 @@ colors:
   grey-60: "#DEE0E3"
   grey-80: "#C9C9C9"
   grey-100: "#C8CBD0"
-
+  border-ggr: colors.grey-40
 
 #semantic colors
-border-ggr: "{colors.grey-40}"
+
 
 
 typography:
