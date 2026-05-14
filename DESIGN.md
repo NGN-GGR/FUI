@@ -46,6 +46,11 @@ colors:
   grey-80: "#C9C9C9"
   grey-100: "#C8CBD0"
 
+
+#semantic colors
+border-ggr: "{colors.grey-40}"
+
+
 typography:
   display:
     fontFamily: "Forma DJR Text"
