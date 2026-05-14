@@ -45,11 +45,6 @@ colors:
   grey-60: "#DEE0E3"
   grey-80: "#C9C9C9"
   grey-100: "#C8CBD0"
-  ggr: "{colors.grey-40}"
-
-#semantic colors
-
-
 
 typography:
   display:
@@ -163,7 +158,7 @@ spacing:
 
 components:
   button-primary:
-    backgroundColor: "{colors.ggr}"
+    backgroundColor: "{colors.primary}"
     textColor: "{colors.tertiary}"
     typography: "{typography.body-lg}"
     rounded: "{rounded.full}"
